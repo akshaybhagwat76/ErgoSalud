@@ -1,0 +1,42 @@
+﻿@model ErgoSalud.Models.ERGOS_Cuestionarios_Resultados_N01
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ERGOS_Cuestionarios_Resultados_N01</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ERGOS_Cuestionarios_Trabajador_N01.id_cuestionario_trabajador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ERGOS_Cuestionarios_Trabajador_N01.id_cuestionario_trabajador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ERGOS_Preguntas_N01.Preguntas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ERGOS_Preguntas_N01.Preguntas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ERGOS_Respuestas_N01.Respuesta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ERGOS_Respuestas_N01.Respuesta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_Cuestionario_Resultado }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

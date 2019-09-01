@@ -1,0 +1,147 @@
+﻿@model IEnumerable<ErgoSalud.Models.ERGOS_Cuestionarios_Trabajador_N01>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Busqueda de Folio</h2>
+<div class="row">
+
+
+    <a href="/Encuestas/Index">
+        <input type="button" class="btn btn-success" value="Regresar" style="float:left;margin-left:5px">
+    </a>
+    <br>
+</div>
+<br>
+<div class="table-responsive">
+
+    <table class="table table-hover table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayName("No. Folio")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Sexo)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Edad)
+                </th>
+                <th>
+                    @Html.DisplayName("Estado Civil")
+                </th>
+                <th>
+                    @Html.DisplayName("Nivel Estudios")
+                </th>*@
+            <th>
+                @Html.DisplayName("Ocupación")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Departamento)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Tipo_puesto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipo_Contratacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipo_Jornada)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rotacion_Turno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Experiencia_puesto_actual)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Experiencia_puesto_laboral)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.ERGOS_Cuestionarios_N01.Cuestionario)
+            </th>
+            <th>
+                @Html.DisplayName("Empresa")
+            </th>
+            <th>Acción</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_trabajador)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fecha)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Sexo)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Edad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado_Civil)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nivel_Esudios)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ocupacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Departamento)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Tipo_puesto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipo_Contratacion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipo_Jornada)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rotacion_Turno)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Experiencia_puesto_actual)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Experiencia_puesto_laboral)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.ERGOS_Cuestionarios_N01.Cuestionario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ERGOS_Empresas_N01.Razon_Social)
+                </td>
+                <td>
+
+
+                    <a title="Editar" href="@Url.Action("Edit", new { id = item.id_cuestionario_trabajador })">
+
+                        <i class="fa fa-edit" title="Editar" style="font-size:23px"></i>
+                    </a>
+
+
+                    <a href="@Url.Action("Encuesta", "Trabajador_Resultados", new { id_CT = item.id_cuestionario_trabajador ,id_C = item.ERGOS_Cuestionarios_N01.id_cuestionario})"><i class="fa fa-file-text" title="Encuesta" style="font-size:20px;" aria-hidden="true"></i></a>
+
+
+
+
+                    <a href="@Url.Action("Delete", new { id=item.id_cuestionario_trabajador })">
+                        <i class="fa fa-trash-o" title="Eliminar" style="font-size:23px"></i>
+                    </a>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

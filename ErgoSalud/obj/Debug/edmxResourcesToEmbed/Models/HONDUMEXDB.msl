@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CastSoft_DBModelStoreContainer" CdmEntityContainer="CastSoft_DBEntities">
+    <EntitySetMapping Name="HONDU_Categorias_N01">
+      <EntityTypeMapping TypeName="CastSoft_DBModel.HONDU_Categorias_N01">
+        <MappingFragment StoreEntitySet="HONDU_Categorias_N01">
+          <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+          <ScalarProperty Name="Imagen_Name" ColumnName="Imagen_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HONDU_Ordenes_N01">
+      <EntityTypeMapping TypeName="CastSoft_DBModel.HONDU_Ordenes_N01">
+        <MappingFragment StoreEntitySet="HONDU_Ordenes_N01">
+          <ScalarProperty Name="id_Order_Record" ColumnName="id_Order_Record" />
+          <ScalarProperty Name="Numero_Orden" ColumnName="Numero_Orden" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Mesa" ColumnName="Mesa" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HONDU_Ordenes_Productos_N01">
+      <EntityTypeMapping TypeName="CastSoft_DBModel.HONDU_Ordenes_Productos_N01">
+        <MappingFragment StoreEntitySet="HONDU_Ordenes_Productos_N01">
+          <ScalarProperty Name="id_Order_P_Record" ColumnName="id_Order_P_Record" />
+          <ScalarProperty Name="Numero_Orden" ColumnName="Numero_Orden" />
+          <ScalarProperty Name="id_Producto" ColumnName="id_Producto" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HONDU_Productos_N01">
+      <EntityTypeMapping TypeName="CastSoft_DBModel.HONDU_Productos_N01">
+        <MappingFragment StoreEntitySet="HONDU_Productos_N01">
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+          <ScalarProperty Name="Producto" ColumnName="Producto" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+          <ScalarProperty Name="Imagen_Name" ColumnName="Imagen_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

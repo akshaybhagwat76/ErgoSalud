@@ -1,0 +1,1521 @@
+﻿@model IEnumerable<ErgoSalud.Models.Surveys>
+
+@{
+    double bandera = 0;
+    var bandera2 = "";
+    var counter = 0;
+    var FINAL = 0;
+    var answer_counter = 0;
+
+
+    var Survey_I = 0;
+
+
+    double _bandera = 0;
+    var _bandera2 = "";
+    var _counter = 0;
+    var _FINAL = 0;
+    var _answer_counter = 0;
+
+    List<string> preguntas = new List<string>();
+    preguntas.Add("¿Accidente que tenga como consecuencia la muerte, la pérdida de un miembro o una lesión grave?");
+    preguntas.Add("¿Asaltos?");
+    preguntas.Add("¿Actos violentos que derivaron en lesiones graves?");
+    preguntas.Add("¿Secuestro?");
+    preguntas.Add("¿Amenazas, o cualquier otro que ponga en riesgo su vida o salud, y/o la de otras personas?");
+    preguntas.Add("¿Ha tenido recuerdos recurrentes sobre el acontecimiento que le provocan malestares?");
+    preguntas.Add("¿Ha tenido sueños de carácter recurrente sobre el acontecimiento, que le producen malestar?");
+    preguntas.Add("¿Se ha esforzado por evitar todo tipo de sentimientos, conversaciones o situaciones que le puedan recordar el acontecimiento?");
+    preguntas.Add("¿Se ha esforzado por evitar todo tipo de actividades,lugares o personas que motivan recuerdos del acontecimiento?");
+    preguntas.Add("¿Ha tenido dificultad para recordar alguna parte importante del evento?");
+    preguntas.Add("¿Ha disminuido su interés en sus actividades cotidianas?");
+    preguntas.Add("¿Se ha sentido usted alejado o distante de los demás?");
+    preguntas.Add("¿Ha notado que tiene dificultad para expresar sus sentimientos?");
+    preguntas.Add("¿Ha tenido la impresión de que su vida se va a acortar, que va a morir antes que otras personas o que tiene un futuro limitado?");
+    preguntas.Add("¿Ha tenido usted dificultades para dormir?");
+    preguntas.Add("¿Ha estado particularmente irritable o le han dado arranques de coraje?");
+    preguntas.Add("¿Ha tenido dificultad para concentrarse?");
+    preguntas.Add("¿Ha estado nervioso o constantemente en alerta?");
+    preguntas.Add("¿Se ha sobresaltado fácilmente por cualquier cosa?");
+    preguntas.Add("¿Accidente que tenga como consecuencia la muerte, la pérdida de un miembro o una lesión grave?");
+}
+
+
+
+
+
+<script>
+    window.onload = function () {
+
+        if (@ViewBag.id_cuestionario == 3) {
+            var Respuesta_1 = document.getElementById('73checking_si').checked;
+            var Respuesta_2 = document.getElementById('74checking_si').checked;
+            var Respuesta_3 = document.getElementById("75checking_si").checked;
+            var Respuesta_4 = document.getElementById("76checking_si").checked;
+            var Respuesta_5 = document.getElementById("77checking_si").checked;
+
+            if (Respuesta_1 || Respuesta_2 || Respuesta_3 || Respuesta_4 || Respuesta_5) {
+                $(".Ocultar").show();
+            } else {
+                $(".Ocultar").hide();
+            }
+
+        } else if (@ViewBag.id_cuestionario == 2) {
+
+            var Respuesta_11 = document.getElementById('47checking_si').checked
+            var Respuesta_22 = document.getElementById('48checking_si').checked
+            var Respuesta_33 = document.getElementById("49checking_si").checked;
+            var Respuesta_44 = document.getElementById("50checking_si").checked;
+            var Respuesta_55 = document.getElementById("51checking_si").checked;
+
+            if (Respuesta_11 || Respuesta_22 || Respuesta_33 || Respuesta_44 || Respuesta_55) {
+                $(".Ocultar").show();
+            } else {
+                $(".Ocultar").hide();
+            }
+        }
+
+
+
+
+
+    };
+    function Checking_Apply(Resultado) {
+
+        if (@ViewBag.id_cuestionario == 3) {
+            var Respuesta_1 = document.getElementById('73checking_si').checked;
+            var Respuesta_2 = document.getElementById('74checking_si').checked;
+            var Respuesta_3 = document.getElementById("75checking_si").checked;
+            var Respuesta_4 = document.getElementById("76checking_si").checked;
+            var Respuesta_5 = document.getElementById("77checking_si").checked;
+
+            if (Respuesta_1 || Respuesta_2 || Respuesta_3 || Respuesta_4 || Respuesta_5) {
+                $(".Ocultar").show();
+            } else {
+                $(".Ocultar").hide();
+            }
+
+        } else if (@ViewBag.id_cuestionario == 2) {
+
+            var Respuesta_11 = document.getElementById('47checking_si').checked
+            var Respuesta_22 = document.getElementById('48checking_si').checked
+            var Respuesta_33 = document.getElementById("49checking_si").checked;
+            var Respuesta_44 = document.getElementById("50checking_si").checked;
+            var Respuesta_55 = document.getElementById("51checking_si").checked;
+
+            if (Respuesta_11 || Respuesta_22 || Respuesta_33 || Respuesta_44 || Respuesta_55) {
+                $(".Ocultar").show();
+            } else {
+                $(".Ocultar").hide();
+            }
+        }
+    }
+    function Saving_Answer(myRadio) {
+
+        //var Respuesta = myRadio.attributes["name"].value;
+        //var Respuesta = myRadio.attributes["427"].value;
+        var Respuesta =$(myRadio).val()
+       // alert('Nombre: ' + myRadio.name + 'Respuesta : ' + Respuesta);
+        var id_CR = myRadio.name;
+        //var Respuesta = myRadio.value;
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("Saving_Answer")',
+            dataType: 'json',
+            data: { id_CR: id_CR, Respuesta: Respuesta},
+            beforeSend: function () {
+            //    alert("Enviando Respuesta");
+            },
+            success: function (data) {
+
+
+            },
+            error: function (ts) {
+
+                alert("Problemas de Conexión con Servidor");
+            },
+            catch (e) {
+                alert(e.name + "\n" + e.message)
+            }
+
+        });
+
+    }
+</script>
+<br>
+<a href="/Encuestas/Index"> <input type="button" class="btn btn-success col-xs-12" value="Regresar">     </a>
+
+<br><br />
+<a href="#" onclick="HTMLtoPDF()">Download PDF</a>
+
+<!-- these js files are used for making PDF -->
+<script src="js/jspdf.js"></script>
+<script src="js/jquery-2.1.3.js"></script>
+<script src="js/pdfFromHTML.js"></script>
+<div class=" custom-control custom-radio">
+    <h3 align="center">
+        <b> CUESTIONARIO PARA IDENTIFICAR A LOS TRABAJADORES QUE FUERON SUJETOS A ACONTECIMIENTOS TRAUMÁTICOS SEVEROS</b>
+    </h3>
+    <hr>
+    <table class="table table-hover table-condensed">
+        <tr>
+
+            <th nowrap>
+                <span align="center">PREGUNTA</span>
+            </th>
+            <th nowrap align="center">
+
+                <span align="center">RESPUESTA</span>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (@item.Preguntas != _bandera2)
+            {
+
+                <tr>
+                    @**************************************************************                           ENCUESTA   1         ***********************************************************************************@
+                    @****************************************************** EVALUACION SI ES LA ENCUESTA II PARA MOSTRAR  GUIA DE REFERENCIA I****************************************************************************************@
+                    @*******************************************************************************************************************************************************************************************@
+                    @if (@item.id_cuestionario == 2)
+                    {
+
+                        if (@item.No_Pregunta > 46)
+                        {
+
+                            if (@item.No_Pregunta == 47)
+                            {
+
+                            <tr style="margin:10px">  <td colspan="3"><span style="font-weight:bold">   I.- Acontecimiento traumático severo. Ha presenciado o sufrido alguna vez, durante o con motivo del trabajo:  </span> </td></tr>
+                            <td nowrap>
+                                @preguntas[Survey_I]
+                            </td>
+                            <td nowrap>
+
+                                @if (@item.id_Cuestionario_Resultado != _bandera)
+                                {
+                                    <fieldset id="group1">
+                                        @{
+                                            string id_radios_Si = @item.No_Pregunta + "checking_si";
+                                            string id_radios_No = @item.No_Pregunta + "checking_no";
+                                        }
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 1)
+                                        {
+                                            <input id="@id_radios_Si" class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);Checking_Apply(this)" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Sí</span>
+
+
+                                        }
+                                        else
+                                        {
+                                            <input id="@id_radios_Si" class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);Checking_Apply(this)" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Sí</span>
+
+                                        }
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 2)
+                                        {
+
+                                            <input id="@id_radios_No" class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);Checking_Apply(this)" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> No</span>
+
+
+                                        }
+                                        else
+                                        {
+
+                                            <input id="@id_radios_No" class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);Checking_Apply(this)" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> No</span>
+                                        }
+
+
+                                    </fieldset>
+                                }
+
+
+
+
+                            </td>
+                        }
+                        else if (@item.No_Pregunta > 47 && @item.No_Pregunta <= 51)
+                        {
+                            <td nowrap>
+                                @preguntas[Survey_I]
+                            </td>
+                            <td nowrap>
+
+                                @if (@item.id_Cuestionario_Resultado != _bandera)
+                                {
+                                    <fieldset id="group1">
+                                        @{
+                                            string id_radios_Si = @item.No_Pregunta + "checking_si";
+                                            string id_radios_No = @item.No_Pregunta + "checking_no";
+                                        }
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 1)
+                                        {
+                                            <input id="@id_radios_Si" class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);Checking_Apply(this)" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Sí</span>
+
+
+                                        }
+                                        else
+                                        {
+                                            <input id="@id_radios_Si" class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);Checking_Apply(this)" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Sí</span>
+
+                                        }
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 2)
+                                        {
+
+                                            <input id="@id_radios_No" class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);Checking_Apply(this)" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> No</span>
+
+
+                                        }
+                                        else
+                                        {
+
+                                            <input id="@id_radios_No" class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);Checking_Apply(this)" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> No</span>
+                                        }
+
+
+                                    </fieldset>
+                                }
+
+
+
+
+                            </td>
+                        }
+                        else if (@item.No_Pregunta == 52)
+                        {
+
+                            <tr class="Ocultar" style="margin:10px">  <td colspan="3"><span style="font-weight:bold">   II.- Recuerdos persistentes sobre el acontecimiento (durante el último mes): </span> </td></tr>
+
+                            <td class="Ocultar" nowrap>
+                                @preguntas[Survey_I]
+                            </td>
+                            <td class="Ocultar" nowrap>
+
+                                @if (@item.id_Cuestionario_Resultado != _bandera)
+                                {
+                                    <fieldset id="group1">
+
+
+                                        @{
+                                            _FINAL = _FINAL + item.id_Cuestionario_Resultado + _counter;
+                                        }
+
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 1)
+                                        {
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Sí</span>
+
+
+                                        }
+                                        else
+                                        {
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Sí</span>
+
+                                        }
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 2)
+                                        {
+
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> No</span>
+
+
+                                        }
+                                        else
+                                        {
+
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> No</span>
+                                        }
+
+
+                                    </fieldset>
+                                }
+
+
+
+
+                            </td>
+                        }
+                        else if (@item.No_Pregunta == 54)
+                        {
+
+                            <tr class="Ocultar" style="margin:10px">  <td colspan="3"><span style="font-weight:bold">III.- Esfuerzo por evitar circunstancias parecidas o asociadas al acontecimiento (durante el último mes): </span> </td></tr>
+
+                            <td class="Ocultar" nowrap>
+                                @preguntas[Survey_I]
+                            </td>
+                            <td class="Ocultar" nowrap>
+
+                                @if (@item.id_Cuestionario_Resultado != _bandera)
+                                {
+                                    <fieldset id="group1">
+
+
+                                        @{
+                                            _FINAL = _FINAL + item.id_Cuestionario_Resultado + _counter;
+                                        }
+
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 1)
+                                        {
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Sí</span>
+
+
+                                        }
+                                        else
+                                        {
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Sí</span>
+
+                                        }
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 2)
+                                        {
+
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> No</span>
+
+
+                                        }
+                                        else
+                                        {
+
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> No</span>
+                                        }
+
+
+                                    </fieldset>
+                                }
+
+
+
+
+                            </td>
+                        }
+                        else if (@item.No_Pregunta == 61)
+                        {
+
+                            <tr class="Ocultar" style="margin:10px">  <td colspan="3"><span style="font-weight:bold">IV Afectación (durante el último mes):</span> </td></tr>
+
+                            <td class="Ocultar" nowrap>
+                                @preguntas[Survey_I]
+                            </td>
+                            <td class="Ocultar" nowrap>
+
+                                @if (@item.id_Cuestionario_Resultado != _bandera)
+                                {
+                                    <fieldset id="group1">
+
+
+                                        @{
+                                            _FINAL = _FINAL + item.id_Cuestionario_Resultado + _counter;
+                                        }
+
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 1)
+                                        {
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Sí</span>
+
+
+                                        }
+                                        else
+                                        {
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Sí</span>
+
+                                        }
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 2)
+                                        {
+
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> No</span>
+
+
+                                        }
+                                        else
+                                        {
+
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> No</span>
+                                        }
+
+
+                                    </fieldset>
+                                }
+
+
+
+
+                            </td>
+                        }
+                        else
+                        {
+                            <td class="Ocultar" nowrap>
+                                @preguntas[Survey_I]
+                            </td>
+                            <td class="Ocultar" nowrap>
+
+                                @if (@item.id_Cuestionario_Resultado != _bandera)
+                                {
+                                    <fieldset id="group1">
+
+
+                                        @{
+                                            _FINAL = _FINAL + item.id_Cuestionario_Resultado + _counter;
+                                        }
+
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 1)
+                                        {
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Si</span>
+
+
+                                        }
+                                        else
+                                        {
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Si</span>
+
+                                        }
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 2)
+                                        {
+
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> No</span>
+
+
+                                        }
+                                        else
+                                        {
+
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> No</span>
+                                        }
+
+
+                                    </fieldset>
+                                }
+
+
+
+
+                            </td>
+                        }
+                        Survey_I = Survey_I + 1;
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                @*******************************************************************************************************************************************************************************************@
+                @****************************************************** EVALUACION SI ES LA ENCUESTA III PARA MOSTRAR ****************************************************************************************@
+                @*******************************************************************************************************************************************************************************************@
+                else if (@item.id_cuestionario == 3)
+                {
+                    if (@item.No_Pregunta > 72)
+                    {
+                        if (@item.No_Pregunta == 73)
+                        {
+
+                            <tr style="margin:10px">  <td colspan="3"><span style="font-weight:bold">   I.- Acontecimiento traumático severo. Ha presenciado o sufrido alguna vez, durante o con motivo del trabajo:  </span> </td></tr>
+                            <td nowrap>
+                                @preguntas[Survey_I]
+                            </td>
+                            <td nowrap>
+
+                                @if (@item.id_Cuestionario_Resultado != _bandera)
+                                {
+                                    <fieldset id="group1">
+                                        @{
+                                            string id_radios_Si = @item.No_Pregunta + "checking_si";
+                                            string id_radios_No = @item.No_Pregunta + "checking_no";
+                                        }
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 1)
+                                        {
+                                            <input id="@id_radios_Si" class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);Checking_Apply(this)" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Sí</span>
+
+
+                                        }
+                                        else
+                                        {
+                                            <input id="@id_radios_Si" class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);Checking_Apply(this)" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Sí</span>
+
+                                        }
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 2)
+                                        {
+
+                                            <input id="@id_radios_No" class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);Checking_Apply(this)" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> No</span>
+
+
+                                        }
+                                        else
+                                        {
+
+                                            <input id="@id_radios_No" class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);Checking_Apply(this)" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> No</span>
+                                        }
+
+
+                                    </fieldset>
+                                }
+
+
+
+
+                            </td>
+                        }
+                        else if (@item.No_Pregunta > 73 && @item.No_Pregunta <= 77)
+                        {
+                            <td nowrap>
+                                @preguntas[Survey_I]
+                            </td>
+                            <td nowrap>
+
+                                @if (@item.id_Cuestionario_Resultado != _bandera)
+                                {
+                                    <fieldset id="group1">
+                                        @{
+                                            string id_radios_Si = @item.No_Pregunta + "checking_si";
+                                            string id_radios_No = @item.No_Pregunta + "checking_no";
+                                        }
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 1)
+                                        {
+                                            <input id="@id_radios_Si" class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);Checking_Apply(this)" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Sí</span>
+
+
+                                        }
+                                        else
+                                        {
+                                            <input id="@id_radios_Si" class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);Checking_Apply(this)" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Sí</span>
+
+                                        }
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 2)
+                                        {
+
+                                            <input id="@id_radios_No" class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);Checking_Apply(this)" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> No</span>
+
+
+                                        }
+                                        else
+                                        {
+
+                                            <input id="@id_radios_No" class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);Checking_Apply(this)" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> No</span>
+                                        }
+
+
+                                    </fieldset>
+                                }
+
+
+
+
+                            </td>
+                        }
+                        else if (@item.No_Pregunta == 78)
+                        {
+
+                            <tr class="Ocultar" style="margin:10px">  <td colspan="3"><span style="font-weight:bold">   II.- Recuerdos persistentes sobre el acontecimiento (durante el último mes): </span> </td></tr>
+
+                            <td class="Ocultar" nowrap>
+                                @preguntas[Survey_I]
+                            </td>
+                            <td class="Ocultar" nowrap>
+
+                                @if (@item.id_Cuestionario_Resultado != _bandera)
+                                {
+                                    <fieldset id="group1">
+
+
+                                        @{
+                                            _FINAL = _FINAL + item.id_Cuestionario_Resultado + _counter;
+                                        }
+
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 1)
+                                        {
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Sí</span>
+
+
+                                        }
+                                        else
+                                        {
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Sí</span>
+
+                                        }
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 2)
+                                        {
+
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> No</span>
+
+
+                                        }
+                                        else
+                                        {
+
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> No</span>
+                                        }
+
+
+                                    </fieldset>
+                                }
+
+
+
+
+                            </td>
+                        }
+                        else if (@item.No_Pregunta == 80)
+                        {
+
+                            <tr class="Ocultar" style="margin:10px">  <td colspan="3"><span style="font-weight:bold">III.- Esfuerzo por evitar circunstancias parecidas o asociadas al acontecimiento (durante el último mes): </span> </td></tr>
+
+                            <td class="Ocultar" nowrap>
+                                @preguntas[Survey_I]
+                            </td>
+                            <td class="Ocultar" nowrap>
+
+                                @if (@item.id_Cuestionario_Resultado != _bandera)
+                                {
+                                    <fieldset id="group1">
+
+
+                                        @{
+                                            _FINAL = _FINAL + item.id_Cuestionario_Resultado + _counter;
+                                        }
+
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 1)
+                                        {
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Sí</span>
+
+
+                                        }
+                                        else
+                                        {
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Sí</span>
+
+                                        }
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 2)
+                                        {
+
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> No</span>
+
+
+                                        }
+                                        else
+                                        {
+
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> No</span>
+                                        }
+
+
+                                    </fieldset>
+                                }
+
+
+
+
+                            </td>
+                        }
+                        else if (@item.No_Pregunta == 87)
+                        {
+
+                            <tr class="Ocultar" style="margin:10px">  <td colspan="3"><span style="font-weight:bold">IV Afectación (durante el último mes):</span> </td></tr>
+
+                            <td class="Ocultar" nowrap>
+                                @preguntas[Survey_I]
+                            </td>
+                            <td class="Ocultar" nowrap>
+
+                                @if (@item.id_Cuestionario_Resultado != _bandera)
+                                {
+                                    <fieldset id="group1">
+
+
+                                        @{
+                                            _FINAL = _FINAL + item.id_Cuestionario_Resultado + _counter;
+                                        }
+
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 1)
+                                        {
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Sí</span>
+
+
+                                        }
+                                        else
+                                        {
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Sí</span>
+
+                                        }
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 2)
+                                        {
+
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> No</span>
+
+
+                                        }
+                                        else
+                                        {
+
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> No</span>
+                                        }
+
+
+                                    </fieldset>
+                                }
+
+
+
+
+                            </td>
+
+                        }
+                        else
+                        {
+                            <td class="Ocultar" nowrap>
+                                @preguntas[Survey_I]
+                            </td>
+                            <td class="Ocultar" nowrap>
+
+                                @if (@item.id_Cuestionario_Resultado != _bandera)
+                                {
+                                    <fieldset id="group1">
+
+
+                                        @{
+                                            _FINAL = _FINAL + item.id_Cuestionario_Resultado + _counter;
+                                        }
+
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 1)
+                                        {
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Si</span>
+
+
+                                        }
+                                        else
+                                        {
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Si</span>
+
+                                        }
+
+                                        @if (ViewBag.Answers[_counter].id_respuesta == 2)
+                                        {
+
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> No</span>
+
+
+                                        }
+                                        else
+                                        {
+
+                                            <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> No</span>
+                                        }
+
+
+                                    </fieldset>
+                                }
+
+
+
+
+                            </td>
+                        }
+
+                        Survey_I = Survey_I + 1;
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+                    </tr>
+
+                    _FINAL = 0;
+                    _counter = _counter + 1;
+                    _answer_counter = _answer_counter + 1;
+
+                }
+                _bandera = @item.id_Cuestionario_Resultado;
+                _bandera2 = @item.Preguntas;
+            }
+
+    </table>
+
+</div>
+
+<hr>
+<h3 align="center">
+    <b> CUESTIONARIO PARA IDENTIFICAR LOS FACTORES DE RIESGO PSICOSOCIAL Y EVALUAR EL ENTORNO ORGANIZACIONAL EN LOS CENTROS DE TRABAJO</b>
+</h3>
+<h4 align="center">
+    <b>  Para responder las preguntas siguientes considere las condiciones ambientales de su centro de trabajo.</b>
+</h4>
+<hr>
+<div class=" custom-control custom-radio">
+
+    <table class="table table-hover table-condensed">
+        <tr>
+            <th nowrap align="center">
+                @Html.DisplayName("NO")
+
+            </th>
+            <th nowrap>
+                <span style=" margin-left: 200px;" align="center">PREGUNTA</span>
+            </th>
+            <th nowrap align="center">
+
+                <span style=" margin-left: 200px;" align="center">RESPUESTA</span>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (@item.Preguntas != bandera2)
+            {
+
+                <tr>
+
+
+
+                    @*******************************************************************************************************************************************************************************************@
+                    @****************************************************** EVALUACION SI ES LA ENCUESTA II PARA MOSTRAR ****************************************************************************************@
+                    @*******************************************************************************************************************************************************************************************@
+                    @if (@item.id_cuestionario == 2)
+                    {
+                        if (@item.No_Pregunta == 41)
+                        {
+                        <tr style="margin:10px">  <td colspan="3"> <span style="font-weight:bold">EN MI TRABAJO DEBO BRINDAR SERVICIO A CLIENTES Y USUARIOS</span> Sí la respuesta es <span style="font-weight:bold">SI </span>contestar las siguientes preguntas si es <span style="font-weight:bold">NO </span> pasar a la siguiente sección </td></tr>
+                        <td nowrap align="center">
+                            @Html.DisplayFor(modelItem => item.No_Pregunta)
+                            @* <span>@counter</span>*@
+                        </td>
+                        <td nowrap>
+                            @Html.DisplayFor(modelItem => item.Preguntas)
+                        </td>
+                        <td nowrap>
+
+                            @if (@item.id_Cuestionario_Resultado != bandera)
+                            {
+                                <fieldset id="group1">
+
+                                    @{
+                                        FINAL = FINAL + item.id_Cuestionario_Resultado + counter;
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 1)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Siempre</span>
+
+
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Siempre</span>
+
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 2)
+                                    {
+
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> Casi Siempre</span>
+
+
+                                    }
+                                    else
+                                    {
+
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> Casi Siempre</span>
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 3)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="3" checked="checked" /><span> Algunas Veces</span>
+
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="3" /><span> Algunas Veces</span>
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 4)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="4" checked="checked" /><span> Casi Nunca</span>
+
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="4" /><span> Casi Nunca</span>
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 5)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="5" checked="checked" /><span> Nunca</span>
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="5" /><span> Nunca</span>
+                                    }
+                                </fieldset>
+                            }
+
+
+
+
+                        </td>
+                    }
+                    else if (@item.No_Pregunta == 44)
+                    {
+                        <tr style="margin:10px">  <td colspan="3"><span style="font-weight:bold"> SOY JEFE DE OTROS TRABAJADORES </span>  Sí la respuesta es  <span style="font-weight:bold"> SI </span>contestar las siguientes preguntas: </td></tr>
+                        <td nowrap align="center">
+                            @Html.DisplayFor(modelItem => item.No_Pregunta)
+                            @* <span>@counter</span>*@
+                        </td>
+                        <td nowrap>
+                            @Html.DisplayFor(modelItem => item.Preguntas)
+                        </td>
+                        <td nowrap>
+
+                            @if (@item.id_Cuestionario_Resultado != bandera)
+                            {
+                                <fieldset id="group1">
+
+
+                                    @{
+                                        FINAL = FINAL + item.id_Cuestionario_Resultado + counter;
+                                    }
+
+
+
+
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 1)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Siempre</span>
+
+
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Siempre</span>
+
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 2)
+                                    {
+
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> Casi Siempre</span>
+
+
+                                    }
+                                    else
+                                    {
+
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> Casi Siempre</span>
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 3)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="3" checked="checked" /><span> Algunas Veces</span>
+
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="3" /><span> Algunas Veces</span>
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 4)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="4" checked="checked" /><span> Casi Nunca</span>
+
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="4" /><span> Casi Nunca</span>
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 5)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="5" checked="checked" /><span> Nunca</span>
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="5" /><span> Nunca</span>
+                                    }
+                                </fieldset>
+                            }
+
+
+
+
+                        </td>
+                    }
+                    else if (@item.No_Pregunta > 46)
+                    {
+
+                    }
+                    else
+                    {
+                        <td nowrap align="center">
+                            @Html.DisplayFor(modelItem => item.No_Pregunta)
+                            @* <span>@counter</span>*@
+                        </td>
+                        <td nowrap>
+                            @Html.DisplayFor(modelItem => item.Preguntas)
+                        </td>
+                        <td nowrap>
+
+                            @if (@item.id_Cuestionario_Resultado != bandera)
+                            {
+                                <fieldset id="group1">
+
+
+                                    @{
+                                        FINAL = FINAL + item.id_Cuestionario_Resultado + counter;
+                                    }
+
+
+
+
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 1)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Siempre</span>
+
+
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Siempre</span>
+
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 2)
+                                    {
+
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> Casi Siempre</span>
+
+
+                                    }
+                                    else
+                                    {
+
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> Casi Siempre</span>
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 3)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="3" checked="checked" /><span> Algunas Veces</span>
+
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="3" /><span> Algunas Veces</span>
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 4)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="4" checked="checked" /><span> Casi Nunca</span>
+
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="4" /><span> Casi Nunca</span>
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 5)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="5" checked="checked" /><span> Nunca</span>
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="5" /><span> Nunca</span>
+                                    }
+                                </fieldset>
+                            }
+
+
+
+
+                        </td>
+                    }
+                }
+                @*******************************************************************************************************************************************************************************************@
+                @****************************************************** EVALUACION SI ES LA ENCUESTA III PARA MOSTRAR ****************************************************************************************@
+                @*******************************************************************************************************************************************************************************************@
+                else if (@item.id_cuestionario == 3)
+                {
+                    if (@item.No_Pregunta == 65)
+                    {
+                        <tr style="margin:10px">  <td colspan="3"> <span style="font-weight:bold">EN MI TRABAJO DEBO BRINDAR SERVICIO A CLIENTES Y USUARIOS</span> Sí la respuesta es <span style="font-weight:bold">SI </span>contestar las siguientes preguntas si es <span style="font-weight:bold">NO </span> pasar a la siguiente sección </td></tr>
+                        <td nowrap align="center">
+                            @Html.DisplayFor(modelItem => item.No_Pregunta)
+                            @* <span>@counter</span>*@
+                        </td>
+                        <td nowrap>
+                            @Html.DisplayFor(modelItem => item.Preguntas)
+                        </td>
+                        <td nowrap>
+
+                            @if (@item.id_Cuestionario_Resultado != bandera)
+                            {
+                                <fieldset id="group1">
+
+
+                                    @{
+                                        FINAL = FINAL + item.id_Cuestionario_Resultado + counter;
+                                    }
+
+
+
+
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 1)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Siempre</span>
+
+
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Siempre</span>
+
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 2)
+                                    {
+
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> Casi Siempre</span>
+
+
+                                    }
+                                    else
+                                    {
+
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> Casi Siempre</span>
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 3)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="3" checked="checked" /><span> Algunas Veces</span>
+
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="3" /><span> Algunas Veces</span>
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 4)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="4" checked="checked" /><span> Casi Nunca</span>
+
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="4" /><span> Casi Nunca</span>
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 5)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="5" checked="checked" /><span> Nunca</span>
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="5" /><span> Nunca</span>
+                                    }
+                                </fieldset>
+                            }
+
+
+
+
+                        </td>
+                    }
+                    else if (@item.No_Pregunta == 69)
+                    {
+                        <tr style="margin:10px">  <td colspan="3"><span style="font-weight:bold"> SOY JEFE DE OTROS TRABAJADORES </span>  Sí la respuesta es  <span style="font-weight:bold"> SI </span>contestar las siguientes preguntas: </td></tr>
+                        <td nowrap align="center">
+                            @Html.DisplayFor(modelItem => item.No_Pregunta)
+                            @* <span>@counter</span>*@
+                        </td>
+                        <td nowrap>
+                            @Html.DisplayFor(modelItem => item.Preguntas)
+                        </td>
+                        <td nowrap>
+
+                            @if (@item.id_Cuestionario_Resultado != bandera)
+                            {
+                                <fieldset id="group1">
+
+
+                                    @{
+                                        FINAL = FINAL + item.id_Cuestionario_Resultado + counter;
+                                    }
+
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 1)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Siempre</span>
+
+
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Siempre</span>
+
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 2)
+                                    {
+
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> Casi Siempre</span>
+
+
+                                    }
+                                    else
+                                    {
+
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> Casi Siempre</span>
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 3)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="3" checked="checked" /><span> Algunas Veces</span>
+
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="3" /><span> Algunas Veces</span>
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 4)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="4" checked="checked" /><span> Casi Nunca</span>
+
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="4" /><span> Casi Nunca</span>
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 5)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="5" checked="checked" /><span> Nunca</span>
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="5" /><span> Nunca</span>
+                                    }
+                                </fieldset>
+                            }
+
+
+
+
+                        </td>
+                    }
+                    else if (@item.No_Pregunta > 72)
+                    {
+
+                    }
+                    else
+                    {
+                        <td nowrap align="center">
+                            @Html.DisplayFor(modelItem => item.No_Pregunta)
+                            @* <span>@counter</span>*@
+                        </td>
+                        <td nowrap>
+                            @Html.DisplayFor(modelItem => item.Preguntas)
+                        </td>
+                        <td nowrap>
+
+                            @if (@item.id_Cuestionario_Resultado != bandera)
+                            {
+                                <fieldset id="group1">
+
+
+                                    @{
+                                        FINAL = FINAL + item.id_Cuestionario_Resultado + counter;
+                                    }
+
+
+
+
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 1)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Siempre</span>
+
+
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Siempre</span>
+
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 2)
+                                    {
+
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> Casi Siempre</span>
+
+
+                                    }
+                                    else
+                                    {
+
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> Casi Siempre</span>
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 3)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="3" checked="checked" /><span> Algunas Veces</span>
+
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="3" /><span> Algunas Veces</span>
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 4)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="4" checked="checked" /><span> Casi Nunca</span>
+
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="4" /><span> Casi Nunca</span>
+                                    }
+
+                                    @if (ViewBag.Answers[counter].id_respuesta == 5)
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="5" checked="checked" /><span> Nunca</span>
+                                    }
+                                    else
+                                    {
+                                        <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="5" /><span> Nunca</span>
+                                    }
+                                </fieldset>
+                            }
+
+
+
+
+                        </td>
+                    }
+                }
+                else
+                {
+                    <td nowrap align="center">
+                        @Html.DisplayFor(modelItem => item.No_Pregunta)
+                        @* <span>@counter</span>*@
+                    </td>
+                    <td nowrap>
+                        @Html.DisplayFor(modelItem => item.Preguntas)
+                    </td>
+                    <td nowrap>
+
+                        @if (@item.id_Cuestionario_Resultado != bandera)
+                        {
+                            <fieldset id="group1">
+
+
+                                @{
+                                    FINAL = FINAL + item.id_Cuestionario_Resultado + counter;
+                                }
+
+
+
+
+
+                                @if (ViewBag.Answers[counter].id_respuesta == 1)
+                                {
+                                    <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" checked="checked" /><span> Siempre</span>
+
+
+                                }
+                                else
+                                {
+                                    <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="1" /><span> Siempre</span>
+
+                                }
+
+                                @if (ViewBag.Answers[counter].id_respuesta == 2)
+                                {
+
+                                    <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" checked="checked" /><span> Casi Siempre</span>
+
+
+                                }
+                                else
+                                {
+
+                                    <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="2" /><span> Casi Siempre</span>
+                                }
+
+                                @if (ViewBag.Answers[counter].id_respuesta == 3)
+                                {
+                                    <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="3" checked="checked" /><span> Algunas Veces</span>
+
+                                }
+                                else
+                                {
+                                    <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="3" /><span> Algunas Veces</span>
+                                }
+
+                                @if (ViewBag.Answers[counter].id_respuesta == 4)
+                                {
+                                    <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="4" checked="checked" /><span> Casi Nunca</span>
+
+                                }
+                                else
+                                {
+                                    <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="4" /><span> Casi Nunca</span>
+                                }
+
+                                @if (ViewBag.Answers[counter].id_respuesta == 5)
+                                {
+                                    <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="5" checked="checked" /><span> Nunca</span>
+                                }
+                                else
+                                {
+                                    <input class="custom-control-input" style=" margin-left: 0px;" onclick="Saving_Answer(this);" type="radio" name="@item.id_Cuestionario_Resultado" value="5" /><span> Nunca</span>
+                                }
+                            </fieldset>
+                        }
+
+
+
+
+                    </td>
+                }
+
+
+
+
+
+
+                    </tr>
+
+                    //if (counter == 90) {
+
+                    //    counter = counter - 1;
+                    //}
+                    FINAL = 0;
+                    counter = counter + 1;
+                    answer_counter = answer_counter + 1;
+
+                }
+                bandera = @item.id_Cuestionario_Resultado;
+                bandera2 = @item.Preguntas;
+            }
+
+    </table>
+
+</div>

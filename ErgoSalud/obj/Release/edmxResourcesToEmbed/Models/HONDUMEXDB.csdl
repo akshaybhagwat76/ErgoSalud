@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CastSoft_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="HONDU_Categorias_N01">
+    <Key>
+      <PropertyRef Name="id_categoria" />
+    </Key>
+    <Property Name="id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Categoria" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="id_usuario" Type="Int32" Nullable="false" />
+    <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Imagen_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="HONDU_Productos_N01" Relationship="Self.FK_Producto_Cat" FromRole="HONDU_Categorias_N01" ToRole="HONDU_Productos_N01" />
+  </EntityType>
+  <EntityType Name="HONDU_Ordenes_N01">
+    <Key>
+      <PropertyRef Name="id_Order_Record" />
+    </Key>
+    <Property Name="id_Order_Record" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Numero_Orden" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estatus" Type="Int32" Nullable="false" />
+    <Property Name="Mesa" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="HONDU_Ordenes_Productos_N01">
+    <Key>
+      <PropertyRef Name="id_Order_P_Record" />
+    </Key>
+    <Property Name="id_Order_P_Record" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Numero_Orden" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="id_Producto" Type="Int32" />
+    <Property Name="Estatus" Type="Int32" />
+    <NavigationProperty Name="HONDU_Productos_N01" Relationship="Self.FK_Productos_Ordenes" FromRole="HONDU_Ordenes_Productos_N01" ToRole="HONDU_Productos_N01" />
+  </EntityType>
+  <EntityType Name="HONDU_Productos_N01">
+    <Key>
+      <PropertyRef Name="id_producto" />
+    </Key>
+    <Property Name="id_producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_categoria" Type="Int32" />
+    <Property Name="Producto" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Precio" Type="Int32" Nullable="false" />
+    <Property Name="id_usuario" Type="Int32" Nullable="false" />
+    <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Imagen_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="HONDU_Categorias_N01" Relationship="Self.FK_Producto_Cat" FromRole="HONDU_Productos_N01" ToRole="HONDU_Categorias_N01" />
+    <NavigationProperty Name="HONDU_Ordenes_Productos_N01" Relationship="Self.FK_Productos_Ordenes" FromRole="HONDU_Productos_N01" ToRole="HONDU_Ordenes_Productos_N01" />
+  </EntityType>
+  <Association Name="FK_Producto_Cat">
+    <End Role="HONDU_Categorias_N01" Type="Self.HONDU_Categorias_N01" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HONDU_Productos_N01" Type="Self.HONDU_Productos_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HONDU_Categorias_N01">
+        <PropertyRef Name="id_categoria" />
+      </Principal>
+      <Dependent Role="HONDU_Productos_N01">
+        <PropertyRef Name="id_categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Productos_Ordenes">
+    <End Role="HONDU_Productos_N01" Type="Self.HONDU_Productos_N01" Multiplicity="0..1" />
+    <End Role="HONDU_Ordenes_Productos_N01" Type="Self.HONDU_Ordenes_Productos_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HONDU_Productos_N01">
+        <PropertyRef Name="id_producto" />
+      </Principal>
+      <Dependent Role="HONDU_Ordenes_Productos_N01">
+        <PropertyRef Name="id_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CastSoft_DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="HONDU_Categorias_N01" EntityType="Self.HONDU_Categorias_N01" />
+    <EntitySet Name="HONDU_Ordenes_N01" EntityType="Self.HONDU_Ordenes_N01" />
+    <EntitySet Name="HONDU_Ordenes_Productos_N01" EntityType="Self.HONDU_Ordenes_Productos_N01" />
+    <EntitySet Name="HONDU_Productos_N01" EntityType="Self.HONDU_Productos_N01" />
+    <AssociationSet Name="FK_Producto_Cat" Association="Self.FK_Producto_Cat">
+      <End Role="HONDU_Categorias_N01" EntitySet="HONDU_Categorias_N01" />
+      <End Role="HONDU_Productos_N01" EntitySet="HONDU_Productos_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Productos_Ordenes" Association="Self.FK_Productos_Ordenes">
+      <End Role="HONDU_Productos_N01" EntitySet="HONDU_Productos_N01" />
+      <End Role="HONDU_Ordenes_Productos_N01" EntitySet="HONDU_Ordenes_Productos_N01" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

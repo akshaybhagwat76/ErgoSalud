@@ -1,0 +1,142 @@
+﻿@model IEnumerable<ErgoSalud.Models.ERGOS_Cuestionarios_Trabajador_N01>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script>
+    function show_modal(id_CT, id_C) {
+        //Swal.fire({
+        //    title: "<i>Title</i>",
+        //    html: "Testno  sporocilo za objekt: <b>test</b>",
+        //    confirmButtonText: "V <u>redu</u>",
+        //});
+        alert(id_CT);
+        alert(id_C);
+
+        var firstname = "abc";
+        var username = "abcd";
+
+
+        $("#myModal").modal()
+        
+    }
+    
+    </script>
+<h2>Números de Folio</h2>
+<div class="row">
+
+    @Html.ActionLink("Nuevo Folio", "Create", null, new { @class = "btn btn-success", @style = "float:left;margin-left:15px" })
+
+    @using (Html.BeginForm("Search_Empresas", "Encuestas", FormMethod.Get))
+    {
+
+        @Html.DropDownList("ERGOS_Empresas_N01List", null, new { @class = "form-control", @style = "float:left;margin-left:5px" })
+        <input type="submit" class="btn btn-primary" value="Buscar" style="float:left;margin-left:5px">
+    }
+    <br>
+</div>
+<br>
+<div class="table-responsive">
+
+    <table class="table table-hover table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayName("No. Folio")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha)
+            </th>
+            <th>
+                @Html.DisplayName("Ocupación")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Departamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ERGOS_Cuestionarios_N01.Cuestionario)
+            </th>
+            <th>
+                @Html.DisplayName("Empresa")
+            </th>
+            <th>Acción</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_trabajador)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ocupacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ERGOS_Departamentos_N01.Departamento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ERGOS_Cuestionarios_N01.Cuestionario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ERGOS_Empresas_N01.Razon_Social)
+                </td>
+                <td>
+                    <a title="Editar" href="@Url.Action("Edit", new { id = item.id_cuestionario_trabajador })">
+                        <i class="fa fa-edit" title="Editar" style="font-size:23px"></i>
+                    </a>
+                    @*data-toggle="modal" data-target="#GSCCModal"*@
+                    @*href="@Url.Action("Encuesta", "Trabajador_Resultados", new { id_CT = item.id_cuestionario_trabajador, id_C = item.ERGOS_Cuestionarios_N01.id_cuestionario })"*@
+                    <a href="#" data-toggle="modal" data-target="#@item.id_cuestionario_trabajador">
+                        <i class="fa fa-file-text" title="Encuesta" style="font-size:20px;" aria-hidden="true"></i>
+                    </a>
+                    <a href="@Url.Action("Delete", new { id=item.id_cuestionario_trabajador })">
+                        <i class="fa fa-trash-o" title="Eliminar" style="font-size:23px"></i>
+                    </a>
+                    <a href="@Url.Action("Resultados", new { id=item.id_cuestionario_trabajador })">
+                        <i class="fa fa-check-circle" aria-hidden="true" style="color:green;font-size:23px" title="Resultados"></i>
+                    </a>
+                    <a href="@Url.Action("Reporte_PDF", "Encuestas", new {id_CT = item.id_cuestionario_trabajador ,id_C=item.id_encuesta })"><i class="fa fa-file-pdf-o" title="Encuesta Digital" style="font-size:20px;color:red" aria-hidden="true"></i> </a>
+
+                </td>
+            </tr>
+
+            <div id="@item.id_cuestionario_trabajador" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                            <h4 class="modal-title" id="myModalLabel">Previa a Encuesta</h4>
+                        </div>
+                        <div class="modal-body" align="justify">
+                            <p>
+                                <h4>Para la aplicación del cuestionario deberán cumplirse, al menos, las condiciones siguientes:</h4>
+
+                                <b> 1.</b>	Explicar el objetivo de la evaluación;    <br>   <br>
+                                El objetivo es: Establecer los elementos para identificar, analizar y prevenir los factores de riesgo psicosocial, así como para promover un entorno organizacional favorable en los centros de trabajo.<br><br>
+
+                                Oblicaciones de los trabajadores: <br> <br>
+                                <b>6.1</b> Observar las medidas de prevención y, en su caso, de control que dispone esta Norma, así como las que establezca el patrón para: controlar los factores de riesgo psicosocial, colaborar para contar con un entorno organizacional favorable y prevenir actos de violencia laboral.
+                                <br><b> 6.2</b> Abstenerse de realizar prácticas contrarias al entorno organizacional favorable y actos de violencia laboral.
+                                <br><b> 6.3</b> Participar en la identificación de los factores de riesgo psicosocial y, en su caso, en la evaluación del entorno organizacional.
+                                <br><b> 6.4</b> Informar sobre prácticas opuestas al entorno organizacional favorable y denunciar actos de violencia laboral, utilizando los mecanismos que establezca el patrón para tal efecto y/o a través de la comisión de seguridad e higiene, a que se refiere la NOM-019-STPS-2011, o las que la sustituyan.
+                                <br><b>6.5</b> Informar por escrito al patrón directamente, a través de los servicios preventivos de seguridad y salud en el trabajo o de la comisión de seguridad e higiene; haber presenciado o sufrido un acontecimiento traumático severo. El escrito deberá contener al menos: la fecha de elaboración; el nombre del trabajador que elabora el escrito; en su caso, el nombre de los trabajadores involucrados; la fecha de ocurrencia, y la descripción del(los) acontecimiento(s).
+                                <br><b>6.6</b> Participar en los eventos de información que proporcione el patrón.
+                                <br><b>6.7</b> Someterse a los exámenes médicos y evaluaciones psicológicas que determinan la presente Norma y/o las normas oficiales mexicanas que al respecto emitan la Secretaría de Salud y/o la Secretaría del Trabajo y Previsión Social, y a falta de éstas, los que indique la institución de seguridad social o privada, o el médico o psicólogo o psiquiatra del centro de trabajo o de la empresa.
+
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="@Url.Action("Encuesta", "Trabajador_Resultados", new { id_CT = item.id_cuestionario_trabajador, id_C = item.ERGOS_Cuestionarios_N01.id_cuestionario })" class="btn btn-primary">Continuar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+    </table>
+</div>
+

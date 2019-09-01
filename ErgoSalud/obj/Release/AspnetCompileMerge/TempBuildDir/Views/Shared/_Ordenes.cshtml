@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ErgoSalud.Models.HONDU_Ordenes_N01>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero_Orden)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mesa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HONDU_Productos_N01.Producto)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero_Orden)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mesa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HONDU_Productos_N01.Producto)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id_Order_Record }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id_Order_Record }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id_Order_Record })
+            </td>
+        </tr>
+    }
+
+</table>
+

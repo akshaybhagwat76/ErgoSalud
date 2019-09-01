@@ -1,0 +1,897 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Dev_SurveyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ERGOS_Centros_Trabajo_N01">
+    <Key>
+      <PropertyRef Name="id_centro_trabajo" />
+    </Key>
+    <Property Name="id_centro_trabajo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_empresa" Type="int" />
+    <Property Name="Nombre_centro_trabajo" Type="varchar" MaxLength="65" />
+    <Property Name="No_emplados" Type="int" />
+    <Property Name="Fecha_Auditoria" Type="date" />
+    <Property Name="created_at" Type="date" />
+    <Property Name="updated_at" Type="date" />
+    <Property Name="deleted_at" Type="date" />
+  </EntityType>
+  <EntityType Name="ERGOS_Cuestionarios_N01">
+    <Key>
+      <PropertyRef Name="id_cuestionario" />
+    </Key>
+    <Property Name="id_cuestionario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cuestionario" Type="varchar" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="ERGOS_Cuestionarios_Resultados_N01">
+    <Key>
+      <PropertyRef Name="id_Cuestionario_Resultado" />
+    </Key>
+    <Property Name="id_Cuestionario_Resultado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_cuestionario_trabajador" Type="int" />
+    <Property Name="id_respuesta" Type="int" />
+    <Property Name="id_pregunta" Type="int" />
+    <Property Name="id_encuesta" Type="int" />
+    <Property Name="Calificacion" Type="int" />
+  </EntityType>
+  <EntityType Name="ERGOS_Cuestionarios_Trabajador_N01">
+    <Key>
+      <PropertyRef Name="id_cuestionario_trabajador" />
+    </Key>
+    <Property Name="id_cuestionario_trabajador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_trabajador" Type="int" Nullable="false" />
+    <Property Name="id_encuesta" Type="int" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="id_empresa" Type="int" />
+    <Property Name="Sexo" Type="varchar" MaxLength="1" />
+    <Property Name="Edad" Type="int" />
+    <Property Name="Estado_Civil" Type="varchar" MaxLength="35" />
+    <Property Name="Nivel_Esudios" Type="varchar" MaxLength="35" />
+    <Property Name="Ocupacion" Type="varchar" MaxLength="65" />
+    <Property Name="Departamento" Type="int" />
+    <Property Name="Tipo_puesto" Type="varchar" MaxLength="35" />
+    <Property Name="Tipo_Contratacion" Type="varchar" MaxLength="35" />
+    <Property Name="Tipo_Jornada" Type="varchar" MaxLength="35" />
+    <Property Name="Rotacion_Turno" Type="varchar" MaxLength="1" />
+    <Property Name="Experiencia_puesto_actual" Type="int" />
+    <Property Name="Experiencia_puesto_laboral" Type="int" />
+    <Property Name="created_at" Type="date" />
+    <Property Name="updated_at" Type="date" />
+    <Property Name="deleted_at" Type="date" />
+    <Property Name="Tipo_Personal" Type="int" />
+    <Property Name="id_centro_trabajo" Type="int" />
+  </EntityType>
+  <EntityType Name="ERGOS_Departamentos_N01">
+    <Key>
+      <PropertyRef Name="id_departamento" />
+    </Key>
+    <Property Name="id_departamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_empresa" Type="int" />
+    <Property Name="id_centro_trabajo" Type="int" />
+    <Property Name="Departamento" Type="varchar" MaxLength="165" />
+    <Property Name="No_department" Type="int" />
+    <Property Name="created_at" Type="date" />
+    <Property Name="updated_at" Type="date" />
+    <Property Name="deleted_at" Type="date" />
+    <Property Name="No_Empleados" Type="int" />
+    <Property Name="No_Empleados_Femenino" Type="int" />
+    <Property Name="No_Empleados_Masculino" Type="int" />
+  </EntityType>
+  <EntityType Name="ERGOS_Empresas_N01">
+    <Key>
+      <PropertyRef Name="id_empresa" />
+    </Key>
+    <Property Name="id_empresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Razon_Social" Type="varchar" MaxLength="65" Nullable="false" />
+    <Property Name="Telefono" Type="varchar" MaxLength="32" />
+    <Property Name="Contacto_Nombre" Type="varchar" MaxLength="65" />
+    <Property Name="Email" Type="varchar" MaxLength="65" />
+    <Property Name="id_encuesta" Type="int" Nullable="false" />
+    <Property Name="created_at" Type="date" />
+    <Property Name="updated_at" Type="date" />
+    <Property Name="deleted_at" Type="date" />
+    <Property Name="RFC" Type="varchar" MaxLength="13" />
+    <Property Name="Domicilio" Type="varchar" MaxLength="165" />
+    <Property Name="Actividad_Principal" Type="varchar" MaxLength="165" />
+    <Property Name="Nombre_Empresa" Type="varchar" MaxLength="65" />
+    <Property Name="Centro_Trabajo" Type="varchar" MaxLength="65" />
+    <Property Name="Cedula_Profesional" Type="varchar" MaxLength="65" />
+    <Property Name="Fecha_Auditoria" Type="date" />
+  </EntityType>
+  <EntityType Name="ERGOS_Guia_Observacion_N01">
+    <Key>
+      <PropertyRef Name="id_guia" />
+    </Key>
+    <Property Name="id_guia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_empresa" Type="int" />
+    <Property Name="id_pregunta" Type="int" />
+    <Property Name="Calificacion" Type="int" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="id_centro_trabajo" Type="int" />
+    <Property Name="Comentarios" Type="varchar" MaxLength="365" />
+  </EntityType>
+  <EntityType Name="ERGOS_Guia_Preguntas_N01">
+    <Key>
+      <PropertyRef Name="id_pregunta" />
+    </Key>
+    <Property Name="id_pregunta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pregunta" Type="varchar" MaxLength="360" />
+  </EntityType>
+  <EntityType Name="ERGOS_Preguntas_N01">
+    <Key>
+      <PropertyRef Name="id_pregunta" />
+    </Key>
+    <Property Name="id_pregunta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Preguntas" Type="varchar" MaxLength="165" />
+    <Property Name="id_cuestionario" Type="int" />
+    <Property Name="No_Pregunta" Type="int" />
+  </EntityType>
+  <EntityType Name="ERGOS_Preguntas_S2_N02">
+    <Key>
+      <PropertyRef Name="id_pregunta" />
+    </Key>
+    <Property Name="id_pregunta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Preguntas" Type="varchar" MaxLength="165" />
+    <Property Name="id_cuestionario" Type="int" />
+    <Property Name="No_Pregunta" Type="int" />
+  </EntityType>
+  <EntityType Name="ERGOS_Respuestas_N01">
+    <Key>
+      <PropertyRef Name="id_respuesta" />
+    </Key>
+    <Property Name="id_respuesta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Respuesta" Type="varchar" MaxLength="32" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista '__Dev_Survey.saqa.VW_ERGOS_Results_V01' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VW_ERGOS_Results_V01">
+    <Key>
+      <PropertyRef Name="id_pregunta" />
+      <PropertyRef Name="id_Cuestionario_Resultado" />
+    </Key>
+    <Property Name="id_pregunta" Type="int" Nullable="false" />
+    <Property Name="Preguntas" Type="varchar" MaxLength="165" />
+    <Property Name="id_Cuestionario_Resultado" Type="int" Nullable="false" />
+    <Property Name="id_encuesta" Type="int" />
+    <Property Name="id_cuestionario_trabajador" Type="int" />
+    <Property Name="id_respuesta" Type="int" />
+  </EntityType>
+  <Association Name="FK_Centros_Trabajo_Empresa">
+    <End Role="ERGOS_Empresas_N01" Type="Self.ERGOS_Empresas_N01" Multiplicity="0..1" />
+    <End Role="ERGOS_Centros_Trabajo_N01" Type="Self.ERGOS_Centros_Trabajo_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Empresas_N01">
+        <PropertyRef Name="id_empresa" />
+      </Principal>
+      <Dependent Role="ERGOS_Centros_Trabajo_N01">
+        <PropertyRef Name="id_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuestionario">
+    <End Role="ERGOS_Cuestionarios_N01" Type="Self.ERGOS_Cuestionarios_N01" Multiplicity="0..1" />
+    <End Role="ERGOS_Preguntas_N01" Type="Self.ERGOS_Preguntas_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Cuestionarios_N01">
+        <PropertyRef Name="id_cuestionario" />
+      </Principal>
+      <Dependent Role="ERGOS_Preguntas_N01">
+        <PropertyRef Name="id_cuestionario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuestionario_2">
+    <End Role="ERGOS_Cuestionarios_N01" Type="Self.ERGOS_Cuestionarios_N01" Multiplicity="0..1" />
+    <End Role="ERGOS_Preguntas_S2_N02" Type="Self.ERGOS_Preguntas_S2_N02" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Cuestionarios_N01">
+        <PropertyRef Name="id_cuestionario" />
+      </Principal>
+      <Dependent Role="ERGOS_Preguntas_S2_N02">
+        <PropertyRef Name="id_cuestionario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuestionario_TE">
+    <End Role="ERGOS_Empresas_N01" Type="Self.ERGOS_Empresas_N01" Multiplicity="0..1" />
+    <End Role="ERGOS_Cuestionarios_Trabajador_N01" Type="Self.ERGOS_Cuestionarios_Trabajador_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Empresas_N01">
+        <PropertyRef Name="id_empresa" />
+      </Principal>
+      <Dependent Role="ERGOS_Cuestionarios_Trabajador_N01">
+        <PropertyRef Name="id_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuestionarios_RCT">
+    <End Role="ERGOS_Cuestionarios_Trabajador_N01" Type="Self.ERGOS_Cuestionarios_Trabajador_N01" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ERGOS_Cuestionarios_Resultados_N01" Type="Self.ERGOS_Cuestionarios_Resultados_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Cuestionarios_Trabajador_N01">
+        <PropertyRef Name="id_cuestionario_trabajador" />
+      </Principal>
+      <Dependent Role="ERGOS_Cuestionarios_Resultados_N01">
+        <PropertyRef Name="id_cuestionario_trabajador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuestionarios_RP">
+    <End Role="ERGOS_Preguntas_N01" Type="Self.ERGOS_Preguntas_N01" Multiplicity="0..1" />
+    <End Role="ERGOS_Cuestionarios_Resultados_N01" Type="Self.ERGOS_Cuestionarios_Resultados_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Preguntas_N01">
+        <PropertyRef Name="id_pregunta" />
+      </Principal>
+      <Dependent Role="ERGOS_Cuestionarios_Resultados_N01">
+        <PropertyRef Name="id_pregunta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuestionarios_RR">
+    <End Role="ERGOS_Respuestas_N01" Type="Self.ERGOS_Respuestas_N01" Multiplicity="0..1" />
+    <End Role="ERGOS_Cuestionarios_Resultados_N01" Type="Self.ERGOS_Cuestionarios_Resultados_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Respuestas_N01">
+        <PropertyRef Name="id_respuesta" />
+      </Principal>
+      <Dependent Role="ERGOS_Cuestionarios_Resultados_N01">
+        <PropertyRef Name="id_respuesta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuestionarios_Tabajador_Centro_Trabajo">
+    <End Role="ERGOS_Centros_Trabajo_N01" Type="Self.ERGOS_Centros_Trabajo_N01" Multiplicity="0..1" />
+    <End Role="ERGOS_Cuestionarios_Trabajador_N01" Type="Self.ERGOS_Cuestionarios_Trabajador_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Centros_Trabajo_N01">
+        <PropertyRef Name="id_centro_trabajo" />
+      </Principal>
+      <Dependent Role="ERGOS_Cuestionarios_Trabajador_N01">
+        <PropertyRef Name="id_centro_trabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuestionarios_TE">
+    <End Role="ERGOS_Cuestionarios_N01" Type="Self.ERGOS_Cuestionarios_N01" Multiplicity="0..1" />
+    <End Role="ERGOS_Cuestionarios_Trabajador_N01" Type="Self.ERGOS_Cuestionarios_Trabajador_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Cuestionarios_N01">
+        <PropertyRef Name="id_cuestionario" />
+      </Principal>
+      <Dependent Role="ERGOS_Cuestionarios_Trabajador_N01">
+        <PropertyRef Name="id_encuesta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Departamento_Centro_T">
+    <End Role="ERGOS_Centros_Trabajo_N01" Type="Self.ERGOS_Centros_Trabajo_N01" Multiplicity="0..1" />
+    <End Role="ERGOS_Departamentos_N01" Type="Self.ERGOS_Departamentos_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Centros_Trabajo_N01">
+        <PropertyRef Name="id_centro_trabajo" />
+      </Principal>
+      <Dependent Role="ERGOS_Departamentos_N01">
+        <PropertyRef Name="id_centro_trabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Departamento_CT">
+    <End Role="ERGOS_Departamentos_N01" Type="Self.ERGOS_Departamentos_N01" Multiplicity="0..1" />
+    <End Role="ERGOS_Cuestionarios_Trabajador_N01" Type="Self.ERGOS_Cuestionarios_Trabajador_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Departamentos_N01">
+        <PropertyRef Name="id_departamento" />
+      </Principal>
+      <Dependent Role="ERGOS_Cuestionarios_Trabajador_N01">
+        <PropertyRef Name="Departamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Departamento_Empresa">
+    <End Role="ERGOS_Empresas_N01" Type="Self.ERGOS_Empresas_N01" Multiplicity="0..1" />
+    <End Role="ERGOS_Departamentos_N01" Type="Self.ERGOS_Departamentos_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Empresas_N01">
+        <PropertyRef Name="id_empresa" />
+      </Principal>
+      <Dependent Role="ERGOS_Departamentos_N01">
+        <PropertyRef Name="id_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Guia_Empresa">
+    <End Role="ERGOS_Empresas_N01" Type="Self.ERGOS_Empresas_N01" Multiplicity="0..1" />
+    <End Role="ERGOS_Guia_Observacion_N01" Type="Self.ERGOS_Guia_Observacion_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Empresas_N01">
+        <PropertyRef Name="id_empresa" />
+      </Principal>
+      <Dependent Role="ERGOS_Guia_Observacion_N01">
+        <PropertyRef Name="id_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Guia_Pregunta">
+    <End Role="ERGOS_Guia_Preguntas_N01" Type="Self.ERGOS_Guia_Preguntas_N01" Multiplicity="0..1" />
+    <End Role="ERGOS_Guia_Observacion_N01" Type="Self.ERGOS_Guia_Observacion_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Guia_Preguntas_N01">
+        <PropertyRef Name="id_pregunta" />
+      </Principal>
+      <Dependent Role="ERGOS_Guia_Observacion_N01">
+        <PropertyRef Name="id_pregunta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_id_encuesta_Empresas">
+    <End Role="ERGOS_Cuestionarios_N01" Type="Self.ERGOS_Cuestionarios_N01" Multiplicity="1" />
+    <End Role="ERGOS_Empresas_N01" Type="Self.ERGOS_Empresas_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Cuestionarios_N01">
+        <PropertyRef Name="id_cuestionario" />
+      </Principal>
+      <Dependent Role="ERGOS_Empresas_N01">
+        <PropertyRef Name="id_encuesta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Answering_Guia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_guia" Type="int" Mode="In" />
+    <Parameter Name="Respuesta" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Answering_Guia_Comentarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_guia" Type="int" Mode="In" />
+    <Parameter Name="Comentarios" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Answering_Survey" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_CR" Type="int" Mode="In" />
+    <Parameter Name="Respuesta" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Change_Status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Serial" Type="varchar" Mode="In" />
+    <Parameter Name="Scanned_Place" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="fnDemo_N035_Categorias_1_E2_Resultados_Pilot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Categoria_1" Type="int" />
+          <Property Name="Sumatoria_Cat_I" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Categorias_1_Resultados_Pilot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Categoria_1" Type="int" />
+          <Property Name="Sumatoria_Total" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Categorias_2_E2_Resultados_Pilot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Categoria_2" Type="int" />
+          <Property Name="Sumatoria_Cat_II" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Categorias_2_Resultados_Pilot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Categoria_2" Type="int" />
+          <Property Name="Sumatoria_Cat_II" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Categorias_3_E2_Resultados_Pilot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Categoria_3" Type="int" />
+          <Property Name="Sumatoria_Cat_III" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Categorias_3_Resultados_Pilot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Categoria_3" Type="int" />
+          <Property Name="Sumatoria_Cat_III" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Categorias_4_E2_Resultados_Pilot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Categoria_4" Type="int" />
+          <Property Name="Sumatoria_Cat_IV" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Categorias_4_Resultados_Pilot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Categoria_4" Type="int" />
+          <Property Name="Sumatoria_Cat_IV" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Categorias_5_Resultados_Pilot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Categoria_5" Type="int" />
+          <Property Name="Sumatoria_Cat_V" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Categorias_Pilot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_CT" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="id_encuesta" Type="int" />
+          <Property Name="Canalizado" Type="int" />
+          <Property Name="Cat_1" Type="int" />
+          <Property Name="Cat_2" Type="int" />
+          <Property Name="Cat_3" Type="int" />
+          <Property Name="Cat_4" Type="int" />
+          <Property Name="CAT_5" Type="int" />
+          <Property Name="FINAL" Type="int" />
+          <Property Name="Dom_1" Type="int" />
+          <Property Name="Dom_2" Type="int" />
+          <Property Name="Dom_3" Type="int" />
+          <Property Name="Dom_4" Type="int" />
+          <Property Name="Dom_5" Type="int" />
+          <Property Name="Dom_6" Type="int" />
+          <Property Name="Dom_7" Type="int" />
+          <Property Name="Dom_8" Type="int" />
+          <Property Name="Dom_9" Type="int" />
+          <Property Name="Dom_10" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Categorias_Resultados_Pilot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <Parameter Name="id_encuesta" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Sumatoria_Categoria" Type="int" />
+          <Property Name="Promedio_Categoria" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Dominios_1_E2_Resultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Dominio_1" Type="int" />
+          <Property Name="Promedio_Dom_I" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Dominios_1_Resultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Dominio_1" Type="int" />
+          <Property Name="Promedio_Dom_I" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Dominios_10_Resultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Dominio_10" Type="int" />
+          <Property Name="Promedio_Dom_X" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Dominios_2_E2_Resultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Dominio_2" Type="int" />
+          <Property Name="Promedio_Dom_II" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Dominios_2_Resultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Dominio_2" Type="int" />
+          <Property Name="Promedio_Dom_II" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Dominios_3_E2_Resultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Dominio_3" Type="int" />
+          <Property Name="Promedio_Dom_III" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Dominios_3_Resultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Dominio_3" Type="int" />
+          <Property Name="Promedio_Dom_III" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Dominios_4_E2_Resultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Dominio_4" Type="int" />
+          <Property Name="Promedio_Dom_IV" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Dominios_4_Resultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Dominio_4" Type="int" />
+          <Property Name="Promedio_Dom_IV" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Dominios_5_E2_Resultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Dominio_5" Type="int" />
+          <Property Name="Promedio_Dom_V" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Dominios_5_Resultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Dominio_5" Type="int" />
+          <Property Name="Promedio_Dom_V" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Dominios_6_E2_Resultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Dominio_6" Type="int" />
+          <Property Name="Promedio_Dom_VI" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Dominios_6_Resultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Dominio_6" Type="int" />
+          <Property Name="Promedio_Dom_VI" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Dominios_7_E2_Resultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Dominio_7" Type="int" />
+          <Property Name="Promedio_Dom_VII" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Dominios_7_Resultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Dominio_7" Type="int" />
+          <Property Name="Promedio_Dom_VII" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Dominios_8_E2_Resultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Dominio_8" Type="int" />
+          <Property Name="Promedio_Dom_VIII" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Dominios_8_Resultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Dominio_8" Type="int" />
+          <Property Name="Promedio_Dom_VIII" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Dominios_9_Resultados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Total_Dominio_9" Type="int" />
+          <Property Name="Promedio_Dom_IX" Type="int" />
+          <Property Name="Encuestados" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDemo_N035_Grafica_Resultado_Preguntas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_encuesta" Type="int" Mode="In" />
+    <Parameter Name="id_empresa" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Calificacion_General_Pregunta" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fn_Final_view_surveys" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="saqa">
+    <Parameter Name="id_CT" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="id_pregunta" Type="int" Nullable="false" />
+          <Property Name="No_Pregunta" Type="int" />
+          <Property Name="Preguntas" Type="varchar" MaxLength="165" />
+          <Property Name="id_Cuestionario_Resultado" Type="int" Nullable="false" />
+          <Property Name="id_respuesta" Type="int" />
+          <Property Name="id_cuestionario" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fn_Final_view_surveys_S2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="saqa">
+    <Parameter Name="id_CT" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="id_pregunta" Type="int" Nullable="false" />
+          <Property Name="No_Pregunta" Type="int" />
+          <Property Name="Preguntas" Type="varchar" MaxLength="165" />
+          <Property Name="id_Cuestionario_Resultado" Type="int" Nullable="false" />
+          <Property Name="id_respuesta" Type="int" />
+          <Property Name="id_cuestionario" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <EntityContainer Name="Dev_SurveyModelStoreContainer">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ERGOS_Centros_Trabajo_N01" EntityType="Self.ERGOS_Centros_Trabajo_N01" Schema="saqa" store:Type="Tables" />
+    <EntitySet Name="ERGOS_Cuestionarios_N01" EntityType="Self.ERGOS_Cuestionarios_N01" Schema="saqa" store:Type="Tables" />
+    <EntitySet Name="ERGOS_Cuestionarios_Resultados_N01" EntityType="Self.ERGOS_Cuestionarios_Resultados_N01" Schema="saqa" store:Type="Tables" />
+    <EntitySet Name="ERGOS_Cuestionarios_Trabajador_N01" EntityType="Self.ERGOS_Cuestionarios_Trabajador_N01" Schema="saqa" store:Type="Tables" />
+    <EntitySet Name="ERGOS_Departamentos_N01" EntityType="Self.ERGOS_Departamentos_N01" Schema="saqa" store:Type="Tables" />
+    <EntitySet Name="ERGOS_Empresas_N01" EntityType="Self.ERGOS_Empresas_N01" Schema="saqa" store:Type="Tables" />
+    <EntitySet Name="ERGOS_Guia_Observacion_N01" EntityType="Self.ERGOS_Guia_Observacion_N01" Schema="saqa" store:Type="Tables" />
+    <EntitySet Name="ERGOS_Guia_Preguntas_N01" EntityType="Self.ERGOS_Guia_Preguntas_N01" Schema="saqa" store:Type="Tables" />
+    <EntitySet Name="ERGOS_Preguntas_N01" EntityType="Self.ERGOS_Preguntas_N01" Schema="saqa" store:Type="Tables" />
+    <EntitySet Name="ERGOS_Preguntas_S2_N02" EntityType="Self.ERGOS_Preguntas_S2_N02" Schema="saqa" store:Type="Tables" />
+    <EntitySet Name="ERGOS_Respuestas_N01" EntityType="Self.ERGOS_Respuestas_N01" Schema="saqa" store:Type="Tables" />
+    <EntitySet Name="VW_ERGOS_Results_V01" EntityType="Self.VW_ERGOS_Results_V01" store:Type="Views" store:Schema="saqa">
+      <DefiningQuery>SELECT 
+    [VW_ERGOS_Results_V01].[id_pregunta] AS [id_pregunta], 
+    [VW_ERGOS_Results_V01].[Preguntas] AS [Preguntas], 
+    [VW_ERGOS_Results_V01].[id_Cuestionario_Resultado] AS [id_Cuestionario_Resultado], 
+    [VW_ERGOS_Results_V01].[id_encuesta] AS [id_encuesta], 
+    [VW_ERGOS_Results_V01].[id_cuestionario_trabajador] AS [id_cuestionario_trabajador], 
+    [VW_ERGOS_Results_V01].[id_respuesta] AS [id_respuesta]
+    FROM [saqa].[VW_ERGOS_Results_V01] AS [VW_ERGOS_Results_V01]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Centros_Trabajo_Empresa" Association="Self.FK_Centros_Trabajo_Empresa">
+      <End Role="ERGOS_Empresas_N01" EntitySet="ERGOS_Empresas_N01" />
+      <End Role="ERGOS_Centros_Trabajo_N01" EntitySet="ERGOS_Centros_Trabajo_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuestionario" Association="Self.FK_Cuestionario">
+      <End Role="ERGOS_Cuestionarios_N01" EntitySet="ERGOS_Cuestionarios_N01" />
+      <End Role="ERGOS_Preguntas_N01" EntitySet="ERGOS_Preguntas_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuestionario_2" Association="Self.FK_Cuestionario_2">
+      <End Role="ERGOS_Cuestionarios_N01" EntitySet="ERGOS_Cuestionarios_N01" />
+      <End Role="ERGOS_Preguntas_S2_N02" EntitySet="ERGOS_Preguntas_S2_N02" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuestionario_TE" Association="Self.FK_Cuestionario_TE">
+      <End Role="ERGOS_Empresas_N01" EntitySet="ERGOS_Empresas_N01" />
+      <End Role="ERGOS_Cuestionarios_Trabajador_N01" EntitySet="ERGOS_Cuestionarios_Trabajador_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuestionarios_RCT" Association="Self.FK_Cuestionarios_RCT">
+      <End Role="ERGOS_Cuestionarios_Trabajador_N01" EntitySet="ERGOS_Cuestionarios_Trabajador_N01" />
+      <End Role="ERGOS_Cuestionarios_Resultados_N01" EntitySet="ERGOS_Cuestionarios_Resultados_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuestionarios_RP" Association="Self.FK_Cuestionarios_RP">
+      <End Role="ERGOS_Preguntas_N01" EntitySet="ERGOS_Preguntas_N01" />
+      <End Role="ERGOS_Cuestionarios_Resultados_N01" EntitySet="ERGOS_Cuestionarios_Resultados_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuestionarios_RR" Association="Self.FK_Cuestionarios_RR">
+      <End Role="ERGOS_Respuestas_N01" EntitySet="ERGOS_Respuestas_N01" />
+      <End Role="ERGOS_Cuestionarios_Resultados_N01" EntitySet="ERGOS_Cuestionarios_Resultados_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuestionarios_Tabajador_Centro_Trabajo" Association="Self.FK_Cuestionarios_Tabajador_Centro_Trabajo">
+      <End Role="ERGOS_Centros_Trabajo_N01" EntitySet="ERGOS_Centros_Trabajo_N01" />
+      <End Role="ERGOS_Cuestionarios_Trabajador_N01" EntitySet="ERGOS_Cuestionarios_Trabajador_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuestionarios_TE" Association="Self.FK_Cuestionarios_TE">
+      <End Role="ERGOS_Cuestionarios_N01" EntitySet="ERGOS_Cuestionarios_N01" />
+      <End Role="ERGOS_Cuestionarios_Trabajador_N01" EntitySet="ERGOS_Cuestionarios_Trabajador_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Departamento_Centro_T" Association="Self.FK_Departamento_Centro_T">
+      <End Role="ERGOS_Centros_Trabajo_N01" EntitySet="ERGOS_Centros_Trabajo_N01" />
+      <End Role="ERGOS_Departamentos_N01" EntitySet="ERGOS_Departamentos_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Departamento_CT" Association="Self.FK_Departamento_CT">
+      <End Role="ERGOS_Departamentos_N01" EntitySet="ERGOS_Departamentos_N01" />
+      <End Role="ERGOS_Cuestionarios_Trabajador_N01" EntitySet="ERGOS_Cuestionarios_Trabajador_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Departamento_Empresa" Association="Self.FK_Departamento_Empresa">
+      <End Role="ERGOS_Empresas_N01" EntitySet="ERGOS_Empresas_N01" />
+      <End Role="ERGOS_Departamentos_N01" EntitySet="ERGOS_Departamentos_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Guia_Empresa" Association="Self.FK_Guia_Empresa">
+      <End Role="ERGOS_Empresas_N01" EntitySet="ERGOS_Empresas_N01" />
+      <End Role="ERGOS_Guia_Observacion_N01" EntitySet="ERGOS_Guia_Observacion_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Guia_Pregunta" Association="Self.FK_Guia_Pregunta">
+      <End Role="ERGOS_Guia_Preguntas_N01" EntitySet="ERGOS_Guia_Preguntas_N01" />
+      <End Role="ERGOS_Guia_Observacion_N01" EntitySet="ERGOS_Guia_Observacion_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_id_encuesta_Empresas" Association="Self.FK_id_encuesta_Empresas">
+      <End Role="ERGOS_Cuestionarios_N01" EntitySet="ERGOS_Cuestionarios_N01" />
+      <End Role="ERGOS_Empresas_N01" EntitySet="ERGOS_Empresas_N01" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

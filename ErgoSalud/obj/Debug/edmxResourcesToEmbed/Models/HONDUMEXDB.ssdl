@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CastSoft_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="HONDU_Categorias_N01">
+    <Key>
+      <PropertyRef Name="id_categoria" />
+    </Key>
+    <Property Name="id_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Categoria" Type="varchar" MaxLength="32" />
+    <Property Name="id_usuario" Type="int" Nullable="false" />
+    <Property Name="Imagen" Type="varbinary(max)" />
+    <Property Name="Imagen_Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="HONDU_Ordenes_N01">
+    <Key>
+      <PropertyRef Name="id_Order_Record" />
+    </Key>
+    <Property Name="id_Order_Record" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Numero_Orden" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="Estatus" Type="int" Nullable="false" />
+    <Property Name="Mesa" Type="int" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HONDU_Ordenes_Productos_N01">
+    <Key>
+      <PropertyRef Name="id_Order_P_Record" />
+    </Key>
+    <Property Name="id_Order_P_Record" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Numero_Orden" Type="varchar" MaxLength="32" />
+    <Property Name="id_Producto" Type="int" />
+    <Property Name="Estatus" Type="int" />
+  </EntityType>
+  <EntityType Name="HONDU_Productos_N01">
+    <Key>
+      <PropertyRef Name="id_producto" />
+    </Key>
+    <Property Name="id_producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_categoria" Type="int" />
+    <Property Name="Producto" Type="varchar" MaxLength="32" />
+    <Property Name="Precio" Type="int" Nullable="false" />
+    <Property Name="id_usuario" Type="int" Nullable="false" />
+    <Property Name="Imagen" Type="varbinary(max)" />
+    <Property Name="Imagen_Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6035: La relación 'FK_Orden_Orden' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK_Orden_Orden" />-->
+  <Association Name="FK_Producto_Cat">
+    <End Role="HONDU_Categorias_N01" Type="Self.HONDU_Categorias_N01" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HONDU_Productos_N01" Type="Self.HONDU_Productos_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HONDU_Categorias_N01">
+        <PropertyRef Name="id_categoria" />
+      </Principal>
+      <Dependent Role="HONDU_Productos_N01">
+        <PropertyRef Name="id_categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Productos_Ordenes">
+    <End Role="HONDU_Productos_N01" Type="Self.HONDU_Productos_N01" Multiplicity="0..1" />
+    <End Role="HONDU_Ordenes_Productos_N01" Type="Self.HONDU_Ordenes_Productos_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HONDU_Productos_N01">
+        <PropertyRef Name="id_producto" />
+      </Principal>
+      <Dependent Role="HONDU_Ordenes_Productos_N01">
+        <PropertyRef Name="id_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CastSoft_DBModelStoreContainer">
+    <EntitySet Name="HONDU_Categorias_N01" EntityType="Self.HONDU_Categorias_N01" Schema="saqa" store:Type="Tables" />
+    <EntitySet Name="HONDU_Ordenes_N01" EntityType="Self.HONDU_Ordenes_N01" Schema="saqa" store:Type="Tables" />
+    <EntitySet Name="HONDU_Ordenes_Productos_N01" EntityType="Self.HONDU_Ordenes_Productos_N01" Schema="saqa" store:Type="Tables" />
+    <EntitySet Name="HONDU_Productos_N01" EntityType="Self.HONDU_Productos_N01" Schema="saqa" store:Type="Tables" />
+    <AssociationSet Name="FK_Producto_Cat" Association="Self.FK_Producto_Cat">
+      <End Role="HONDU_Categorias_N01" EntitySet="HONDU_Categorias_N01" />
+      <End Role="HONDU_Productos_N01" EntitySet="HONDU_Productos_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Productos_Ordenes" Association="Self.FK_Productos_Ordenes">
+      <End Role="HONDU_Productos_N01" EntitySet="HONDU_Productos_N01" />
+      <End Role="HONDU_Ordenes_Productos_N01" EntitySet="HONDU_Ordenes_Productos_N01" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

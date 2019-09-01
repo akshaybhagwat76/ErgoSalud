@@ -1,0 +1,50 @@
+﻿@model ErgoSalud.Models.ERGOS_Centros_Trabajo_N01
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ERGOS_Centros_Trabajo_N01</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre_centro_trabajo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_centro_trabajo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.No_emplados)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.No_emplados)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_Auditoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Auditoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ERGOS_Empresas_N01.Razon_Social)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ERGOS_Empresas_N01.Razon_Social)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_centro_trabajo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

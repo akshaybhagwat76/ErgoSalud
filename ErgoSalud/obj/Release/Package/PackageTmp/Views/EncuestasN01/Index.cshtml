@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ErgoSalud.Models.ERGOS_Cuestionarios_Trabajador_N01>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Encuestas</h2>
+<hr />
+<p>
+    @Html.ActionLink("Nueva Encuesta", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ERGOS_Cuestionarios_N01.Cuestionario)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ERGOS_Trabajadores_N01.Sexo)
+        </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ERGOS_Cuestionarios_N01.Cuestionario)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.ERGOS_Trabajadores_N01.Sexo)
+            </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id_cuestionario_trabajador }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id_cuestionario_trabajador }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id_cuestionario_trabajador })
+            </td>
+        </tr>
+    }
+
+</table>

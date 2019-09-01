@@ -1,0 +1,496 @@
+﻿@model ErgoSalud.Models.ERGOS_Centros_Trabajo_N01
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script>
+
+    function index_Report() {
+        location.reload();
+    }
+
+    //removes leading and trailing spaces on every text field "on focus out"
+    $(":text").each(function (index) {
+        $(this).focusout(function () {
+            var text = $(this).val();
+            text = $.trim(text);
+            $(this).val(text);
+        });
+    });
+
+    $(document).ready(function(){
+    // Ajax Code Here
+});
+
+    $(window).load(function () {
+        var id_empresa = document.getElementById("id_empresa").value;
+        var id_centro = document.getElementById("id_centro").value;
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("Get_Departments")',
+                        dataType: 'json',
+                        data: { id_empresa: id_empresa, id_centro: id_centro },
+                        beforeSend: function () {
+                            $('#confirmacion').html("Agregando...").addClass('text-secondary').show;
+                        },
+                        success: function (data) {
+                            if (data != null) {
+                                var tr;
+                                var sumando_M = 0;
+                                var sumando_H = 0;
+                                //Append each row to html table
+                                for (var i = 0; i <= data.length; i++) {
+                                    if (i == data.length) {
+                                        var general_total_emp = sumando_M + sumando_H;
+                                        var Percent_M = (sumando_M / general_total_emp * 100).toFixed(2);
+                                        var Percent_H = (sumando_H / general_total_emp * 100).toFixed(2);
+                                        var Percent = (general_total_emp / general_total_emp * 100).toFixed(2);
+                                        //alert("last row");
+                                        document.getElementById("No_emplados").value = general_total_emp;
+                                        var Porcentajes;
+                                        Porcentajes = $('<tr/>');
+                                        Porcentajes.append("<td><b>Porcentaje Genero</b></td>");
+                                        Porcentajes.append("<td>" + Percent_M + " %</td>");
+                                        Porcentajes.append("<td>" + Percent_H + " %</td>");
+                                        Porcentajes.append("<td>" + Percent + " %</td>");
+                                        Porcentajes.append("<td></td>");
+                                        var Censo_Nom;
+                                        Censo_Nom = $('<tr/>');
+                                        Censo_Nom.append("<td><b>Censo Requerido por NORMA</b></td>");
+                                        Censo_Nom.append("<td>" + sumando_M + " </td>");
+                                        Censo_Nom.append("<td>" + sumando_H + " </td>");
+                                        Censo_Nom.append("<td>" + general_total_emp + " </td>");
+                                        Censo_Nom.append("<td></td>");
+                                        var Encuestados;
+                                        Encuestados = $('<tr/>');
+                                        Encuestados.append("<td><b>Censo Encuestado</b></td>");
+                                        Encuestados.append("<td>" + @ViewBag.Encuestados_F + " </td>");
+                                        Encuestados.append("<td>" + @ViewBag.Encuestados_M + " </td>");
+                                        Encuestados.append("<td>" + @ViewBag.Encuestados + " </td>");
+                                        Encuestados.append("<td></td>");
+                                        tr = $('<tr/>');
+                                        tr.append("<td><b>Grand Total</b></td>");
+                                        tr.append("<td>" + sumando_M + "</td>");
+                                        tr.append("<td>" + sumando_H + "</td>");
+                                        tr.append("<td>" + general_total_emp + "</td>");
+                                        tr.append("<td></td>");
+                                        $('#tabla_listadoDepartamentos').append(tr);
+                                        $('#tabla_listadoDepartamentos').append(Porcentajes);
+                                        $('#tabla_listadoDepartamentos').append(Censo_Nom);
+                                        $('#tabla_listadoDepartamentos').append(Encuestados);
+                                    } else {
+                                        tr = $('<tr/>');
+                                        tr.append("<td>" + data[i].Departamento + "</td>");
+                                        tr.append("<td>" + data[i].No_Empleados_Femenino + "</td>");
+                                        tr.append("<td>" + data[i].No_Empleados_Masculino + "</td>");
+                                        tr.append("<td>" + data[i].No_Empleados + "</td>");
+                                        tr.append('<td><a href="#"><i class="fa fa-pencil-square-o" title="Editar" style="font-size:25px;color:black" OnClick="Edit_Department(' + data[i].id_departamento + ', \'' + data[i].Departamento + '\'' + ',' + data[i].No_Empleados_Femenino + ',' + data[i].No_Empleados_Masculino + ' )"></i></a><a href="#"><i class="fa fa-trash-o" title="Eliminar" style="font-size:25px;color:black" OnClick="Delete_Department(' + data[i].id_departamento + ', \'' + data[i].Departamento + '\'' + ',' + data[i].No_Empleados + ')"></i></a></td>');
+                                        $('#tabla_listadoDepartamentos').append(tr);
+                                        sumando_M = sumando_M + data[i].No_Empleados_Femenino;
+                                        sumando_H = sumando_H + data[i].No_Empleados_Masculino;
+                                    }
+
+                                }
+                            } else {
+                                alert("vacio");
+                            }
+
+                        },
+                        error: function () {
+                            $('#confirmacion').html("Error analizando").addClass('text-danger').show;
+                            $('#txtQR_Caja').val("");
+                            $('#txtQR_Caja').focus();
+                        },
+                        catch (e) {
+                            alert(e.name + "\n" + e.message)
+                        }
+
+                    });
+    });
+
+    $(function () {
+        var $a = $(".tabs li");
+        $a.click(function () {
+            $a.removeClass("active");
+            $(this).addClass("active");
+        });
+    });
+
+
+    function ocultar() {
+
+        document.getElementById('Respuesta_Vacio').style.display = "none";
+        document.getElementById("txtQR_Palette").value = "";
+        document.getElementById("txtQR_Palette").focus();
+
+    }
+
+    function Edit_Department(id_departamento, Departamento, No_Empleados_Femenino, No_Empleados_Masculino) {
+        //alert(id_departamento);
+
+
+        document.getElementById("modal_id_department_E").value = id_departamento;
+        document.getElementById("modal_department_E").value = Departamento;
+        document.getElementById("No_Emp_E_M").value = No_Empleados_Masculino;
+        document.getElementById("No_Emp_E_F").value = No_Empleados_Femenino;
+        $("#Modal_Edit").modal('show');
+    }
+
+    function Delete_Department(id_departamento, Departamento, No_Empleados) {
+        document.getElementById("modal_id_department_D").value = id_departamento;
+        document.getElementById("modal_department_D").value = Departamento;
+        document.getElementById("No_Emp_D").value = No_Empleados;
+        $("#Modal_Delete").modal('show');
+    }
+
+        function Delete_Dept() {
+        var id_departamento = document.getElementById("modal_id_department_D").value;
+        var New_name_dept = document.getElementById("modal_department_D").value;
+        var id_empresa = document.getElementById("id_empresa").value;
+        var id_centro = document.getElementById("id_centro").value;
+        if (id_departamento == "") {
+            alert("No hay Departamento Seleccionado");
+        } else {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("Delete_Department")',
+                        dataType: 'json',
+                        data: { New_name_dept: New_name_dept, id_departamento: id_departamento, id_empresa: id_empresa, id_centro: id_centro },
+                        beforeSend: function () {
+                            $('#confirmacion').html("Agregando...").addClass('text-secondary').show;
+                        },
+                        success: function (data) {
+                            //alert(data.dato[0].No_Empleados_Femenino);
+                            if (data.Alerta_Mensaje == "99999") {
+
+                                Swal.fire(
+                                    'No puede eliminar el departamento',
+                                    'El Departamento es utilizado al menos en una encuesta, por lo que no se puede eliminar',
+                                    'error'
+                                )
+                            } else {
+                               // $('#Table_content_departments').empty();
+                                //document.getElementById("Table_content_departments").innerHTML = "<thead><tr><th>Departamento</th><th>Femenino</th><th>Masculino</th><th>No. Empleados</th><th>Acción</th></tr></thead ><tbody id='tabla_listadoDepartamentos'></tbody>";
+                               // var tr;
+                                location.reload();
+                                //for (var i = 0; i < data.dato.length; i++) {
+                                //    tr = $('<tr/>');
+                                //    tr.append("<td>" + data.dato[i].Departamento + "</td>");
+                                //    tr.append("<td>" + data.dato[i].No_Empleados_Femenino + "</td>");
+                                //    tr.append("<td>" + data.dato[i].No_Empleados_Masculino + "</td>");
+                                //    tr.append("<td>" + data.dato[i].No_Empleados + "</td>");
+                                //    tr.append('<td><a href="#"><i class="fa fa-pencil-square-o" title="Editar" style="font-size:25px;color:black" OnClick="Edit_Department(' + data[i].id_departamento + ', \'' + data[i].Departamento + '\'' + ',' + data[i].No_Empleados + ' )"></i></a><a href="#"><i class="fa fa-trash-o" title="Eliminar" style="font-size:25px;color:black" OnClick="Delete_Department(' + data[i].id_departamento + ', \'' + data[i].Departamento + '\'' + ',' + data[i].No_Empleados + ')"></i></a></td>');
+                                //    $('#tabla_listadoDepartamentos').append(tr);
+                                //}
+                            }
+
+                            $("#Modal_Delete").modal('hide');
+                        },
+                        error: function () {
+                            alert("Error de conexión, Favor de intentar más tarde");
+                        },
+                        catch (e) {
+                            alert(e.name + "\n" + e.message)
+                        }
+
+                    });
+                }
+
+    }
+
+    function Update_Dept() {
+
+        var Cantidad_Empleados_M = document.getElementById("No_Emp_E_M").value;
+        var Cantidad_Empleados_F = document.getElementById("No_Emp_E_F").value;
+       // var Cantidad_Empleados = document.getElementById("No_Emp_E").value;
+       //alert(Cantidad_Empleados);
+        var id_departamento = document.getElementById("modal_id_department_E").value;
+        var New_name_dept = document.getElementById("modal_department_E").value;
+        var id_empresa = document.getElementById("id_empresa").value;
+        var id_centro = document.getElementById("id_centro").value;
+        if (id_departamento == "") {
+            alert("No hay Departamento Seleccionado");
+        } else {
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("Update_Department")',
+                        dataType: 'json',
+                        data: { New_name_dept: New_name_dept, id_departamento: id_departamento, id_empresa: id_empresa, id_centro: id_centro, Cantidad_Empleados_M: Cantidad_Empleados_M, Cantidad_Empleados_F: Cantidad_Empleados_F },
+                        beforeSend: function () {
+                            $('#confirmacion').html("Agregando...").addClass('text-secondary').show;
+                        },
+                        success: function (data) {
+                            $('#Table_content_departments').empty();
+                            document.getElementById("Table_content_departments").innerHTML = "<thead><tr><th>Departamento</th><th>Femenino</th><th>Masculino</th><th>No. Empleados</th><th>Acción</th></tr></thead ><tbody id='tabla_listadoDepartamentos'></tbody>";
+                            var tr;
+                            var sumando_M = 0;
+                            var sumando_H = 0;
+                            //Append each row to html table
+                            for (var i = 0; i <= data.length; i++) {
+                                if (i == data.length) {
+                                    var general_total_emp = sumando_M + sumando_H;
+                                    //alert("last row");
+                                    document.getElementById("No_emplados").value = general_total_emp;
+                                    tr = $('<tr/>');
+                                    tr.append("<td><b>Grand Total</b></td>");
+                                    tr.append("<td>" + sumando_M + "</td>");
+                                    tr.append("<td>" + sumando_H + "</td>");
+                                    tr.append("<td>" + general_total_emp + "</td>");
+                                    tr.append("<td></td>");
+                                    $('#tabla_listadoDepartamentos').append(tr);
+                                } else {
+                                    tr = $('<tr/>');
+                                    tr.append("<td>" + data[i].Departamento + "</td>");
+                                    tr.append("<td>" + data[i].No_Empleados_Femenino + "</td>");
+                                    tr.append("<td>" + data[i].No_Empleados_Masculino + "</td>");
+                                    tr.append("<td>" + data[i].No_Empleados + "</td>");
+                                    tr.append('<td><a href="#"><i class="fa fa-pencil-square-o" title="Editar" style="font-size:25px;color:black" OnClick="Edit_Department(' + data[i].id_departamento + ', \'' + data[i].Departamento + '\'' + ',' + data[i].No_Empleados_Femenino + ',' + data[i].No_Empleados_Masculino + ' )"></i></a><a href="#"><i class="fa fa-trash-o" title="Eliminar" style="font-size:25px;color:black" OnClick="Delete_Department(' + data[i].id_departamento + ', \'' + data[i].Departamento + '\'' + ',' + data[i].No_Empleados + ')"></i></a></td>');
+                                    $('#tabla_listadoDepartamentos').append(tr);
+                                    sumando_M = sumando_M + data[i].No_Empleados_Femenino;
+                                    sumando_H = sumando_H + data[i].No_Empleados_Masculino;
+                                }
+
+                            }
+
+                            $("#Modal_Edit").modal('hide');
+                        },
+                        error: function (ts) { alert(ts.responseText) },
+                        catch (e) {
+                            alert(e.name + "\n" + e.message)
+                        }
+
+                    });
+                }
+
+    }
+
+
+    function Enviar_Dato() {
+      //  alert("begin");
+        var Cantidad_Empleados_M = $("#No_Empleados_M").val();
+        var Cantidad_Empleados_F = $("#No_Empleados_F").val();
+        var Departamento = document.getElementById("new_deparment").value;
+        var id_empresa = document.getElementById("id_empresa").value;
+        var id_centro = document.getElementById("id_centro").value;
+        if (Departamento == "" || Cantidad_Empleados_M == "" || Cantidad_Empleados_F == "") {
+           // alert("Inrtroducir un Departamento");
+            Swal.fire(
+                'Información Incompleta',
+                'Ingrese el Departamento, Numero de empleados Mujeres y Hombres',
+                'error'
+            )
+        } else {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("Set_New_Department")',
+                        dataType: 'json',
+                        data: { Departamento: Departamento, id_empresa: id_empresa, id_centro: id_centro, Cantidad_Empleados_M: Cantidad_Empleados_M, Cantidad_Empleados_F: Cantidad_Empleados_F},
+                        beforeSend: function () {
+                            $('#confirmacion').html("Agregando...").addClass('text-secondary').show;
+                        },
+                        success: function (data) {
+
+
+                            $('#Table_content_departments').empty();
+                            document.getElementById("Table_content_departments").innerHTML = "<thead><tr><th>Departamento</th><th>Femenino</th><th>Masculino</th><th>No. Empleados</th><th>Acción</th></tr></thead ><tbody id='tabla_listadoDepartamentos'></tbody>";
+                            var tr;
+                            var sumando_M = 0;
+                            var sumando_H = 0;
+                            //Append each row to html table
+                            for (var i = 0; i <= data.length; i++) {
+                                if (i == data.length) {
+                                    var general_total_emp = sumando_M + sumando_H;
+                                    //alert("last row");
+                                    document.getElementById("No_emplados").value = general_total_emp;
+
+                                    tr = $('<tr/>');
+                                    tr.append("<td><b>Grand Total</b></td>");
+                                    tr.append("<td>" + sumando_M + "</td>");
+                                    tr.append("<td>" + sumando_H + "</td>");
+                                    tr.append("<td>" + general_total_emp + "</td>");
+                                    tr.append("<td></td>");
+                                    $('#tabla_listadoDepartamentos').append(tr);
+
+                                } else {
+                                    tr = $('<tr/>');
+                                    tr.append("<td>" + data[i].Departamento + "</td>");
+                                    tr.append("<td>" + data[i].No_Empleados_Femenino + "</td>");
+                                    tr.append("<td>" + data[i].No_Empleados_Masculino + "</td>");
+                                    tr.append("<td>" + data[i].No_Empleados + "</td>");
+                                    tr.append('<td><a href="#"><i class="fa fa-pencil-square-o" title="Editar" style="font-size:25px;color:black" OnClick="Edit_Department(' + data[i].id_departamento + ', \'' + data[i].Departamento + '\'' + ',' + data[i].No_Empleados_Femenino + ',' + data[i].No_Empleados_Masculino + ' )"></i></a><a href="#"><i class="fa fa-trash-o" title="Eliminar" style="font-size:25px;color:black" OnClick="Delete_Department(' + data[i].id_departamento + ', \'' + data[i].Departamento + '\'' + ',' + data[i].No_Empleados + ')"></i></a></td>');
+                                    $('#tabla_listadoDepartamentos').append(tr);
+                                    sumando_M = sumando_M + data[i].No_Empleados_Femenino;
+                                    sumando_H = sumando_H + data[i].No_Empleados_Masculino;
+                                }
+
+                            }
+                            document.getElementById("No_Empleados_M").value = "";
+                            document.getElementById("No_Empleados_F").value = "";
+                            document.getElementById("new_deparment").value = "";
+                        },
+                        error: function () {
+                            alert("Error");
+                            //$('#confirmacion').html("Error analizando").addClass('text-danger').show;
+                            //$('#txtQR_Caja').val("");
+                            //$('#txtQR_Caja').focus();
+                        },
+                        catch (e) {
+                            alert(e.name + "\n" + e.message)
+                        }
+
+                    });
+                }
+
+        }
+
+
+
+
+</script>
+
+<h2>Modificación Centro de Trabajo</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <hr />
+        <div id="Modal_Edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                        <h4 class="modal-title" id="myModalLabel">Modificación de Departamento</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" class="form-control" id="modal_id_department_E" style="display:none">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h4>Departamento:</h4>
+                                <input type="text" class="form-control" id="modal_department_E">
+                                <hr>
+                            </div>
+                            <div class="col-xs-12 col-lg-6">
+                                <h4>No. Empleados Masculino:</h4>
+                                <input type="text" style="float:left;margin-left:10px" id="No_Emp_E_M" class="form-control">
+                            </div>
+                            <div class="col-xs-12 col-lg-6">
+                                <h4>No. Empleados Femenino:</h4>
+                                <input type="text" style="float:left;margin-left:10px" id="No_Emp_E_F" class="form-control">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" onclick="Update_Dept();" class="btn btn-success">Modificar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="Modal_Delete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                        <h4 class="modal-title" style="color:red" id="myModalLabel">Realmente quiere eliminar este departamento?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" class="form-control" id="modal_id_department_D">
+                        <b>Departamento:</b>
+                        <input readonly type="text" class="form-control" id="modal_department_D">
+                        <b>No. Empleados:</b>
+                        <input readonly type="text" class="form-control" id="No_Emp_D">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" onclick="Delete_Dept();" class="btn btn-danger">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.id_centro_trabajo, new { id = "id_centro" })
+
+
+                <div class="col-xs-12">
+                    <b>Empresa</b>
+                    @Html.DropDownList("id_empresa", null, htmlAttributes: new { @class = "form-control", id = "id_empresa" })
+                    @Html.ValidationMessageFor(model => model.id_empresa, "", new { @class = "text-danger" })
+                </div>
+
+
+                <div class="col-xs-12">
+                    <b>Centro de Trabajo</b>
+                    @Html.EditorFor(model => model.Nombre_centro_trabajo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nombre_centro_trabajo, "", new { @class = "text-danger" })
+                </div>
+
+
+                <div class="col-xs-12">
+                    <b>Total de Empleados</b>
+                    @Html.EditorFor(model => model.No_emplados, "No. Empleados", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.No_emplados, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-xs-12">
+                    <b>Fecha de Auditoría: </b>   Mes/Día/Año
+                    @Html.TextBoxFor(model => model.Fecha_Auditoria, "{0:M/d/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(model => model.Fecha_Auditoria, "", new { @class = "text-danger" })
+                </div>
+
+                <br>
+                <div class="col-xs-12"  align="center">
+                    <br>
+                    <input type="submit" value="Guardar" class="btn btn-default" />
+                    @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-primary" })
+                    <input type="button" value="Reporte" class="btn btn-success" onclick="index_Report();" />
+                </div>
+                <div class="col-xs-12" align="center"><br>
+                    <a class="btn btn-default" href="@Url.Action("Reporte_General_PDF", "Encuestas", new {id = 12 })"><i class="fa fa-file-pdf-o" style="font-size:20px;color:red" aria-hidden="true"></i> Reporte Digital </a>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-8">
+                <h3>Nuevo Departamento en Centro de Trabajo</h3>
+                <div class="row">
+                    <input style="float:left;margin:5px" type="text" id="new_deparment" placeholder="Nombre Departamento" class="form-control">
+                </div>
+                <div class="row">
+                    <input style="float:left;margin:5px" type="number" min="1" id="No_Empleados_F" placeholder="Número de Empleados Mujeres" class="form-control">
+                    <input style="float:left;margin:5px" type="number" min="1" id="No_Empleados_M" placeholder="Número de Empleados Hombres" class="form-control">
+                    <input style="float:left;margin:5px" type="button" class="btn btn-primary" value="Agregar" onclick="Enviar_Dato()"><br>
+                </div>
+                <div class="row">
+                    <h3 style="margin-left:20px">Reporte General</h3>
+                    <table id="Table_content_departments" class="table-responsive table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Departamento
+                                </th>
+                                <th>
+                                    Femenino
+                                </th>
+                                <th>
+                                    Masculino
+                                </th>
+                                <th>
+                                    No. Empleados
+                                </th>
+                                <th>
+                                    Acción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla_listadoDepartamentos"></tbody>
+                    </table>
+                </div>
+                </div>
+            </div>
+        }
+

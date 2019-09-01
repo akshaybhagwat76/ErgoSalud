@@ -1,0 +1,146 @@
+﻿@model ErgoSalud.Models.ERGOS_Cuestionarios_Trabajador_N01
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ERGOS_Cuestionarios_Trabajador_N01</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id_trabajador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_trabajador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sexo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Edad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Edad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado_Civil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado_Civil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nivel_Esudios)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nivel_Esudios)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ocupacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ocupacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Departamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Departamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo_puesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_puesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo_Contratacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_Contratacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo_Jornada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_Jornada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rotacion_Turno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rotacion_Turno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Experiencia_puesto_actual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Experiencia_puesto_actual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Experiencia_puesto_laboral)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Experiencia_puesto_laboral)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ERGOS_Cuestionarios_N01.Cuestionario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ERGOS_Cuestionarios_N01.Cuestionario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ERGOS_Empresas_N01.Razon_Social)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ERGOS_Empresas_N01.Razon_Social)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_cuestionario_trabajador }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,117 @@
+﻿@model IEnumerable<ErgoSalud.Models.ERGOS_Cuestionarios_Trabajador_N01>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_trabajador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Edad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado_Civil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nivel_Esudios)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ocupacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Departamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo_puesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo_Contratacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo_Jornada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rotacion_Turno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Experiencia_puesto_actual)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Experiencia_puesto_laboral)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ERGOS_Cuestionarios_N01.Cuestionario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ERGOS_Empresas_N01.Razon_Social)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_trabajador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Edad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado_Civil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nivel_Esudios)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ocupacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Departamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo_puesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo_Contratacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo_Jornada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rotacion_Turno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Experiencia_puesto_actual)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Experiencia_puesto_laboral)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ERGOS_Cuestionarios_N01.Cuestionario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ERGOS_Empresas_N01.Razon_Social)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_cuestionario_trabajador }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_cuestionario_trabajador }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_cuestionario_trabajador })
+        </td>
+    </tr>
+}
+
+</table>

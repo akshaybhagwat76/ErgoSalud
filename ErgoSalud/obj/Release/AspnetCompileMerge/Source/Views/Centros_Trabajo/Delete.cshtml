@@ -1,0 +1,56 @@
+﻿@model ErgoSalud.Models.ERGOS_Centros_Trabajo_N01
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ERGOS_Centros_Trabajo_N01</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre_centro_trabajo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_centro_trabajo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.No_emplados)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.No_emplados)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_Auditoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Auditoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ERGOS_Empresas_N01.Razon_Social)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ERGOS_Empresas_N01.Razon_Social)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

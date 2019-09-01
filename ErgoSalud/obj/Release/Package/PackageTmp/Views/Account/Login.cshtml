@@ -1,0 +1,134 @@
+﻿@using ErgoSalud.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "INICIO DE SESION";
+}
+
+<style>
+
+
+    body {
+        background: #eee !important;
+    }
+
+    .wrapper {
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+
+    .form-signin {
+        max-width: 380px;
+        padding: 15px 35px 45px;
+        margin: 0 auto;
+        background-color: #fff;
+        border: 1px solid rgba(0,0,0,0.1);
+        .form-signin-heading, .checkbox
+
+    {
+        margin-bottom: 30px;
+    }
+
+    .checkbox {
+        font-weight: normal;
+    }
+
+    .form-control {
+        position: relative;
+        font-size: 16px;
+        height: auto;
+        padding: 10px;
+        &:focus
+
+    {
+        z-index: 2;
+    }
+
+    }
+
+    input[type="text"] {
+        margin-bottom: -1px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    input[type="password"] {
+        margin-bottom: 20px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+    }
+</style>
+<div class="wrapper">
+    <div class="form-signin">
+        <br>
+        <div style="margin-bottom:0px" align="center" class="row">
+            <img src="~/images/Customer_Logo.png" class="img-responsive" style="padding:0px">
+        </div>    <br>
+        <h2 class="form-signin-heading">Inicio de Sesión</h2>
+        <br>
+        <div class="row">
+
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            <div class="col-xs-12 ">
+                <section id="loginForm">
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @*<h4>Use una cuenta local para iniciar sesión.</h4>*@
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                        <div class="input-group">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", autocomplete = "off", placeholder = "Correo Electrónico" })
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="fa fa-envelope"></i></button>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Contraseña" })
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="fa fa-key"></i></button>
+                            </div>
+                        </div>
+                        @*<div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <div class="checkbox">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    @Html.LabelFor(m => m.RememberMe)
+                                </div>
+                            </div>
+                        </div>*@
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <br>
+                                <input type="submit" value="Iniciar sesión" class="btn btn-default" />
+                            </div>
+                        </div>
+
+                        @*<p>
+                              @Html.ActionLink("Registrar como nuevo usuario", "Register")
+                          </p>
+                        //   Habilite esta opción después de habilitar la confirmación de la cuenta para la función de restablecimiento de contraseña
+                              <p>
+                                  @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
+                              </p>*@
+                    }
+                </section>
+
+
+            </div>
+            @*<div class="col-md-4">
+                <section id="socialLoginForm">
+                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                </section>
+            </div>*@
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

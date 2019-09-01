@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ErgoSalud.Models.ERGOS_Empresas_N01>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Empresas</h2>
+<hr />
+<p>
+    @Html.ActionLink("Agregar Empresa", "Create", null, new { @class = "btn btn-success" })
+    <a class="btn btn-success" href="@Url.Action("Index", "Centros_Trabajo",new { @class = "btn btn-success" })">Centros de Trabajo</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Domicilio Fiscal")
+        </th>
+        <th>
+            @Html.DisplayName("RFC")
+        </th>
+        <th>
+            @Html.DisplayName("Actividad Principal")
+        </th>
+        @*<th>
+            @Html.DisplayName("Domicilio")
+        </th>*@
+        <th>
+            @Html.DisplayName("Teléfono")
+        </th>
+        <th>
+            @Html.DisplayName("Nombre Contacto")
+        </th>
+        <th>
+            @Html.DisplayName("Correo")
+        </th>
+        <th>Acción</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.deleted_at == null)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Razon_Social)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RFC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Actividad_Principal)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Domicilio)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contacto_Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            <a title="Editar" href="@Url.Action("Edit", new { id = item.id_empresa })">
+
+                <i class="fa fa-edit" title="Editar" style="font-size:23px"></i>
+            </a>
+
+
+
+            <a href="@Url.Action("Delete", new { id=item.id_empresa })">
+                <i class="fa fa-trash-o" title="Eliminar" style="font-size:23px"></i>
+            </a>
+            <a href="@Url.Action("General_Statistics", new { id = item.id_empresa, id_encuesta = item.ERGOS_Cuestionarios_N01.id_cuestionario })">
+                <i class="fa fa-file-text" title="Resultados Generales" style="font-size:20px;" aria-hidden="true"></i>
+            </a>
+        </td>
+    </tr>
+        }
+
+    }
+
+</table>

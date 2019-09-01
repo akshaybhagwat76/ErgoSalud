@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    @*  SWEETALERT2 *@
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+
+    @*CHARTS   1   canvasjs*@
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <link href="~/Content/Images/icono.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+    @*CHARTS   2   morris*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+    @*CHARTS   3 CHART.JS *@
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+
+    @************************************************************************************************************************@
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    @*FAVICON*@
+    @*<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />*@
+    <link rel="icon" href="~/favicon.png" type="image/png">
+    @************************************************************************************************************************@
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>LET Consulting System</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        .disabled {
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+
+        body {
+            /*background-image: url(/images/resta.jpg);*/
+        }
+
+        #order {
+            display: none;
+        }
+
+        #Current_orders {
+            display: none;
+        }
+
+        .contenedores_div {
+            background-color: whitesmoke;
+            border: 2px solid darkorange;
+            outline-style: double;
+            outline-color: black;
+        }
+
+        .navbar-default {
+            background-color: #152740;
+        }
+
+        .nav.navbar-nav li a {
+            color: white;
+        }
+
+            .nav.navbar-nav li a:hover {
+                color: lightsteelblue;
+            }
+
+            .nav.navbar-nav li a:focus {
+                color: lightsteelblue;
+            }
+
+        .navbar-brand {
+            color: white;
+        }
+
+
+        .titulos {
+            color: darkorange;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () { // will trigger when the document is ready
+            $('.datepicker').datepicker(); //Initialise any date pickers
+        });
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top" style="color:red">
+        <div class="container">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" ,style="color:white"})
+                </div>
+                <div class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav">
+                        <li><a href="/Empresas">Empresas</a></li>
+                        <li><a href="/Encuestas">Encuestas</a></li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            }
+
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer align="center">
+            <h5>
+                &copy; @DateTime.Now.Year - LET Consulting Partner
+                <span style="padding-left:10px">Developed by  </span><a href="http://castsoft.live/">
+                    CastSoft
+                </a>
+            </h5>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/Scripts_Hondumex")
+    @RenderSection("scripts", required: false)
+    @RenderSection("stripe", required: false)
+</body>
+</html>

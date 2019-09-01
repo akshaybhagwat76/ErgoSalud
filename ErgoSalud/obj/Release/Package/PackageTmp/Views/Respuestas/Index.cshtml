@@ -1,0 +1,34 @@
+﻿@model IEnumerable<ErgoSalud.Models.ERGOS_Respuestas_N01>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Respuestas</h2>
+<hr />
+<p>
+    @Html.ActionLink("Agregar Respuestas", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Respuesta)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Respuesta)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id_respuesta }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id_respuesta }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id_respuesta })
+            </td>
+        </tr>
+    }
+
+</table>

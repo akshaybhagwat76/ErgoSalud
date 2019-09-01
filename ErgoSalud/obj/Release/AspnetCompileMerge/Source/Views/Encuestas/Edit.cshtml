@@ -1,0 +1,540 @@
+﻿@model ErgoSalud.Models.ERGOS_Cuestionarios_Trabajador_N01
+<script>
+    function Confirmacion() {
+        var txt;
+        var r = confirm("!Atención al modificar estos registros, puede haber incosistencias en los resultados generales! Desea Confinuar??");
+        if (r == true) {
+            getting_products();
+        } else {
+          
+        }
+
+    }
+
+    function getting_products() {
+        var id_empresa = $('#ddw_Empresas option:selected').val();
+     //   alert(id_categoria);
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("Get_Centros_Trabajo", "Encuestas")',
+            dataType: 'json',
+            data: { id_empresa: id_empresa },
+            success: function (data) {
+                if (data != null) {
+                    $('#ddw_Centros_T').empty();
+                    $('#ddw_Departamentos').empty();
+                    var mySelect = $('#ddw_Centros_T');
+                        mySelect.append($('<option>', {
+                        value: "",
+                            text: "Seleccione Centro de Trabajo"
+                    }));
+                    $.each(data, function (i, data) {
+                        mySelect.append($('<option>', {
+                            value: data.id_centro_trabajo,
+                            text: data.Nombre_centro_trabajo
+                        }));
+                    });
+                    $('#ddw_Centros_T').prop('disabled', false);
+                } else {
+                    $('#ddw_Centros_T').empty();
+                    $('#ddw_Departamentos').empty();
+                }
+            },
+            error: function () {
+                alert("Seleccione la Empresa");
+                $('#ddw_Centros_T').empty();
+                $('#ddw_Departamentos').empty();
+            },
+            catch(e) {
+                alert(e.name + "\n" + e.message)
+            }
+        });
+    }
+
+        function getting_departments() {
+            var id_centro_trabajo = $('#ddw_Centros_T option:selected').val();
+     //   alert(id_categoria);
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("Get_departamentos", "Encuestas")',
+            dataType: 'json',
+            data: { id_centro_trabajo: id_centro_trabajo },
+            success: function (data) {
+                if (data != null) {
+                    $('#ddw_Departamentos').empty();
+                    var mySelect = $('#ddw_Departamentos');
+                    mySelect.append($('<option>', {
+                        value: "",
+                        text: "Seleccione Departamento"
+                    }));
+                    $.each(data, function (i, data) {
+                        mySelect.append($('<option>', {
+                            value: data.id_departamento,
+                            text: data.Departamento
+                        }));
+                    });
+                    $('#ddw_Departamentos').prop('disabled', false);
+                } else {
+                    $('#ddw_Departamentos').empty();
+                }
+            },
+            error: function () {
+                alert("Seleccione Centro de Trabajo");
+                $('#ddw_Departamentos').empty();
+            },
+            catch(e) {
+                alert(e.name + "\n" + e.message)
+            }
+        });
+    }
+
+</script>
+@{
+    List<SelectListItem> Estudios = new List<SelectListItem>();
+    Estudios.Add(new SelectListItem
+    {
+        Text = "Sin Información",
+        Value = "0"
+    });
+    Estudios.Add(new SelectListItem
+    {
+        Text = "Primaria",
+        Value = "1"
+    }); Estudios.Add(new SelectListItem
+    {
+        Text = "Secundaria",
+        Value = "2"
+    });
+    Estudios.Add(new SelectListItem
+    {
+        Text = "Preparatoria",
+        Value = "3"
+    });
+    Estudios.Add(new SelectListItem
+    {
+        Text = "Técnico Superior",
+        Value = "4"
+    });
+    Estudios.Add(new SelectListItem
+    {
+        Text = "Licenciatura",
+        Value = "5"
+    }); Estudios.Add(new SelectListItem
+    {
+        Text = "Maestría",
+        Value = "6"
+    }); Estudios.Add(new SelectListItem
+    {
+        Text = "Doctorado",
+        Value = "7"
+    });
+
+    List<SelectListItem> puesto = new List<SelectListItem>();
+    puesto.Add(new SelectListItem
+    {
+        Text = "Operativo",
+        Value = "1"
+    }); puesto.Add(new SelectListItem
+    {
+        Text = "Profesional o Técnico",
+        Value = "2"
+    }); puesto.Add(new SelectListItem
+    {
+        Text = "Supervisor",
+        Value = "3"
+    }); puesto.Add(new SelectListItem
+    {
+        Text = "Gerente",
+        Value = "4"
+    });
+    List<SelectListItem> Contratacion = new List<SelectListItem>();
+    Contratacion.Add(new SelectListItem
+    {
+        Text = "Obra o Proyecto",
+        Value = "1"
+    }); Contratacion.Add(new SelectListItem
+    {
+        Text = "Tiempo Completo",
+        Value = "2"
+    }); Contratacion.Add(new SelectListItem
+    {
+        Text = "Tiempo Determinado - Temporal",
+        Value = "3"
+    }); Contratacion.Add(new SelectListItem
+    {
+        Text = "Honorarios",
+        Value = "4"
+    });
+
+    List<SelectListItem> Jornada = new List<SelectListItem>();
+    Jornada.Add(new SelectListItem
+    {
+        Text = "Fijo Nocturno (entre 20:00 y 6:00 horas)",
+        Value = "1"
+    }); Jornada.Add(new SelectListItem
+    {
+        Text = "Fijo Diurno (entre 6:00 y 20:00 horas)",
+        Value = "2"
+    }); Jornada.Add(new SelectListItem
+    {
+        Text = "Fijo Mixto (Combinación de nocturnos y diurnos)",
+        Value = "3"
+    });
+
+    List<SelectListItem> tipo_personal = new List<SelectListItem>();
+    tipo_personal.Add(new SelectListItem
+    {
+        Text = "Sindicalizado",
+        Value = "1"
+    }); tipo_personal.Add(new SelectListItem
+    {
+        Text = "Confianza",
+        Value = "2"
+    }); tipo_personal.Add(new SelectListItem
+    {
+        Text = "Ninguno",
+        Value = "3"
+    });
+
+
+    List<SelectListItem> Edo_civil = new List<SelectListItem>();
+    Edo_civil.Add(new SelectListItem
+    {
+        Text = "Casado",
+        Value = "1"
+    }); Edo_civil.Add(new SelectListItem
+    {
+        Text = "Soltero",
+        Value = "2"
+    }); Edo_civil.Add(new SelectListItem
+    {
+        Text = "Divorciado",
+        Value = "3"
+    }); Edo_civil.Add(new SelectListItem
+    {
+        Text = "Unión Libre",
+        Value = "4"
+    }); Edo_civil.Add(new SelectListItem
+    {
+        Text = "Viudo",
+        Value = "5"
+    }); Edo_civil.Add(new SelectListItem
+    {
+        Text = "Prefiero no decir",
+        Value = "6"
+    });
+
+    List<SelectListItem> Sexo = new List<SelectListItem>();
+    Sexo.Add(new SelectListItem
+    {
+        Text = "Masculino",
+        Value = "1"
+    }); Sexo.Add(new SelectListItem
+    {
+        Text = "Femenino",
+        Value = "2"
+    });
+
+    List<SelectListItem> Edad = new List<SelectListItem>();
+    Edad.Add(new SelectListItem
+    {
+        Text = "15 - 19",
+        Value = "1"
+    });
+    Edad.Add(new SelectListItem
+    {
+        Text = "20 - 24",
+        Value = "2",
+        Selected = true
+    });
+    Edad.Add(new SelectListItem
+    {
+        Text = "25 - 29",
+        Value = "3"
+    });
+    Edad.Add(new SelectListItem
+    {
+        Text = "30 - 34",
+        Value = "4"
+    });
+    Edad.Add(new SelectListItem
+    {
+        Text = "35 - 39",
+        Value = "5"
+    });
+    Edad.Add(new SelectListItem
+    {
+        Text = "40 - 44",
+        Value = "6"
+    });
+    Edad.Add(new SelectListItem
+    {
+        Text = "45 - 49",
+        Value = "7"
+    }); Edad.Add(new SelectListItem
+    {
+        Text = "50 - 54",
+        Value = "8"
+    }); Edad.Add(new SelectListItem
+    {
+        Text = "55 - 59",
+        Value = "9"
+    }); Edad.Add(new SelectListItem
+    {
+        Text = "60 - 64",
+        Value = "10"
+    }); Edad.Add(new SelectListItem
+    {
+        Text = "65 - 69",
+        Value = "11"
+    }); Edad.Add(new SelectListItem
+    {
+        Text = "70 o más",
+        Value = "12"
+    });
+
+    List<SelectListItem> Experiencia = new List<SelectListItem>();
+    Experiencia.Add(new SelectListItem
+    {
+        Text = "Menos de 6 meses",
+        Value = "1"
+    });
+    Experiencia.Add(new SelectListItem
+    {
+        Text = "Entre 6 meses y 1 año",
+        Value = "2",
+        Selected = true
+    });
+    Experiencia.Add(new SelectListItem
+    {
+        Text = "Entre 1 a 4 años",
+        Value = "3"
+    });
+    Experiencia.Add(new SelectListItem
+    {
+        Text = "Entre 5 a 9 años",
+        Value = "4"
+    });
+    Experiencia.Add(new SelectListItem
+    {
+        Text = "Entre 10 a 14 años",
+        Value = "5"
+    });
+    Experiencia.Add(new SelectListItem
+    {
+        Text = "Entre 15 a 19 años",
+        Value = "6"
+    });
+    Experiencia.Add(new SelectListItem
+    {
+        Text = "Entre 20 a 24 años",
+        Value = "7"
+    }); Experiencia.Add(new SelectListItem
+    {
+        Text = "25 o más",
+        Value = "8"
+    });
+
+    List<SelectListItem> Encuesta = new List<SelectListItem>();
+    Encuesta.Add(new SelectListItem
+    {
+        Text = "Encuesta I",
+        Value = "1"
+    });
+    Encuesta.Add(new SelectListItem
+    {
+        Text = "Encuesta II",
+        Value = "2"
+    }); Encuesta.Add(new SelectListItem
+    {
+        Text = "Encuesta III",
+        Value = "3"
+    });
+
+    List<SelectListItem> jornada_rotacion = new List<SelectListItem>();
+    jornada_rotacion.Add(new SelectListItem
+    {
+        Text = "No",
+        Value = "0"
+    }); jornada_rotacion.Add(new SelectListItem
+    {
+        Text = "Si",
+        Value = "1"
+    });
+}
+
+
+<style>
+    .disabled {
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+</style>
+
+<h2>Información Sobre Encuesta</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="row">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.id_cuestionario_trabajador)
+    <div class="col-sm-3 col-xs-12">
+        <b>Numero de Folio:</b>
+        @Html.EditorFor(model => model.id_trabajador, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.id_trabajador, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="col-sm-3 col-xs-12">
+        <b>Encuesta:</b>
+
+        @Html.DropDownListFor(model => model.id_encuesta, Encuesta, "Seleccionar Encuesta", new { @class = "form-control disabled", @readonly = "readonly" })
+        @*@Html.DropDownList("id_encuesta", null, htmlAttributes: new { @class = "form-control" })*@
+        @Html.ValidationMessageFor(model => model.id_encuesta, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="col-sm-3 col-xs-12">
+        <b>Fecha de Aplicación de encuesta:</b>
+        @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control datepicker" } })
+        @Html.ValidationMessageFor(model => model.fecha, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="col-sm-3 col-xs-12">
+        <b>Empresa:</b>
+        @Html.DropDownList("id_empresa", null, "Seleccionar Empresa", htmlAttributes: new {  id = "ddw_Empresas", onclick = "Confirmacion()", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.id_empresa, "", new { @class = "text-danger" })
+    </div>
+    <div class="col-sm-3 col-xs-12">
+        <br>
+        <b>Centro de Trabajo:</b>
+        @Html.DropDownList("id_centro_trabajo", null, "Seleccionar Centro de Trabajo", htmlAttributes: new { disabled = "disabled", id = "ddw_Centros_T", onchange = "getting_departments()", @class = "form-control" })
+        @*   @Html.ValidationMessageFor(model => model.cen, "", new { id = "ddw_Centros_T", @class = "text-danger" })*@
+    </div>
+    <div class="col-sm-3 col-xs-12">
+        <br>
+        <b>Departamento:</b>
+        @Html.DropDownList("Departamento", null, htmlAttributes: new { disabled = "disabled", id = "ddw_Departamentos", @class = "form-control" })
+        @*@Html.ValidationMessageFor(model => model.Departamento, "", new { @class = "text-danger" })*@ @*@Html.ValidationMessageFor(model => model.Departamento, "", new { @class = "text-danger" })*@
+    </div>
+    <div class="col-sm-3 col-xs-12">
+        <br>
+        <b>Sexo:</b>
+        @Html.DropDownListFor(model => model.Sexo, Sexo, "Seleccionar Sexo", new { @class = "form-control" })
+
+        @*@Html.EditorFor(model => model.Sexo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })*@
+    </div>
+
+
+
+    <div class="col-sm-3 col-xs-12">
+        <br>
+        <b>Edad:</b>
+        @Html.DropDownListFor(model => model.Edad, Edad, "Seleccionar Edad", new { @class = "form-control" })
+
+        @*@Html.EditorFor(model => model.Edad, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Edad, "", new { @class = "text-danger" })*@
+    </div>
+
+    <div class="col-sm-3 col-xs-12">
+        <br>
+        <b>Estado Civil:</b>
+
+        @Html.DropDownListFor(model => model.Estado_Civil, Edo_civil, "Seleccionar Sexo", new { @class = "form-control" })
+        @*@Html.EditorFor(model => model.Estado_Civil, new { htmlAttributes = new { @class = "form-control" } })*@
+        @*@Html.ValidationMessageFor(model => model.Estado_Civil, "", new { @class = "text-danger" })*@
+    </div>
+
+    <div class="col-sm-3 col-xs-12">
+        <br>
+        <b>Nivel de Estudios:</b>
+        @Html.DropDownListFor(model => model.Nivel_Esudios, Estudios, "Seleccionar Nivel Estudios", new { @class = "form-control" })
+        @*@Html.EditorFor(model => model.Nivel_Esudios, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Nivel_Esudios, "", new { @class = "text-danger" })*@
+    </div>
+
+    <div class="col-sm-3 col-xs-12">
+        <br>
+        <b>Ocupación:</b>
+        @Html.EditorFor(model => model.Ocupacion, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Ocupacion, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="col-sm-3 col-xs-12">
+        <br>
+        <b>Tipo de Puesto:</b>
+        @Html.DropDownListFor(model => model.Tipo_puesto, puesto, "Seleccionar Tipo Puesto", new { @class = "form-control" })
+        @*@Html.EditorFor(model => model.Tipo_puesto, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Tipo_puesto, "", new { @class = "text-danger" })*@
+    </div>
+    <div class="col-sm-3 col-xs-12">
+        <br>
+        <b>Tipo de Personal:</b>
+        @Html.DropDownListFor(model => model.Tipo_Personal, tipo_personal, "Seleccionar Tipo Puesto", new { @class = "form-control" })
+        @*@Html.EditorFor(model => model.Tipo_puesto, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Tipo_puesto, "", new { @class = "text-danger" })*@
+    </div>
+    <div class="col-sm-3 col-xs-12">
+        <br>
+        <b>Tipo de Contratación:</b>
+
+        @Html.DropDownListFor(model => model.Tipo_Contratacion, Contratacion, "Seleccionar Tipo Contratacón", new { @class = "form-control" })
+        @*@Html.EditorFor(model => model.Tipo_Contratacion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Tipo_Contratacion, "", new { @class = "text-danger" })*@
+    </div>
+
+    <div class="col-sm-3 col-xs-12">
+        <br>
+        <b>Tipo de Jornada:</b>
+        @Html.DropDownListFor(model => model.Tipo_Jornada, Jornada, "Seleccionar Tipo Jornada", new { @class = "form-control" })
+
+        @*@Html.EditorFor(model => model.Tipo_Jornada, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Tipo_Jornada, "", new { @class = "text-danger" })*@
+    </div>
+
+    <div class="col-sm-3 col-xs-12">
+        <br>
+        <b>Rotación de Turno:</b>
+
+        @*@Html.DropDownListFor(model => model.Tipo_Jornada, rota, "Seleccionar Nivel Estudios", new { @class = "form-control" })*@
+        @*@Html.EditorFor(model => model.Rotacion_Turno, new { htmlAttributes = new { @class = "form-control" } })*@
+
+        @Html.DropDownListFor(model => model.Rotacion_Turno, jornada_rotacion, "Seleccionar", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Rotacion_Turno, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="col-sm-3 col-xs-12">
+        <br>
+        <b>Experiencia en Puesto Actual:</b>
+
+        @Html.DropDownListFor(model => model.Experiencia_puesto_actual, Experiencia, "Seleccionar Experiencia", new { @class = "form-control" })
+        @*@Html.EditorFor(model => model.Experiencia_puesto_actual, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Experiencia_puesto_actual, "", new { @class = "text-danger" })*@
+
+    </div>
+
+    <div class="col-sm-3 col-xs-12">
+        <br>
+        <b>Experiencia en puesto Laboral:</b>
+
+        @Html.DropDownListFor(model => model.Experiencia_puesto_laboral, Experiencia, "Seleccionar Experiencia", new { @class = "form-control" })
+        @*@Html.EditorFor(model => model.Experiencia_puesto_laboral, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Experiencia_puesto_laboral, "", new { @class = "text-danger" })*@
+
+    </div>
+
+
+    <div class="col-xs-12">
+        <br>
+        <input type="submit" value="Guardar" class="btn btn-success" />
+        @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-default" })
+
+    </div>
+
+
+</div>
+}
+

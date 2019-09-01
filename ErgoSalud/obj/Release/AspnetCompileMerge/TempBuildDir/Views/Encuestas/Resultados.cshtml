@@ -1,0 +1,773 @@
+﻿
+@if (ViewBag.Categorias.id_cuestionario == 3)
+{
+<div class="row">
+    <h1>En base a los resultados adquiridos con forme a la guía de Referencia I se determina:</h1>
+    @if (ViewBag.Categorias.Canalizado == 1)
+    {
+        <h4 style="color:red"><b>El trabajador requerirá atención clínica</b> </h4>
+    }
+    else
+    {
+        <h4 style="color:green"><b>El trabajador No requerirá atención clínica</b> </h4>
+    }
+    <h1>Resultados en base a la guía de Referencia III</h1>
+    <h2>Resultado Final </h2>
+    <a href="@Url.Action("Reporte_PDF", "Encuestas", new {id_CT = 102 ,id_C=3 })" class="btn btn-success"><i class="fa fa-file-pdf-o" title="Encuesta" style="font-size:20px;" aria-hidden="true"></i>  Reporte</a>
+
+
+    <div>
+        <h3>
+            @if (ViewBag.Categorias.Final < 50)
+            {@*<img class="img-responsive" style="width:100%" src="~/images/R_Nulo.png">*@
+
+            <div class="row" align="center">
+
+                <table style="width:100%">
+                    <tbody>
+
+                        <tr style="padding:15px">
+                            <td style="background-color:#9be5f7;border-bottom: 0.75pt solid rgb(0,0,0);border-left: 0.75pt solid rgb(0,0,0);border-right: 0.75pt solid rgb(0,0,0);border-top: 0.5pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:123.7pt;"> <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;text-align:center;text-indent:0.0pt;white-space:nowrap;" class="Texto"> <span style="color:#000000;font-family:Helvetica;font-weight:bold;">Nulo</span><br> </div> </td>
+                            <td style="border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:311.9pt;">
+                                <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-indent:0.0pt;" class="Texto">
+                                    <span style="color:#000000;font-family:Helvetica;">
+                                        El riesgo resulta despreciable por lo que no se requiere medidas adicionales.
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <br>
+                <br>
+            </div>}
+        else if (ViewBag.Categorias.Final >= 50 && ViewBag.Categorias.Final < 75)
+        { @*<img class="img-responsive" style="width:100%" src="~/images/R_Bajo.png">*@
+
+        <div class="row" align="center">
+
+            <table style="width:100%">
+                <tbody>
+
+
+                    <tr>
+                        <td style="background-color:#6bf56e;border-bottom: 0.5pt solid rgb(0,0,0);border-left: 0.75pt solid rgb(0,0,0);border-right: 0.75pt solid rgb(0,0,0);border-top: 0.5pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:123.7pt;"> <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;text-align:center;text-indent:0.0pt;white-space:nowrap;" class="Texto"> <span style="color:#000000;font-family:Helvetica;font-weight:bold;">Bajo</span><br> </div> </td>
+                        <td style="border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:311.9pt;">
+                            <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-indent:0.0pt;" class="Texto">
+                                <span style="color:#000000;font-family:Helvetica;">
+                                    Es necesario una mayor difusión de la política de prevención de riesgos psicosociales y programas para: la prevención de los factores de riesgo psicosocial, la promoción de un entorno organizacional favorable y la prevención de la violencia laboral.
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+            <br>
+            <br>
+        </div>}
+    else if (ViewBag.Categorias.Final >= 75 && ViewBag.Categorias.Final < 99)
+    { @*<img class="img-responsive" style="width:100%" src="~/images/R_Medio.png">*@
+
+    <div class="row" align="center">
+
+        <table style="width:100%">
+            <tbody>
+
+
+                <tr>
+                    <td style="background-color:#ffff00;border-bottom: 0.5pt solid rgb(0,0,0);border-left: 0.75pt solid rgb(0,0,0);border-right: 0.75pt solid rgb(0,0,0);border-top: 0.5pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:123.7pt;"> <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;text-align:center;text-indent:0.0pt;white-space:nowrap;" class="Texto"> <span style="color:#000000;font-family:Helvetica;font-weight:bold;">Medio</span><br> </div> </td>
+                    <td style="border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:311.9pt;">
+                        <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-indent:0.0pt;" class="Texto">
+                            <span style="color:#000000;font-family:Helvetica;">
+                                Se requiere revisar la política de prevención de riesgos psicosociales y programas para la prevención de los factores de riesgo psicosocial, la promoción de un entorno organizacional favorable y la prevención de la violencia laboral, así como reforzar su aplicación y difusión, mediante un Programa de intervención.
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+        <br>
+        <br>
+    </div>}
+else if (ViewBag.Categorias.Final >= 99 && ViewBag.Categorias.Final < 140)
+{ @*<img class="img-responsive" style="width:100%" src="~/images/R_Alto.png">*@
+
+<div class="row" align="center">
+
+    <table style="width:100%">
+        <tbody>
+
+
+            <tr>
+                <td style="background-color:#ffc000;border-bottom: 0.5pt solid rgb(0,0,0);border-left: 0.75pt solid rgb(0,0,0);border-right: 0.75pt solid rgb(0,0,0);border-top: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:123.7pt;"> <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;text-align:center;text-indent:0.0pt;white-space:nowrap;" class="Texto"> <span style="color:#000000;font-family:Helvetica;font-weight:bold;">Alto</span><br> </div> </td>
+                <td style="border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:311.9pt;">
+                    <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-indent:0.0pt;" class="Texto">
+                        <span style="color:#000000;font-family:Helvetica;">
+                            Se requiere realizar un análisis de cada categoría y dominio, de manera que se puedan determinar las acciones de intervención apropiadas a través de un Programa de intervención, que podrá incluir una evaluación específica1 y deberá incluir una campaña de sensibilización, revisar la política de prevención de riesgos psicosociales y programas para la prevención de los factores de riesgo psicosocial, la promoción de un entorno organizacional favorable y la prevención de la violencia laboral, así como reforzar su aplicación y difusión.
+                        </span>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+</div>}
+else if (ViewBag.Categorias.Final >= 140)
+{ @*<img class="img-responsive" style="width:100%" src="~/images/R_Muy_alto.png">*@
+
+<div class="row" align="center">
+
+    <table style="width:100%">
+        <tbody>
+
+            <tr style="height:89.0pt;">
+                <td style="background-color:#ff0000;border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:123.7pt;">
+                    <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-align:center;text-indent:0.0pt;white-space:nowrap;" class="Texto">
+                        <span style="color:#ffffff;font-family:Helvetica;font-weight:bold;">Muy alto</span>
+                        <br>
+                    </div>
+                </td>
+                <td style="border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:311.9pt;">
+                    <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-indent:0.0pt;" class="Texto">
+                        <span style="color:#000000;font-family:Helvetica;">
+                            Se requiere realizar el análisis de cada categoría y dominio para establecer
+                            las acciones de intervención apropiadas, mediante un Programa de
+                            intervención que deberá incluir evaluaciones específicas
+                            , y contemplar
+                            campañas de sensibilización, revisar la política de prevención de riesgos psicosociales y programas para la prevención de los factores de riesgo
+                            psicosocial, la promoción de un entorno organizacional favorable y la prevención de la violencia laboral, así como reforzar su aplicación y difusión.
+                        </span>
+                    </div>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</div>
+}
+        </h3>
+    </div>
+
+
+    <hr>
+    <h2>Categorías</h2>
+    <div style="background-color:floralwhite;border:double;padding:20px;border-radius: 7px;">
+        <h3>
+            I.   Ambiente de Trabajo:  @if (ViewBag.Categorias.Categoria_1 < 5)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Categoria_1 >= 5 && ViewBag.Categorias.Categoria_1 < 9)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Categoria_1 >= 9 && ViewBag.Categorias.Categoria_1 < 11)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Categoria_1 >= 11 && ViewBag.Categorias.Categoria_1 < 14)
+            { <span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Categoria_1 >= 14)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+
+        <h3>
+            II.  Factores Propios de la Actividad:  @if (ViewBag.Categorias.Categoria_2 < 15)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Categoria_2 >= 15 && ViewBag.Categorias.Categoria_2 < 30)
+            {<span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Categoria_2 >= 30 && ViewBag.Categorias.Categoria_2 < 45)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Categoria_2 >= 45 && ViewBag.Categorias.Categoria_2 < 60)
+            {<span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Categoria_2 >= 60)
+            {<span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+
+        <h3>
+            III. Organización del Tiempo:  @if (ViewBag.Categorias.Categoria_3 < 5)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Categoria_3 >= 5 && ViewBag.Categorias.Categoria_3 < 7)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Categoria_3 >= 7 && ViewBag.Categorias.Categoria_3 < 10)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Categoria_3 >= 10 && ViewBag.Categorias.Categoria_3 < 13)
+            { <span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Categoria_3 >= 13)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+        <h3>
+            IV.  Liderazgo y Relaciones en el Trabajo:  @if (ViewBag.Categorias.Categoria_4 < 14)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Categoria_4 >= 14 && ViewBag.Categorias.Categoria_4 < 29)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Categoria_4 >= 29 && ViewBag.Categorias.Categoria_4 < 42)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Categoria_4 >= 42 && ViewBag.Categorias.Categoria_4 < 58)
+            { <span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Categoria_4 >= 58)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+        <h3>
+            V.  Entorno Organizacional:  @if (ViewBag.Categorias.Categoria_5 < 10)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Categoria_5 >= 10 && ViewBag.Categorias.Categoria_5 < 14)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Categoria_5 >= 14 && ViewBag.Categorias.Categoria_5 < 18)
+            {<span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Categoria_5 >= 18 && ViewBag.Categorias.Categoria_5 < 23)
+            { <span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Categoria_5 >= 23)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+        <hr>
+    </div>
+    <hr>
+    <h2>Dominios</h2>
+    <div style="background-color:floralwhite;border:double;padding:20px;border-radius: 7px;">
+        <h3>
+
+            I. Condiciones en el ambiente de trabajo:  @if (ViewBag.Categorias.Dominio_1 < 5)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Dominio_1 >= 5 && ViewBag.Categorias.Dominio_1 < 9)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Dominio_1 >= 9 && ViewBag.Categorias.Dominio_1 < 11)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Dominio_1 >= 11 && ViewBag.Categorias.Dominio_1 < 14)
+            { <span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Dominio_1 >= 14)
+            {<span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+
+        <h3>
+            II. Carga de trabajo:  @if (ViewBag.Categorias.Dominio_2 < 15)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Dominio_2 >= 15 && ViewBag.Categorias.Dominio_2 < 21)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Dominio_2 >= 21 && ViewBag.Categorias.Dominio_2 < 27)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Dominio_2 >= 27 && ViewBag.Categorias.Dominio_2 < 37)
+            {<span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Dominio_2 >= 37)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+
+        <h3>
+            III. Falta de control sobre el trabajo:  @if (ViewBag.Categorias.Dominio_3 < 11)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Dominio_3 >= 11 && ViewBag.Categorias.Dominio_3 < 16)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Dominio_3 >= 16 && ViewBag.Categorias.Dominio_3 < 21)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Dominio_3 >= 21 && ViewBag.Categorias.Dominio_3 < 25)
+            { <span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Dominio_3 >= 25)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+        <h3>
+            IV.  Jornada de trabajo:  @if (ViewBag.Categorias.Dominio_4 < 1)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Dominio_4 >= 1 && ViewBag.Categorias.Dominio_4 < 2)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Dominio_4 >= 2 && ViewBag.Categorias.Dominio_4 < 4)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Dominio_4 >= 4 && ViewBag.Categorias.Dominio_4 < 6)
+            {<span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Dominio_4 >= 6)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+        <h3>
+            V. Interferencia en la relación trabajo-familia:  @if (ViewBag.Categorias.Dominio_5 < 4)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Dominio_5 >= 4 && ViewBag.Categorias.Dominio_5 < 6)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Dominio_5 >= 6 && ViewBag.Categorias.Dominio_5 < 8)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Dominio_5 >= 8 && ViewBag.Categorias.Dominio_5 < 10)
+            {<span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Dominio_5 >= 10)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+        <h3>
+            VI. Liderazgo:  @if (ViewBag.Categorias.Dominio_6 < 9)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Dominio_6 >= 9 && ViewBag.Categorias.Dominio_6 < 12)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Dominio_6 >= 12 && ViewBag.Categorias.Dominio_6 < 16)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Dominio_6 >= 16 && ViewBag.Categorias.Dominio_6 < 20)
+            {<span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Dominio_6 >= 20)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+        <h3>
+            VII.  Relaciones en el trabajo:  @if (ViewBag.Categorias.Dominio_7 < 10)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Dominio_7 >= 10 && ViewBag.Categorias.Dominio_7 < 13)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Dominio_7 >= 13 && ViewBag.Categorias.Dominio_7 < 17)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Dominio_7 >= 17 && ViewBag.Categorias.Dominio_7 < 21)
+            {<span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Dominio_7 >= 21)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+        <h3>
+            VIII.  Violencia:  @if (ViewBag.Categorias.Dominio_8 < 7)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Dominio_8 >= 7 && ViewBag.Categorias.Dominio_8 < 10)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Dominio_8 >= 10 && ViewBag.Categorias.Dominio_8 < 13)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Dominio_8 >= 13 && ViewBag.Categorias.Dominio_8 < 16)
+            {<span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Dominio_8 >= 16)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+        <h3>
+            IX.  Reconocimiento del desempeño:  @if (ViewBag.Categorias.Dominio_9 < 6)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Dominio_9 >= 6 && ViewBag.Categorias.Dominio_9 < 10)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Dominio_9 >= 10 && ViewBag.Categorias.Dominio_9 < 14)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Dominio_9 >= 14 && ViewBag.Categorias.Dominio_9 < 18)
+            {<span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Dominio_9 >= 18)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+        <h3>
+            X.  Insuficiente sentido de pertenencia e, inestabilidad:  @if (ViewBag.Categorias.Dominio_10 < 4)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Dominio_10 >= 4 && ViewBag.Categorias.Dominio_10 < 6)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Dominio_10 >= 6 && ViewBag.Categorias.Dominio_10 < 8)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Dominio_10 >= 8 && ViewBag.Categorias.Dominio_10 < 10)
+            {<span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Dominio_10 >= 10)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+        <hr>
+    </div>
+
+
+</div>
+}
+else if (ViewBag.Categorias.id_cuestionario == 2)
+{
+<div class="row">
+    <h1>En base a los resultados adquiridos con forme a la guía de Referencia I se determina:</h1>
+    @if (ViewBag.Categorias.Canalizado == 1)
+    {
+        <h4 style="color:red"><b>El trabajador requerirá atención clínica</b> </h4>
+    }
+    else
+    {
+        <h4 style="color:green"><b>El trabajador No requerirá atención clínica</b> </h4>
+    }
+    <h1>Resultados en base a la guía de Referencia III</h1>
+    <h2>Resultado Final</h2>
+
+    <div>
+        <h3>
+
+            @if (ViewBag.Categorias.Final < 20)
+            {
+                @*<img class="img-responsive" style="width:100%" src="~/images/R_Nulo.png">*@
+
+                <div class="row" align="center">
+
+                    <table style="width:100%">
+                        <tbody>
+
+                            <tr style="padding:15px">
+                                <td style="background-color:#9be5f7;border-bottom: 0.75pt solid rgb(0,0,0);border-left: 0.75pt solid rgb(0,0,0);border-right: 0.75pt solid rgb(0,0,0);border-top: 0.5pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:123.7pt;"> <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;text-align:center;text-indent:0.0pt;white-space:nowrap;" class="Texto"> <span style="color:#000000;font-family:Helvetica;font-weight:bold;">Nulo</span><br> </div> </td>
+                                <td style="border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:311.9pt;">
+                                    <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-indent:0.0pt;" class="Texto">
+                                        <span style="color:#000000;font-family:Helvetica;">
+                                            El riesgo resulta despreciable por lo que no se requiere medidas adicionales.
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <br>
+                    <br>
+                </div>
+            }
+            else if (ViewBag.Categorias.Final >= 20 && ViewBag.Categorias.Final < 45)
+            {
+                @*<img class="img-responsive" style="width:100%" src="~/images/R_Bajo.png">*@
+
+                <div class="row" align="center">
+
+                    <table style="width:100%">
+                        <tbody>
+
+
+                            <tr>
+                                <td style="background-color:#6bf56e;border-bottom: 0.5pt solid rgb(0,0,0);border-left: 0.75pt solid rgb(0,0,0);border-right: 0.75pt solid rgb(0,0,0);border-top: 0.5pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:123.7pt;"> <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;text-align:center;text-indent:0.0pt;white-space:nowrap;" class="Texto"> <span style="color:#000000;font-family:Helvetica;font-weight:bold;">Bajo</span><br> </div> </td>
+                                <td style="border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:311.9pt;">
+                                    <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-indent:0.0pt;" class="Texto">
+                                        <span style="color:#000000;font-family:Helvetica;">
+                                            Es necesario una mayor difusión de la política de prevención de riesgos psicosociales y programas para: la prevención de los factores de riesgo psicosocial, la promoción de un entorno organizacional favorable y la prevención de la violencia laboral.
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                    <br>
+                    <br>
+                </div>
+            }
+            else if (ViewBag.Categorias.Final >= 45 && ViewBag.Categorias.Final < 70)
+            { @*<img class="img-responsive" style="width:100%" src="~/images/R_Medio.png">*@
+
+            <div class="row" align="center">
+
+                <table style="width:100%">
+                    <tbody>
+
+
+                        <tr>
+                            <td style="background-color:#ffff00;border-bottom: 0.5pt solid rgb(0,0,0);border-left: 0.75pt solid rgb(0,0,0);border-right: 0.75pt solid rgb(0,0,0);border-top: 0.5pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:123.7pt;"> <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;text-align:center;text-indent:0.0pt;white-space:nowrap;" class="Texto"> <span style="color:#000000;font-family:Helvetica;font-weight:bold;">Medio</span><br> </div> </td>
+                            <td style="border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:311.9pt;">
+                                <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-indent:0.0pt;" class="Texto">
+                                    <span style="color:#000000;font-family:Helvetica;">
+                                        Se requiere revisar la política de prevención de riesgos psicosociales y programas para la prevención de los factores de riesgo psicosocial, la promoción de un entorno organizacional favorable y la prevención de la violencia laboral, así como reforzar su aplicación y difusión, mediante un Programa de intervención.
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+                <br>
+                <br>
+            </div>
+        }
+        else if (ViewBag.Categorias.Final >= 70 && ViewBag.Categorias.Final < 90)
+        {
+            @*<img class="img-responsive" style="width:100%" src="~/images/R_Alto.png">*@
+
+            <div class="row" align="center">
+
+                <table style="width:100%">
+                    <tbody>
+
+
+                        <tr>
+                            <td style="background-color:#ffc000;border-bottom: 0.5pt solid rgb(0,0,0);border-left: 0.75pt solid rgb(0,0,0);border-right: 0.75pt solid rgb(0,0,0);border-top: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:123.7pt;"> <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;text-align:center;text-indent:0.0pt;white-space:nowrap;" class="Texto"> <span style="color:#000000;font-family:Helvetica;font-weight:bold;">Alto</span><br> </div> </td>
+                            <td style="border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:311.9pt;">
+                                <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-indent:0.0pt;" class="Texto">
+                                    <span style="color:#000000;font-family:Helvetica;">
+                                        Se requiere realizar un análisis de cada categoría y dominio, de manera que se puedan determinar las acciones de intervención apropiadas a través de un Programa de intervención, que podrá incluir una evaluación específica1 y deberá incluir una campaña de sensibilización, revisar la política de prevención de riesgos psicosociales y programas para la prevención de los factores de riesgo psicosocial, la promoción de un entorno organizacional favorable y la prevención de la violencia laboral, así como reforzar su aplicación y difusión.
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <br>
+            </div>
+        }
+        else if (ViewBag.Categorias.Final >= 90)
+        {
+            @*<img class="img-responsive" style="width:100%" src="~/images/R_Muy_alto.png">*@
+
+            <div class="row" align="center">
+
+                <table style="width:100%">
+                    <tbody>
+
+                        <tr style="height:89.0pt;">
+                            <td style="background-color:#ff0000;border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:123.7pt;">
+                                <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-align:center;text-indent:0.0pt;white-space:nowrap;" class="Texto">
+                                    <span style="color:#ffffff;font-family:Helvetica;font-weight:bold;">Muy alto</span>
+                                    <br>
+                                </div>
+                            </td>
+                            <td style="border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:311.9pt;">
+                                <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-indent:0.0pt;" class="Texto">
+                                    <span style="color:#000000;font-family:Helvetica;">
+                                        Se requiere realizar el análisis de cada categoría y dominio para establecer
+                                        las acciones de intervención apropiadas, mediante un Programa de
+                                        intervención que deberá incluir evaluaciones específicas
+                                        , y contemplar
+                                        campañas de sensibilización, revisar la política de prevención de riesgos psicosociales y programas para la prevención de los factores de riesgo
+                                        psicosocial, la promoción de un entorno organizacional favorable y la prevención de la violencia laboral, así como reforzar su aplicación y difusión.
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        }
+        </h3>
+    </div>
+    <hr>
+    <h2>Categorías</h2>
+    <div style="background-color:floralwhite;border:double;padding:20px;border-radius: 7px;">
+        <h3>
+
+            I.   Ambiente de Trabajo:  @if (ViewBag.Categorias.Categoria_1 < 3)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Categoria_1 >= 3 && ViewBag.Categorias.Categoria_1 < 5)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Categoria_1 >= 5 && ViewBag.Categorias.Categoria_1 < 7)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Categoria_1 >= 7 && ViewBag.Categorias.Categoria_1 < 9)
+            { <span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Categoria_1 >= 9)
+            {<span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+
+        <h3>
+            II.   Factores Propios de la Actividad:  @if (ViewBag.Categorias.Categoria_2 < 10)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Categoria_2 >= 10 && ViewBag.Categorias.Categoria_2 < 20)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Categoria_2 >= 20 && ViewBag.Categorias.Categoria_2 < 30)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Categoria_2 >= 30 && ViewBag.Categorias.Categoria_2 < 40)
+            {<span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Categoria_2 >= 40)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+
+        <h3>
+            III. Organización del Tiempo:  @if (ViewBag.Categorias.Categoria_3 < 4)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Categoria_3 >= 4 && ViewBag.Categorias.Categoria_3 < 6)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Categoria_3 >= 6 && ViewBag.Categorias.Categoria_3 < 9)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Categoria_3 >= 9 && ViewBag.Categorias.Categoria_3 < 12)
+            { <span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Categoria_3 >= 12)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+        <h3>
+            IV.  Liderazgo y Relaciones en el Trabajo:  @if (ViewBag.Categorias.Categoria_4 < 10)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Categoria_4 >= 10 && ViewBag.Categorias.Categoria_4 < 18)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Categoria_4 >= 18 && ViewBag.Categorias.Categoria_4 < 28)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Categoria_4 >= 28 && ViewBag.Categorias.Categoria_4 < 38)
+            {<span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Categoria_4 >= 38)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+
+        <hr>
+    </div>
+    <hr>
+    <h2>Dominios</h2>
+    <div style="background-color:floralwhite;border:double;padding:20px;border-radius: 7px;">
+        <h3>
+
+            I. Condiciones en el ambiente de trabajo:  @if (ViewBag.Categorias.Dominio_1 < 3)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Dominio_1 >= 3 && ViewBag.Categorias.Dominio_1 < 5)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Dominio_1 >= 5 && ViewBag.Categorias.Dominio_1 < 7)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Dominio_1 >= 7 && ViewBag.Categorias.Dominio_1 < 9)
+            { <span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Dominio_1 >= 9)
+            {<span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+
+        <h3>
+            II. Carga de trabajo:  @if (ViewBag.Categorias.Dominio_2 < 12)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Dominio_2 >= 12 && ViewBag.Categorias.Dominio_2 < 16)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Dominio_2 >= 16 && ViewBag.Categorias.Dominio_2 < 20)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Dominio_2 >= 20 && ViewBag.Categorias.Dominio_2 < 24)
+            {<span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Dominio_2 >= 24)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+
+        <h3>
+            III. Falta de control sobre el trabajo:  @if (ViewBag.Categorias.Dominio_3 < 5)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Dominio_3 >= 5 && ViewBag.Categorias.Dominio_3 < 8)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Dominio_3 >= 8 && ViewBag.Categorias.Dominio_3 < 11)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Dominio_3 >= 11 && ViewBag.Categorias.Dominio_3 < 14)
+            { <span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Dominio_3 >= 14)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+        <h3>
+            IV.  Jornada de trabajo:  @if (ViewBag.Categorias.Dominio_4 < 1)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Dominio_4 >= 1 && ViewBag.Categorias.Dominio_4 < 2)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Dominio_4 >= 2 && ViewBag.Categorias.Dominio_4 < 4)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Dominio_4 >= 4 && ViewBag.Categorias.Dominio_4 < 6)
+            {<span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Dominio_4 >= 6)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+        <h3>
+            V. Interferencia en la relación trabajo-familia:  @if (ViewBag.Categorias.Dominio_5 < 1)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Dominio_5 >= 1 && ViewBag.Categorias.Dominio_5 < 2)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Dominio_5 >= 2 && ViewBag.Categorias.Dominio_5 < 4)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Dominio_5 >= 4 && ViewBag.Categorias.Dominio_5 < 6)
+            {<span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Dominio_5 >= 6)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+        <h3>
+            VI. Liderazgo:  @if (ViewBag.Categorias.Dominio_6 < 3)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Dominio_6 >= 3 && ViewBag.Categorias.Dominio_6 < 5)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Dominio_6 >= 5 && ViewBag.Categorias.Dominio_6 < 8)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Dominio_6 >= 8 && ViewBag.Categorias.Dominio_6 < 11)
+            {<span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Dominio_6 >= 11)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+        <h3>
+            VII.  Relaciones en el trabajo:  @if (ViewBag.Categorias.Dominio_7 < 5)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Dominio_7 >= 5 && ViewBag.Categorias.Dominio_7 < 8)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Dominio_7 >= 8 && ViewBag.Categorias.Dominio_7 < 11)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Dominio_7 >= 11 && ViewBag.Categorias.Dominio_7 < 14)
+            {<span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Dominio_7 >= 14)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+        <h3>
+            VIII.  Violencia:  @if (ViewBag.Categorias.Dominio_8 < 7)
+            {<span style="color:rgb(155, 229, 247);font-weight:bold;">Nulo o despreciable</span>}
+            else if (ViewBag.Categorias.Dominio_8 >= 7 && ViewBag.Categorias.Dominio_8 < 10)
+            { <span style="color:rgb(107, 245, 110);font-weight:bold;">Bajo</span>}
+            else if (ViewBag.Categorias.Dominio_8 >= 10 && ViewBag.Categorias.Dominio_8 < 13)
+            { <span style="color:rgb(255, 255, 0);font-weight:bold;"> Medio</span>}
+            else if (ViewBag.Categorias.Dominio_8 >= 13 && ViewBag.Categorias.Dominio_8 < 16)
+            {<span style="color:rgb(255, 192, 0);font-weight:bold;"> Alto</span>}
+            else if (ViewBag.Categorias.Dominio_8 >= 16)
+            { <span style="color:rgb(255, 0, 0);font-weight:bold;"> Muy Alto</span>}
+        </h3>
+        <hr>
+    </div>
+
+</div>
+}
+
+
+
+<hr>
+
+<h2>Explicación de Resultados</h2><br>
+<div class="row" align="center">
+
+    <table style="width:auto">
+        <tbody>
+            <tr style="height:29.9pt;">
+                <td style="background-color:#d9d9d9;border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:123.7pt;">
+                    <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-align:center;text-indent:0.0pt;white-space:nowrap;" class="Texto">
+                        <span style="color:#000000;font-family:Helvetica;font-weight:bold;">Nivel de riesgo</span>
+                        <br>
+                    </div>
+                </td>
+
+                <td style="background-color:#d9d9d9;border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:311.9pt;">
+                    <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-align:center;text-indent:0.0pt;white-space:nowrap;" class="Texto">
+                        <span style="color:#000000;font-family:Helvetica;font-weight:bold;">Necesidad de acción</span><br>
+                    </div>
+                </td>
+            </tr>
+            <tr style="height:89.0pt;">
+                <td style="background-color:#ff0000;border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:123.7pt;">
+                    <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-align:center;text-indent:0.0pt;white-space:nowrap;" class="Texto">
+                        <span style="color:#ffffff;font-family:Helvetica;font-weight:bold;">Muy alto</span>
+                        <br>
+                    </div>
+                </td>
+                <td style="border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:311.9pt;">
+                    <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-indent:0.0pt;" class="Texto">
+                        <span style="color:#000000;font-family:Helvetica;">
+                            Se requiere realizar el análisis de cada categoría y dominio para establecer
+                            las acciones de intervención apropiadas, mediante un Programa de
+                            intervención que deberá incluir evaluaciones específicas
+                            , y contemplar
+                            campañas de sensibilización, revisar la política de prevención de riesgos psicosociales y programas para la prevención de los factores de riesgo
+                            psicosocial, la promoción de un entorno organizacional favorable y la prevención de la violencia laboral, así como reforzar su aplicación y difusión.
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color:#ffc000;border-bottom: 0.5pt solid rgb(0,0,0);border-left: 0.75pt solid rgb(0,0,0);border-right: 0.75pt solid rgb(0,0,0);border-top: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:123.7pt;"> <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;text-align:center;text-indent:0.0pt;white-space:nowrap;" class="Texto"> <span style="color:#000000;font-family:Helvetica;font-weight:bold;">Alto</span><br> </div> </td>
+                <td style="border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:311.9pt;">
+                    <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-indent:0.0pt;" class="Texto">
+                        <span style="color:#000000;font-family:Helvetica;">
+                            Se requiere realizar un análisis de cada categoría y dominio, de manera que se puedan determinar las acciones de intervención apropiadas a través de un Programa de intervención, que podrá incluir una evaluación específica1 y deberá incluir una campaña de sensibilización, revisar la política de prevención de riesgos psicosociales y programas para la prevención de los factores de riesgo psicosocial, la promoción de un entorno organizacional favorable y la prevención de la violencia laboral, así como reforzar su aplicación y difusión.
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color:#ffff00;border-bottom: 0.5pt solid rgb(0,0,0);border-left: 0.75pt solid rgb(0,0,0);border-right: 0.75pt solid rgb(0,0,0);border-top: 0.5pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:123.7pt;"> <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;text-align:center;text-indent:0.0pt;white-space:nowrap;" class="Texto"> <span style="color:#000000;font-family:Helvetica;font-weight:bold;">Medio</span><br> </div> </td>
+                <td style="border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:311.9pt;">
+                    <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-indent:0.0pt;" class="Texto">
+                        <span style="color:#000000;font-family:Helvetica;">
+                            Se requiere revisar la política de prevención de riesgos psicosociales y programas para la prevención de los factores de riesgo psicosocial, la promoción de un entorno organizacional favorable y la prevención de la violencia laboral, así como reforzar su aplicación y difusión, mediante un Programa de intervención.
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color:#6bf56e;border-bottom: 0.5pt solid rgb(0,0,0);border-left: 0.75pt solid rgb(0,0,0);border-right: 0.75pt solid rgb(0,0,0);border-top: 0.5pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:123.7pt;"> <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;text-align:center;text-indent:0.0pt;white-space:nowrap;" class="Texto"> <span style="color:#000000;font-family:Helvetica;font-weight:bold;">Bajo</span><br> </div> </td>
+                <td style="border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:311.9pt;">
+                    <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-indent:0.0pt;" class="Texto">
+                        <span style="color:#000000;font-family:Helvetica;">
+                            Es necesario una mayor difusión de la política de prevención de riesgos psicosociales y programas para: la prevención de los factores de riesgo psicosocial, la promoción de un entorno organizacional favorable y la prevención de la violencia laboral.
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr style="padding:15px">
+                <td style="background-color:#9be5f7;border-bottom: 0.75pt solid rgb(0,0,0);border-left: 0.75pt solid rgb(0,0,0);border-right: 0.75pt solid rgb(0,0,0);border-top: 0.5pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:123.7pt;"> <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;text-align:center;text-indent:0.0pt;white-space:nowrap;" class="Texto"> <span style="color:#000000;font-family:Helvetica;font-weight:bold;">Nulo</span><br> </div> </td>
+                <td style="border: 0.75pt solid rgb(0,0,0);padding-bottom:0.0pt;padding-left:3.5pt;padding-right:3.5pt;padding-top:0.0pt;vertical-align:middle;width:311.9pt;">
+                    <div style="color:#000000;margin-bottom:0.0pt;margin-left:0.0pt;margin-top:1.0pt;text-indent:0.0pt;" class="Texto">
+                        <span style="color:#000000;font-family:Helvetica;">
+                            El riesgo resulta despreciable por lo que no se requiere medidas adicionales.
+                        </span>
+                    </div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <br>
+    <br>
+</div>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="88888f937336425ca989c836926302bd" Name="Diagram1">
+        <EntityTypeShape EntityType="CastSoft_LETConsultingModel.AspNetRole" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CastSoft_LETConsultingModel.AspNetUserClaim" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CastSoft_LETConsultingModel.AspNetUserLogin" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CastSoft_LETConsultingModel.AspNetUserRole" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CastSoft_LETConsultingModel.AspNetUser" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CastSoft_LETConsultingModel.ERGOS_Centros_Trabajo_N01" Width="1.5" PointX="5.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CastSoft_LETConsultingModel.ERGOS_Cuestionarios_N01" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="CastSoft_LETConsultingModel.ERGOS_Cuestionarios_Resultados_N01" Width="1.5" PointX="12.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CastSoft_LETConsultingModel.ERGOS_Cuestionarios_Trabajador_N01" Width="1.5" PointX="7.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CastSoft_LETConsultingModel.ERGOS_Departamentos_N01" Width="1.5" PointX="10.5" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CastSoft_LETConsultingModel.ERGOS_Empresas_N01" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CastSoft_LETConsultingModel.ERGOS_Guia_Observacion_N01" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CastSoft_LETConsultingModel.ERGOS_Guia_Preguntas_N01" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CastSoft_LETConsultingModel.ERGOS_Preguntas_N01" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CastSoft_LETConsultingModel.ERGOS_Preguntas_S2_N02" Width="1.5" PointX="3" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CastSoft_LETConsultingModel.ERGOS_Respuestas_N01" Width="1.5" PointX="10.5" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CastSoft_LETConsultingModel.VW_ERGOS_Results_V01" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="CastSoft_LETConsultingModel.FK_Centros_Trabajo_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="CastSoft_LETConsultingModel.FK_Cuestionarios_Tabajador_Centro_Trabajo" ManuallyRouted="false" />
+        <AssociationConnector Association="CastSoft_LETConsultingModel.FK_Departamento_Centro_T" ManuallyRouted="false" />
+        <AssociationConnector Association="CastSoft_LETConsultingModel.FK_Cuestionario" ManuallyRouted="false" />
+        <AssociationConnector Association="CastSoft_LETConsultingModel.FK_Cuestionario_2" ManuallyRouted="false" />
+        <AssociationConnector Association="CastSoft_LETConsultingModel.FK_Cuestionarios_TE" ManuallyRouted="false" />
+        <AssociationConnector Association="CastSoft_LETConsultingModel.FK_id_encuesta_Empresas" ManuallyRouted="false" />
+        <AssociationConnector Association="CastSoft_LETConsultingModel.FK_Cuestionarios_RCT" ManuallyRouted="false" />
+        <AssociationConnector Association="CastSoft_LETConsultingModel.FK_Cuestionarios_RP" ManuallyRouted="false" />
+        <AssociationConnector Association="CastSoft_LETConsultingModel.FK_Cuestionarios_RR" ManuallyRouted="false" />
+        <AssociationConnector Association="CastSoft_LETConsultingModel.FK_Cuestionario_TE" ManuallyRouted="false" />
+        <AssociationConnector Association="CastSoft_LETConsultingModel.FK_Departamento_CT" ManuallyRouted="false" />
+        <AssociationConnector Association="CastSoft_LETConsultingModel.FK_Departamento_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="CastSoft_LETConsultingModel.FK_Guia_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="CastSoft_LETConsultingModel.FK_Guia_Pregunta" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

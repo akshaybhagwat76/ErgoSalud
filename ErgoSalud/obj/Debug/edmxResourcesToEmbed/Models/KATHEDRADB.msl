@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CastSoft_KathedraModelStoreContainer" CdmEntityContainer="CastSoft_KathedraEntities">
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="CastSoft_KathedraModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="CastSoft_KathedraModel.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="CastSoft_KathedraModel.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserRoles">
+      <EntityTypeMapping TypeName="CastSoft_KathedraModel.AspNetUserRole">
+        <MappingFragment StoreEntitySet="AspNetUserRoles">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="CastSoft_KathedraModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ERGOS_Cuestionarios_N01">
+      <EntityTypeMapping TypeName="CastSoft_KathedraModel.ERGOS_Cuestionarios_N01">
+        <MappingFragment StoreEntitySet="ERGOS_Cuestionarios_N01">
+          <ScalarProperty Name="id_cuestionario" ColumnName="id_cuestionario" />
+          <ScalarProperty Name="Cuestionario" ColumnName="Cuestionario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ERGOS_Cuestionarios_Resultados_N01">
+      <EntityTypeMapping TypeName="CastSoft_KathedraModel.ERGOS_Cuestionarios_Resultados_N01">
+        <MappingFragment StoreEntitySet="ERGOS_Cuestionarios_Resultados_N01">
+          <ScalarProperty Name="id_Cuestionario_Resultado" ColumnName="id_Cuestionario_Resultado" />
+          <ScalarProperty Name="id_cuestionario_trabajador" ColumnName="id_cuestionario_trabajador" />
+          <ScalarProperty Name="id_respuesta" ColumnName="id_respuesta" />
+          <ScalarProperty Name="id_pregunta" ColumnName="id_pregunta" />
+          <ScalarProperty Name="id_encuesta" ColumnName="id_encuesta" />
+          <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ERGOS_Cuestionarios_Trabajador_N01">
+      <EntityTypeMapping TypeName="CastSoft_KathedraModel.ERGOS_Cuestionarios_Trabajador_N01">
+        <MappingFragment StoreEntitySet="ERGOS_Cuestionarios_Trabajador_N01">
+          <ScalarProperty Name="id_cuestionario_trabajador" ColumnName="id_cuestionario_trabajador" />
+          <ScalarProperty Name="id_trabajador" ColumnName="id_trabajador" />
+          <ScalarProperty Name="id_encuesta" ColumnName="id_encuesta" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="Edad" ColumnName="Edad" />
+          <ScalarProperty Name="Estado_Civil" ColumnName="Estado_Civil" />
+          <ScalarProperty Name="Nivel_Esudios" ColumnName="Nivel_Esudios" />
+          <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+          <ScalarProperty Name="Tipo_puesto" ColumnName="Tipo_puesto" />
+          <ScalarProperty Name="Tipo_Contratacion" ColumnName="Tipo_Contratacion" />
+          <ScalarProperty Name="Tipo_Jornada" ColumnName="Tipo_Jornada" />
+          <ScalarProperty Name="Rotacion_Turno" ColumnName="Rotacion_Turno" />
+          <ScalarProperty Name="Experiencia_puesto_actual" ColumnName="Experiencia_puesto_actual" />
+          <ScalarProperty Name="Experiencia_puesto_laboral" ColumnName="Experiencia_puesto_laboral" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+          <ScalarProperty Name="Tipo_Personal" ColumnName="Tipo_Personal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ERGOS_Empresas_N01">
+      <EntityTypeMapping TypeName="CastSoft_KathedraModel.ERGOS_Empresas_N01">
+        <MappingFragment StoreEntitySet="ERGOS_Empresas_N01">
+          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+          <ScalarProperty Name="Razon_Social" ColumnName="Razon_Social" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Contacto_Nombre" ColumnName="Contacto_Nombre" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="id_encuesta" ColumnName="id_encuesta" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+          <ScalarProperty Name="RFC" ColumnName="RFC" />
+          <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+          <ScalarProperty Name="Actividad_Principal" ColumnName="Actividad_Principal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ERGOS_Preguntas_N01">
+      <EntityTypeMapping TypeName="CastSoft_KathedraModel.ERGOS_Preguntas_N01">
+        <MappingFragment StoreEntitySet="ERGOS_Preguntas_N01">
+          <ScalarProperty Name="id_pregunta" ColumnName="id_pregunta" />
+          <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
+          <ScalarProperty Name="id_cuestionario" ColumnName="id_cuestionario" />
+          <ScalarProperty Name="No_Pregunta" ColumnName="No_Pregunta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ERGOS_Respuestas_N01">
+      <EntityTypeMapping TypeName="CastSoft_KathedraModel.ERGOS_Respuestas_N01">
+        <MappingFragment StoreEntitySet="ERGOS_Respuestas_N01">
+          <ScalarProperty Name="id_respuesta" ColumnName="id_respuesta" />
+          <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_ERGOS_Results_V01">
+      <EntityTypeMapping TypeName="CastSoft_KathedraModel.VW_ERGOS_Results_V01">
+        <MappingFragment StoreEntitySet="VW_ERGOS_Results_V01">
+          <ScalarProperty Name="id_pregunta" ColumnName="id_pregunta" />
+          <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
+          <ScalarProperty Name="id_Cuestionario_Resultado" ColumnName="id_Cuestionario_Resultado" />
+          <ScalarProperty Name="id_encuesta" ColumnName="id_encuesta" />
+          <ScalarProperty Name="id_cuestionario_trabajador" ColumnName="id_cuestionario_trabajador" />
+          <ScalarProperty Name="id_respuesta" ColumnName="id_respuesta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Categorias_1_E2_Resultados_Pilot" FunctionImportName="fnDemo_N035_Categorias_1_E2_Resultados_Pilot">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Categorias_1_E2_Resultados_Pilot_Result">
+          <ScalarProperty Name="Total_Categoria_1" ColumnName="Total_Categoria_1" />
+          <ScalarProperty Name="Sumatoria_Cat_I" ColumnName="Sumatoria_Cat_I" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Categorias_1_Resultados_Pilot" FunctionImportName="fnDemo_N035_Categorias_1_Resultados_Pilot">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Categorias_1_Resultados_Pilot_Result">
+          <ScalarProperty Name="Total_Categoria_1" ColumnName="Total_Categoria_1" />
+          <ScalarProperty Name="Sumatoria_Total" ColumnName="Sumatoria_Total" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Categorias_2_E2_Resultados_Pilot" FunctionImportName="fnDemo_N035_Categorias_2_E2_Resultados_Pilot">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Categorias_2_E2_Resultados_Pilot_Result">
+          <ScalarProperty Name="Total_Categoria_2" ColumnName="Total_Categoria_2" />
+          <ScalarProperty Name="Sumatoria_Cat_II" ColumnName="Sumatoria_Cat_II" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Categorias_2_Resultados_Pilot" FunctionImportName="fnDemo_N035_Categorias_2_Resultados_Pilot">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Categorias_2_Resultados_Pilot_Result">
+          <ScalarProperty Name="Total_Categoria_2" ColumnName="Total_Categoria_2" />
+          <ScalarProperty Name="Sumatoria_Cat_II" ColumnName="Sumatoria_Cat_II" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Categorias_3_E2_Resultados_Pilot" FunctionImportName="fnDemo_N035_Categorias_3_E2_Resultados_Pilot">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Categorias_3_E2_Resultados_Pilot_Result">
+          <ScalarProperty Name="Total_Categoria_3" ColumnName="Total_Categoria_3" />
+          <ScalarProperty Name="Sumatoria_Cat_III" ColumnName="Sumatoria_Cat_III" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Categorias_3_Resultados_Pilot" FunctionImportName="fnDemo_N035_Categorias_3_Resultados_Pilot">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Categorias_3_Resultados_Pilot_Result">
+          <ScalarProperty Name="Total_Categoria_3" ColumnName="Total_Categoria_3" />
+          <ScalarProperty Name="Sumatoria_Cat_III" ColumnName="Sumatoria_Cat_III" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Categorias_4_E2_Resultados_Pilot" FunctionImportName="fnDemo_N035_Categorias_4_E2_Resultados_Pilot">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Categorias_4_E2_Resultados_Pilot_Result">
+          <ScalarProperty Name="Total_Categoria_4" ColumnName="Total_Categoria_4" />
+          <ScalarProperty Name="Sumatoria_Cat_IV" ColumnName="Sumatoria_Cat_IV" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Categorias_4_Resultados_Pilot" FunctionImportName="fnDemo_N035_Categorias_4_Resultados_Pilot">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Categorias_4_Resultados_Pilot_Result">
+          <ScalarProperty Name="Total_Categoria_4" ColumnName="Total_Categoria_4" />
+          <ScalarProperty Name="Sumatoria_Cat_IV" ColumnName="Sumatoria_Cat_IV" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Categorias_5_Resultados_Pilot" FunctionImportName="fnDemo_N035_Categorias_5_Resultados_Pilot">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Categorias_5_Resultados_Pilot_Result">
+          <ScalarProperty Name="Total_Categoria_5" ColumnName="Total_Categoria_5" />
+          <ScalarProperty Name="Sumatoria_Cat_V" ColumnName="Sumatoria_Cat_V" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Categorias_Pilot" FunctionImportName="fnDemo_N035_Categorias_Pilot">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Categorias_Pilot_Result">
+          <ScalarProperty Name="id_encuesta" ColumnName="id_encuesta" />
+          <ScalarProperty Name="Canalizado" ColumnName="Canalizado" />
+          <ScalarProperty Name="Cat_1" ColumnName="Cat_1" />
+          <ScalarProperty Name="Cat_2" ColumnName="Cat_2" />
+          <ScalarProperty Name="Cat_3" ColumnName="Cat_3" />
+          <ScalarProperty Name="Cat_4" ColumnName="Cat_4" />
+          <ScalarProperty Name="CAT_5" ColumnName="CAT_5" />
+          <ScalarProperty Name="FINAL" ColumnName="FINAL" />
+          <ScalarProperty Name="Dom_1" ColumnName="Dom_1" />
+          <ScalarProperty Name="Dom_2" ColumnName="Dom_2" />
+          <ScalarProperty Name="Dom_3" ColumnName="Dom_3" />
+          <ScalarProperty Name="Dom_4" ColumnName="Dom_4" />
+          <ScalarProperty Name="Dom_5" ColumnName="Dom_5" />
+          <ScalarProperty Name="Dom_6" ColumnName="Dom_6" />
+          <ScalarProperty Name="Dom_7" ColumnName="Dom_7" />
+          <ScalarProperty Name="Dom_8" ColumnName="Dom_8" />
+          <ScalarProperty Name="Dom_9" ColumnName="Dom_9" />
+          <ScalarProperty Name="Dom_10" ColumnName="Dom_10" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Categorias_Resultados_Pilot" FunctionImportName="fnDemo_N035_Categorias_Resultados_Pilot">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Categorias_Resultados_Pilot_Result">
+          <ScalarProperty Name="Sumatoria_Categoria" ColumnName="Sumatoria_Categoria" />
+          <ScalarProperty Name="Promedio_Categoria" ColumnName="Promedio_Categoria" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Dominios_1_E2_Resultados" FunctionImportName="fnDemo_N035_Dominios_1_E2_Resultados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Dominios_1_E2_Resultados_Result">
+          <ScalarProperty Name="Total_Dominio_1" ColumnName="Total_Dominio_1" />
+          <ScalarProperty Name="Promedio_Dom_I" ColumnName="Promedio_Dom_I" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Dominios_1_Resultados" FunctionImportName="fnDemo_N035_Dominios_1_Resultados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Dominios_1_Resultados_Result">
+          <ScalarProperty Name="Total_Dominio_1" ColumnName="Total_Dominio_1" />
+          <ScalarProperty Name="Promedio_Dom_I" ColumnName="Promedio_Dom_I" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Dominios_10_Resultados" FunctionImportName="fnDemo_N035_Dominios_10_Resultados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Dominios_10_Resultados_Result">
+          <ScalarProperty Name="Total_Dominio_10" ColumnName="Total_Dominio_10" />
+          <ScalarProperty Name="Promedio_Dom_X" ColumnName="Promedio_Dom_X" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Dominios_2_E2_Resultados" FunctionImportName="fnDemo_N035_Dominios_2_E2_Resultados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Dominios_2_E2_Resultados_Result">
+          <ScalarProperty Name="Total_Dominio_2" ColumnName="Total_Dominio_2" />
+          <ScalarProperty Name="Promedio_Dom_II" ColumnName="Promedio_Dom_II" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Dominios_2_Resultados" FunctionImportName="fnDemo_N035_Dominios_2_Resultados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Dominios_2_Resultados_Result">
+          <ScalarProperty Name="Total_Dominio_2" ColumnName="Total_Dominio_2" />
+          <ScalarProperty Name="Promedio_Dom_II" ColumnName="Promedio_Dom_II" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Dominios_3_E2_Resultados" FunctionImportName="fnDemo_N035_Dominios_3_E2_Resultados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Dominios_3_E2_Resultados_Result">
+          <ScalarProperty Name="Total_Dominio_3" ColumnName="Total_Dominio_3" />
+          <ScalarProperty Name="Promedio_Dom_III" ColumnName="Promedio_Dom_III" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Dominios_3_Resultados" FunctionImportName="fnDemo_N035_Dominios_3_Resultados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Dominios_3_Resultados_Result">
+          <ScalarProperty Name="Total_Dominio_3" ColumnName="Total_Dominio_3" />
+          <ScalarProperty Name="Promedio_Dom_III" ColumnName="Promedio_Dom_III" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Dominios_4_E2_Resultados" FunctionImportName="fnDemo_N035_Dominios_4_E2_Resultados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Dominios_4_E2_Resultados_Result">
+          <ScalarProperty Name="Total_Dominio_4" ColumnName="Total_Dominio_4" />
+          <ScalarProperty Name="Promedio_Dom_IV" ColumnName="Promedio_Dom_IV" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Dominios_4_Resultados" FunctionImportName="fnDemo_N035_Dominios_4_Resultados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Dominios_4_Resultados_Result">
+          <ScalarProperty Name="Total_Dominio_4" ColumnName="Total_Dominio_4" />
+          <ScalarProperty Name="Promedio_Dom_IV" ColumnName="Promedio_Dom_IV" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Dominios_5_E2_Resultados" FunctionImportName="fnDemo_N035_Dominios_5_E2_Resultados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Dominios_5_E2_Resultados_Result">
+          <ScalarProperty Name="Total_Dominio_5" ColumnName="Total_Dominio_5" />
+          <ScalarProperty Name="Promedio_Dom_V" ColumnName="Promedio_Dom_V" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Dominios_5_Resultados" FunctionImportName="fnDemo_N035_Dominios_5_Resultados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Dominios_5_Resultados_Result">
+          <ScalarProperty Name="Total_Dominio_5" ColumnName="Total_Dominio_5" />
+          <ScalarProperty Name="Promedio_Dom_V" ColumnName="Promedio_Dom_V" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Dominios_6_E2_Resultados" FunctionImportName="fnDemo_N035_Dominios_6_E2_Resultados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Dominios_6_E2_Resultados_Result">
+          <ScalarProperty Name="Total_Dominio_6" ColumnName="Total_Dominio_6" />
+          <ScalarProperty Name="Promedio_Dom_VI" ColumnName="Promedio_Dom_VI" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Dominios_6_Resultados" FunctionImportName="fnDemo_N035_Dominios_6_Resultados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Dominios_6_Resultados_Result">
+          <ScalarProperty Name="Total_Dominio_6" ColumnName="Total_Dominio_6" />
+          <ScalarProperty Name="Promedio_Dom_VI" ColumnName="Promedio_Dom_VI" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Dominios_7_E2_Resultados" FunctionImportName="fnDemo_N035_Dominios_7_E2_Resultados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Dominios_7_E2_Resultados_Result">
+          <ScalarProperty Name="Total_Dominio_7" ColumnName="Total_Dominio_7" />
+          <ScalarProperty Name="Promedio_Dom_VII" ColumnName="Promedio_Dom_VII" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Dominios_7_Resultados" FunctionImportName="fnDemo_N035_Dominios_7_Resultados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Dominios_7_Resultados_Result">
+          <ScalarProperty Name="Total_Dominio_7" ColumnName="Total_Dominio_7" />
+          <ScalarProperty Name="Promedio_Dom_VII" ColumnName="Promedio_Dom_VII" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Dominios_8_E2_Resultados" FunctionImportName="fnDemo_N035_Dominios_8_E2_Resultados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Dominios_8_E2_Resultados_Result">
+          <ScalarProperty Name="Total_Dominio_8" ColumnName="Total_Dominio_8" />
+          <ScalarProperty Name="Promedio_Dom_VIII" ColumnName="Promedio_Dom_VIII" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Dominios_8_Resultados" FunctionImportName="fnDemo_N035_Dominios_8_Resultados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Dominios_8_Resultados_Result">
+          <ScalarProperty Name="Total_Dominio_8" ColumnName="Total_Dominio_8" />
+          <ScalarProperty Name="Promedio_Dom_VIII" ColumnName="Promedio_Dom_VIII" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Dominios_9_Resultados" FunctionImportName="fnDemo_N035_Dominios_9_Resultados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Dominios_9_Resultados_Result">
+          <ScalarProperty Name="Total_Dominio_9" ColumnName="Total_Dominio_9" />
+          <ScalarProperty Name="Promedio_Dom_IX" ColumnName="Promedio_Dom_IX" />
+          <ScalarProperty Name="Encuestados" ColumnName="Encuestados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fnDemo_N035_Grafica_Resultado_Preguntas" FunctionImportName="fnDemo_N035_Grafica_Resultado_Preguntas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fnDemo_N035_Grafica_Resultado_Preguntas_Result">
+          <ScalarProperty Name="Calificacion_General_Pregunta" ColumnName="Calificacion_General_Pregunta" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="CastSoft_KathedraModel.Store.fn_Final_view_surveys" FunctionImportName="fn_Final_view_surveys">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CastSoft_KathedraModel.fn_Final_view_surveys_Result">
+          <ScalarProperty Name="id_pregunta" ColumnName="id_pregunta" />
+          <ScalarProperty Name="No_Pregunta" ColumnName="No_Pregunta" />
+          <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
+          <ScalarProperty Name="id_Cuestionario_Resultado" ColumnName="id_Cuestionario_Resultado" />
+          <ScalarProperty Name="id_respuesta" ColumnName="id_respuesta" />
+          <ScalarProperty Name="id_cuestionario" ColumnName="id_cuestionario" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Answering_Survey" FunctionName="CastSoft_KathedraModel.Store.Answering_Survey" />
+    <FunctionImportMapping FunctionImportName="Change_Status" FunctionName="CastSoft_KathedraModel.Store.Change_Status" />
+  </EntityContainerMapping>
+</Mapping>

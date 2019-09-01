@@ -1,0 +1,361 @@
+﻿<style>
+    #Answer_Survey {
+        height: 800px;
+        width: 100%;
+        overflow-y: auto;
+    }
+    </style>
+<script>
+        $(window).load(function () {
+            $('#ddw_Centros_T').empty();
+        });
+        function Restore_dropdown() {
+            document.getElementById('ddw_Empresas').selectedIndex = 0;
+            $('#ddw_Centros_T').empty();
+        }
+
+        function Saving_Answer(textbox) {
+            var Respuesta = $(textbox).val()
+            var id_guia = $(textbox).attr('id');
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("Saving_Answer")',
+            dataType: 'json',
+            data: { id_guia: id_guia, Respuesta: Respuesta},
+            beforeSend: function () {
+            //    alert("Enviando Respuesta");
+            },
+            success: function (data) {
+                //alert("exito");
+
+            },
+            error: function (ts) {
+
+                alert("Problemas de Conexión con Servidor");
+            },
+            catch (e) {
+                alert(e.name + "\n" + e.message)
+            }
+
+        });
+
+        }
+
+
+
+
+    function Saving_Answer_Comments(e, textbox_2) {
+        tecla = (document.all) ? e.keyCode : e.which;
+        //if (tecla == 13) {
+            var Comentarios = $(textbox_2).val()
+            var id_guia = $(textbox_2).attr('id');
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Saving_Answer_Comments")',
+                dataType: 'json',
+                data: { id_guia: id_guia, Comentarios: Comentarios },
+                beforeSend: function () {
+                    //    alert("Enviando Respuesta");
+                },
+                success: function (data) {
+                    //alert("exito");
+
+                },
+                error: function (ts) {
+
+                    alert("Problemas de Conexión con Servidor");
+                },
+                catch(e) {
+                    alert(e.name + "\n" + e.message)
+                }
+
+            });
+        //}
+
+         
+
+            }
+
+    function getting_products() {
+        var id_empresa = $('#ddw_Empresas option:selected').val();
+     //   alert(id_categoria);
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("Get_Centros_Trabajo","Encuestas")',
+            dataType: 'json',
+            data: { id_empresa: id_empresa },
+            success: function (data) {
+                if (data != null) {
+                    $('#ddw_Centros_T').empty();
+                    $('#ddw_Departamentos').empty();
+                    var mySelect = $('#ddw_Centros_T');
+                        mySelect.append($('<option>', {
+                        value: "",
+                            text: "Seleccione Centro de Trabajo"
+                    }));
+                    $.each(data, function (i, data) {
+                        mySelect.append($('<option>', {
+                            value: data.id_centro_trabajo,
+                            text: data.Nombre_centro_trabajo
+                        }));
+                    });
+                } else {
+                    $('#ddw_Centros_T').empty();
+                    $('#ddw_Departamentos').empty();
+                }
+            },
+            error: function () {
+                alert("Seleccione la Empresa");
+                $('#ddw_Centros_T').empty();
+                $('#ddw_Departamentos').empty();
+            },
+            catch(e) {
+                alert(e.name + "\n" + e.message)
+            }
+        });
+    }
+    function getting_survey() {
+        var id_empresa = $('#ddw_Empresas option:selected').val();
+        var id_centro_trabajo = $('#ddw_Centros_T option:selected').val();
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("Get_Guia_Observacion")',
+            dataType: 'json',
+            data: { id_empresa: id_empresa, id_centro_trabajo: id_centro_trabajo},
+            success: function (data) {
+                if (data != null) {
+                    var tr;
+                    var sumando_M = 0;
+                    var sumando_H = 0;
+                    $('#Table_guia_observacion').empty();
+                    document.getElementById("Table_guia_observacion").innerHTML = "<thead><tr><th>Pregunta</th><th>Respuesta</th><th>Comentarios</th></tr></thead ><tbody id='tabla_listado_observacion'></tbody>";
+                    for (var i = 0; i <= data.length; i++) {
+
+                        if (i == 0) {
+                            titulo_1 = $('<tr/><th>El patrón establece, implanta y mantiene una política de prevención de riesgos psicosociales que contempla:</th><tr>');
+                            $('#Table_guia_observacion').append(titulo_1);
+                        } else if (i == 4) {
+                            titulo_2 = $('<tr/><th>El patrón cumple, cuando presenta evidencias de la identificación y análisis de los factores de riesgo psicosocial; comprende a todos los trabajadores del centro de trabajo y contempla al  menos los siguientes factores:</th><tr>');
+                            $('#Table_guia_observacion').append(titulo_2);
+                        } else if (i == 11) {
+                            titulo_3 = $('<tr/><th>El patrón cumple, cuando se realiza la identificación y análisis de los factores de riesgo psicosocial; así como la evaluación del entorno organizacional: comprende a todos los trabajadores del centro de trabajo, o realiza una muestra representativa</th><tr>');
+                            $('#Table_guia_observacion').append(titulo_3);
+                        } else if (i == 18) {
+                            titulo_4 = $('<tr/><th>El patrón presenta evidencia de que:</th><tr>');
+                            $('#Table_guia_observacion').append(titulo_4);
+                        } else if (i == 29) {
+                            titulo_5 = $('<tr/><th>El patrón presenta evidencia que se realiza:</th><tr>');
+                            $('#Table_guia_observacion').append(titulo_5);
+                        }
+                        else if (i == 47) {
+                            titulo_7 = $('<tr/><th>El patrón cumple cuando presenta evidencia de que difunde y proporciona información a los empleados sobre:</th><tr>');
+                            $('#Table_guia_observacion').append(titulo_7);
+                        } else if (i == 53) {
+                            titulo_8 = $('<tr/><th>El patrón cumple cuando demuestra que cuenta con los registros sobre:</th><tr>');
+                            $('#Table_guia_observacion').append(titulo_8);
+                        }
+
+                        tr = $('<tr/>');
+                        tr.append("<td>" + data[i].Pregunta + "</td>");
+                        if (data[i].Calificacion == "null") {
+                            data[i].Calificacion = "";
+                            tr.append("<td> <input type='number' min=1 max=3 class='form-control' onkeyup='Saving_Answer(this)' id=" + data[i].id_guia + " value=" + data[i].Calificacion + "></td>");
+                        } else {
+                            tr.append("<td> <input type='number' min=1 max=3 class='form-control' onkeyup='Saving_Answer(this)' id=" + data[i].id_guia + " value=" + data[i].Calificacion + "></td>");
+                        }
+
+                        if (data[i].Comentarios == null ) {
+                            data[i].Comentarios = "";
+                            tr.append("<td> <input type='text' class='form-control col-xs-12' onblur='Saving_Answer_Comments(event, this)' id=" + data[i].id_guia + " value=" + data[i].Comentarios + "></td>");
+                        } else {
+                            tr.append("<td> <input type='text' class='form-control  col-xs-12' onblur='Saving_Answer_Comments(event, this)' id=" + data[i].id_guia + " value=" + data[i].Comentarios + "></td>");
+                        }
+
+
+
+                        $('#Table_guia_observacion').append(tr);
+                    }
+
+                } else {
+                    Swal.fire(
+                        'Cuestionario de la Guía de Observación no Disponible',
+                        '',
+                        'error'
+                    )
+                }
+
+            },
+            error: function () {
+                Swal.fire(
+                     'Guía de Observación no Disponible',
+                    'Seleccione el centro de trabajo',
+                    'error'
+                )
+                $("#Answer_Survey").modal('hide');
+           
+            },
+            catch(e) {
+                alert(e.name + "\n" + e.message)
+            }
+        });
+    }
+</script>
+<br>
+
+<div class="form-group row" align="center">
+
+    <img class="img-responsive" src="~/images/Customer_Logo.png"   style="padding:120px">
+   
+    <div class="form-group row " align="center">
+        <div class=" col-xs-12 col-sm-3" style="padding:20px;">
+            <a href="@Url.Action("Index", "Empresas")" style="padding:20px" class="btn btn-primary btn-block btn-lg text-dark">
+                <span>Empresas</span> <i class="fa fa-industry" style="font-size:19px;padding-left:5px" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class=" col-xs-12 col-sm-3" style="padding:20px">
+            <a href="@Url.Action("Index", "Encuestas")" style="padding:20px" class="btn btn-primary btn-block btn-lg text-dark">
+                <span>Encuestas</span> <i class="fa fa-file-text" style="font-size:19px;padding-left:5px" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class=" col-xs-12 col-sm-3" style="padding:20px">
+            <a style="padding:20px" data-toggle="modal" onclick="Restore_dropdown()" data-target="#New_Survey" class="btn btn-primary btn-block btn-lg text-dark ">
+                <span>Guía de Observación</span>  <i class="fa fa-list" style="font-size:19px;padding-left:5px" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class=" col-xs-12 col-sm-3" style="padding:20px">
+            <a href="@Url.Action("Index", "Manage")" style="padding:20px" class="btn btn-primary btn-block btn-lg text-dark">
+                <span>Mi Cuenta</span>  <i class="fa fa-user" style="font-size:19px;padding-left:5px" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="GSCCModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                        <h4 class="modal-title" id="myModalLabel">Previa a Encuesta</h4>
+                    </div>
+                    <div class="modal-body" align="justify">
+                        <p>
+                            <h4>Para la aplicación del cuestionario deberán cumplirse, al menos, las condiciones siguientes:</h4>
+
+                            <b> 1.</b>	Explicar el objetivo de la evaluación;    <br>   <br>
+                            El objetivo es: Establecer los elementos para identificar, analizar y prevenir los factores de riesgo psicosocial, así como para promover un entorno organizacional favorable en los centros de trabajo.<br><br>
+
+                            Oblicaciones de los trabajadores: <br> <br>
+                            <b>6.1</b> Observar las medidas de prevención y, en su caso, de control que dispone esta Norma, así como las que establezca el patrón para: controlar los factores de riesgo psicosocial, colaborar para contar con un entorno organizacional favorable y prevenir actos de violencia laboral.
+                            <br><b> 6.2</b> Abstenerse de realizar prácticas contrarias al entorno organizacional favorable y actos de violencia laboral.
+                            <br><b> 6.3</b> Participar en la identificación de los factores de riesgo psicosocial y, en su caso, en la evaluación del entorno organizacional.
+                            <br><b> 6.4</b> Informar sobre prácticas opuestas al entorno organizacional favorable y denunciar actos de violencia laboral, utilizando los mecanismos que establezca el patrón para tal efecto y/o a través de la comisión de seguridad e higiene, a que se refiere la NOM-019-STPS-2011, o las que la sustituyan.
+                            <br><b>6.5</b> Informar por escrito al patrón directamente, a través de los servicios preventivos de seguridad y salud en el trabajo o de la comisión de seguridad e higiene; haber presenciado o sufrido un acontecimiento traumático severo. El escrito deberá contener al menos: la fecha de elaboración; el nombre del trabajador que elabora el escrito; en su caso, el nombre de los trabajadores involucrados; la fecha de ocurrencia, y la descripción del(los) acontecimiento(s).
+                            <br><b>6.6</b> Participar en los eventos de información que proporcione el patrón.
+                            <br><b>6.7</b> Someterse a los exámenes médicos y evaluaciones psicológicas que determinan la presente Norma y/o las normas oficiales mexicanas que al respecto emitan la Secretaría de Salud y/o la Secretaría del Trabajo y Previsión Social, y a falta de éstas, los que indique la institución de seguridad social o privada, o el médico o psicólogo o psiquiatra del centro de trabajo o de la empresa.
+
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"  data-target="#New_Survey">Continuar</button>
+                        @*<button type="button" class="btn btn-primary"></button>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="New_Survey" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                        <h4 class="modal-title" id="myModalLabel">Guía de Observación</h4>
+                    </div>
+                    <div class="modal-body" align="justify" >
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-12">
+                                <b>Empresa:</b>
+                                @Html.DropDownList("id_empresa", null, "Seleccionar Empresa", htmlAttributes: new { id = "ddw_Empresas", onchange = "getting_products()", @class = "form-control" })
+                            </div>
+
+                            <div class="col-sm-6 col-xs-12">
+                                <b>Centro de Trabajo:</b>
+                                @Html.DropDownList("id_centro_trabajo", null, "Seleccionar Centro de Trabajo", htmlAttributes: new { id = "ddw_Centros_T", onchange = "getting_departments()", @class = "form-control" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"  data-target="#Answer_Survey" onclick="getting_survey()" >Continuar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="Answer_Survey" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                        <h4 class="modal-title" id="myModalLabel">Guía de Observación</h4>
+                    </div>
+                    <div class="modal-body" align="justify">
+                        <div class="row">
+                            <br>
+                            <div class="col-xs-12 col-sm-4">
+                                <b>3: Cumple</b>
+                                <br>
+                            </div>
+                            <div class="col-xs-12 col-sm-4">
+                                <b>2: Con reservas</b>
+                                <br>
+                            </div>
+                            <div class="col-xs-12 col-sm-4">
+                                <b>1: No Cumple</b>
+                                <br>
+                            </div>
+                            <br>
+                        </div>
+                        <div class="row"><br>
+                                         <div class="col-xs-12">
+                                            <br>
+                                         </div>
+                            </div>
+                        <div class="row">
+                            <table id="Table_guia_observacion" class="table-responsive table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Pregunta
+                                        </th>
+                                        <th>
+                                            Respuesta
+                                        </th>
+                                        <th>
+                                            Comentarios
+                                        </th>
+                                        <th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla_listado_observacion"></tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+
+</div>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,558 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CastSoft_KathedraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="fnDemo_N035_Categorias_1_E2_Resultados_Pilot_Result">
+    <Property Name="Total_Categoria_1" Type="Int32" />
+    <Property Name="Sumatoria_Cat_I" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Categorias_1_Resultados_Pilot_Result">
+    <Property Name="Total_Categoria_1" Type="Int32" />
+    <Property Name="Sumatoria_Total" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Categorias_2_E2_Resultados_Pilot_Result">
+    <Property Name="Total_Categoria_2" Type="Int32" />
+    <Property Name="Sumatoria_Cat_II" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Categorias_2_Resultados_Pilot_Result">
+    <Property Name="Total_Categoria_2" Type="Int32" />
+    <Property Name="Sumatoria_Cat_II" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Categorias_3_E2_Resultados_Pilot_Result">
+    <Property Name="Total_Categoria_3" Type="Int32" />
+    <Property Name="Sumatoria_Cat_III" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Categorias_3_Resultados_Pilot_Result">
+    <Property Name="Total_Categoria_3" Type="Int32" />
+    <Property Name="Sumatoria_Cat_III" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Categorias_4_E2_Resultados_Pilot_Result">
+    <Property Name="Total_Categoria_4" Type="Int32" />
+    <Property Name="Sumatoria_Cat_IV" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Categorias_4_Resultados_Pilot_Result">
+    <Property Name="Total_Categoria_4" Type="Int32" />
+    <Property Name="Sumatoria_Cat_IV" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Categorias_5_Resultados_Pilot_Result">
+    <Property Name="Total_Categoria_5" Type="Int32" />
+    <Property Name="Sumatoria_Cat_V" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Categorias_Pilot_Result">
+    <Property Name="id_encuesta" Type="Int32" />
+    <Property Name="Canalizado" Type="Int32" />
+    <Property Name="Cat_1" Type="Int32" />
+    <Property Name="Cat_2" Type="Int32" />
+    <Property Name="Cat_3" Type="Int32" />
+    <Property Name="Cat_4" Type="Int32" />
+    <Property Name="CAT_5" Type="Int32" />
+    <Property Name="FINAL" Type="Int32" />
+    <Property Name="Dom_1" Type="Int32" />
+    <Property Name="Dom_2" Type="Int32" />
+    <Property Name="Dom_3" Type="Int32" />
+    <Property Name="Dom_4" Type="Int32" />
+    <Property Name="Dom_5" Type="Int32" />
+    <Property Name="Dom_6" Type="Int32" />
+    <Property Name="Dom_7" Type="Int32" />
+    <Property Name="Dom_8" Type="Int32" />
+    <Property Name="Dom_9" Type="Int32" />
+    <Property Name="Dom_10" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Categorias_Resultados_Pilot_Result">
+    <Property Name="Sumatoria_Categoria" Type="Int32" />
+    <Property Name="Promedio_Categoria" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Dominios_1_E2_Resultados_Result">
+    <Property Name="Total_Dominio_1" Type="Int32" />
+    <Property Name="Promedio_Dom_I" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Dominios_1_Resultados_Result">
+    <Property Name="Total_Dominio_1" Type="Int32" />
+    <Property Name="Promedio_Dom_I" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Dominios_10_Resultados_Result">
+    <Property Name="Total_Dominio_10" Type="Int32" />
+    <Property Name="Promedio_Dom_X" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Dominios_2_E2_Resultados_Result">
+    <Property Name="Total_Dominio_2" Type="Int32" />
+    <Property Name="Promedio_Dom_II" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Dominios_2_Resultados_Result">
+    <Property Name="Total_Dominio_2" Type="Int32" />
+    <Property Name="Promedio_Dom_II" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Dominios_3_E2_Resultados_Result">
+    <Property Name="Total_Dominio_3" Type="Int32" />
+    <Property Name="Promedio_Dom_III" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Dominios_3_Resultados_Result">
+    <Property Name="Total_Dominio_3" Type="Int32" />
+    <Property Name="Promedio_Dom_III" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Dominios_4_E2_Resultados_Result">
+    <Property Name="Total_Dominio_4" Type="Int32" />
+    <Property Name="Promedio_Dom_IV" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Dominios_4_Resultados_Result">
+    <Property Name="Total_Dominio_4" Type="Int32" />
+    <Property Name="Promedio_Dom_IV" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Dominios_5_E2_Resultados_Result">
+    <Property Name="Total_Dominio_5" Type="Int32" />
+    <Property Name="Promedio_Dom_V" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Dominios_5_Resultados_Result">
+    <Property Name="Total_Dominio_5" Type="Int32" />
+    <Property Name="Promedio_Dom_V" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Dominios_6_E2_Resultados_Result">
+    <Property Name="Total_Dominio_6" Type="Int32" />
+    <Property Name="Promedio_Dom_VI" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Dominios_6_Resultados_Result">
+    <Property Name="Total_Dominio_6" Type="Int32" />
+    <Property Name="Promedio_Dom_VI" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Dominios_7_E2_Resultados_Result">
+    <Property Name="Total_Dominio_7" Type="Int32" />
+    <Property Name="Promedio_Dom_VII" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Dominios_7_Resultados_Result">
+    <Property Name="Total_Dominio_7" Type="Int32" />
+    <Property Name="Promedio_Dom_VII" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Dominios_8_E2_Resultados_Result">
+    <Property Name="Total_Dominio_8" Type="Int32" />
+    <Property Name="Promedio_Dom_VIII" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Dominios_8_Resultados_Result">
+    <Property Name="Total_Dominio_8" Type="Int32" />
+    <Property Name="Promedio_Dom_VIII" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Dominios_9_Resultados_Result">
+    <Property Name="Total_Dominio_9" Type="Int32" />
+    <Property Name="Promedio_Dom_IX" Type="Int32" />
+    <Property Name="Encuestados" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fnDemo_N035_Grafica_Resultado_Preguntas_Result">
+    <Property Name="Calificacion_General_Pregunta" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fn_Final_view_surveys_Result">
+    <Property Name="id_pregunta" Type="Int32" Nullable="false" />
+    <Property Name="No_Pregunta" Type="Int32" />
+    <Property Name="Preguntas" Type="String" MaxLength="165" FixedLength="false" Unicode="false" />
+    <Property Name="id_Cuestionario_Resultado" Type="Int32" Nullable="false" />
+    <Property Name="id_respuesta" Type="Int32" />
+    <Property Name="id_cuestionario" Type="Int32" />
+  </ComplexType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRole">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ERGOS_Cuestionarios_N01">
+    <Key>
+      <PropertyRef Name="id_cuestionario" />
+    </Key>
+    <Property Name="id_cuestionario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cuestionario" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ERGOS_Preguntas_N01" Relationship="Self.FK_Cuestionario" FromRole="ERGOS_Cuestionarios_N01" ToRole="ERGOS_Preguntas_N01" />
+    <NavigationProperty Name="ERGOS_Cuestionarios_Trabajador_N01" Relationship="Self.FK_Cuestionarios_TE" FromRole="ERGOS_Cuestionarios_N01" ToRole="ERGOS_Cuestionarios_Trabajador_N01" />
+    <NavigationProperty Name="ERGOS_Empresas_N01" Relationship="Self.FK_id_encuesta_Empresas" FromRole="ERGOS_Cuestionarios_N01" ToRole="ERGOS_Empresas_N01" />
+  </EntityType>
+  <EntityType Name="ERGOS_Cuestionarios_Resultados_N01">
+    <Key>
+      <PropertyRef Name="id_Cuestionario_Resultado" />
+    </Key>
+    <Property Name="id_Cuestionario_Resultado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_cuestionario_trabajador" Type="Int32" />
+    <Property Name="id_respuesta" Type="Int32" />
+    <Property Name="id_pregunta" Type="Int32" />
+    <Property Name="id_encuesta" Type="Int32" />
+    <Property Name="Calificacion" Type="Int32" />
+    <NavigationProperty Name="ERGOS_Cuestionarios_Trabajador_N01" Relationship="Self.FK_Cuestionarios_RCT" FromRole="ERGOS_Cuestionarios_Resultados_N01" ToRole="ERGOS_Cuestionarios_Trabajador_N01" />
+    <NavigationProperty Name="ERGOS_Preguntas_N01" Relationship="Self.FK_Cuestionarios_RP" FromRole="ERGOS_Cuestionarios_Resultados_N01" ToRole="ERGOS_Preguntas_N01" />
+    <NavigationProperty Name="ERGOS_Respuestas_N01" Relationship="Self.FK_Cuestionarios_RR" FromRole="ERGOS_Cuestionarios_Resultados_N01" ToRole="ERGOS_Respuestas_N01" />
+  </EntityType>
+  <EntityType Name="ERGOS_Cuestionarios_Trabajador_N01">
+    <Key>
+      <PropertyRef Name="id_cuestionario_trabajador" />
+    </Key>
+    <Property Name="id_cuestionario_trabajador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_trabajador" Type="Int32" Nullable="false" />
+    <Property Name="id_encuesta" Type="Int32" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="id_empresa" Type="Int32" />
+    <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Edad" Type="Int32" />
+    <Property Name="Estado_Civil" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Nivel_Esudios" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Ocupacion" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Departamento" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo_puesto" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo_Contratacion" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo_Jornada" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Rotacion_Turno" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Experiencia_puesto_actual" Type="Int32" />
+    <Property Name="Experiencia_puesto_laboral" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" Precision="0" />
+    <Property Name="updated_at" Type="DateTime" Precision="0" />
+    <Property Name="deleted_at" Type="DateTime" Precision="0" />
+    <Property Name="Tipo_Personal" Type="Int32" />
+    <NavigationProperty Name="ERGOS_Cuestionarios_N01" Relationship="Self.FK_Cuestionarios_TE" FromRole="ERGOS_Cuestionarios_Trabajador_N01" ToRole="ERGOS_Cuestionarios_N01" />
+    <NavigationProperty Name="ERGOS_Cuestionarios_Resultados_N01" Relationship="Self.FK_Cuestionarios_RCT" FromRole="ERGOS_Cuestionarios_Trabajador_N01" ToRole="ERGOS_Cuestionarios_Resultados_N01" />
+    <NavigationProperty Name="ERGOS_Empresas_N01" Relationship="Self.FK_Cuestionario_TE" FromRole="ERGOS_Cuestionarios_Trabajador_N01" ToRole="ERGOS_Empresas_N01" />
+  </EntityType>
+  <EntityType Name="ERGOS_Empresas_N01">
+    <Key>
+      <PropertyRef Name="id_empresa" />
+    </Key>
+    <Property Name="id_empresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Razon_Social" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Contacto_Nombre" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+    <Property Name="id_encuesta" Type="Int32" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Precision="0" />
+    <Property Name="updated_at" Type="DateTime" Precision="0" />
+    <Property Name="deleted_at" Type="DateTime" Precision="0" />
+    <Property Name="RFC" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="Domicilio" Type="String" MaxLength="165" FixedLength="false" Unicode="false" />
+    <Property Name="Actividad_Principal" Type="String" MaxLength="165" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ERGOS_Cuestionarios_N01" Relationship="Self.FK_id_encuesta_Empresas" FromRole="ERGOS_Empresas_N01" ToRole="ERGOS_Cuestionarios_N01" />
+    <NavigationProperty Name="ERGOS_Cuestionarios_Trabajador_N01" Relationship="Self.FK_Cuestionario_TE" FromRole="ERGOS_Empresas_N01" ToRole="ERGOS_Cuestionarios_Trabajador_N01" />
+  </EntityType>
+  <EntityType Name="ERGOS_Preguntas_N01">
+    <Key>
+      <PropertyRef Name="id_pregunta" />
+    </Key>
+    <Property Name="id_pregunta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Preguntas" Type="String" MaxLength="165" FixedLength="false" Unicode="false" />
+    <Property Name="id_cuestionario" Type="Int32" />
+    <Property Name="No_Pregunta" Type="Int32" />
+    <NavigationProperty Name="ERGOS_Cuestionarios_N01" Relationship="Self.FK_Cuestionario" FromRole="ERGOS_Preguntas_N01" ToRole="ERGOS_Cuestionarios_N01" />
+    <NavigationProperty Name="ERGOS_Cuestionarios_Resultados_N01" Relationship="Self.FK_Cuestionarios_RP" FromRole="ERGOS_Preguntas_N01" ToRole="ERGOS_Cuestionarios_Resultados_N01" />
+  </EntityType>
+  <EntityType Name="ERGOS_Respuestas_N01">
+    <Key>
+      <PropertyRef Name="id_respuesta" />
+    </Key>
+    <Property Name="id_respuesta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Respuesta" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ERGOS_Cuestionarios_Resultados_N01" Relationship="Self.FK_Cuestionarios_RR" FromRole="ERGOS_Respuestas_N01" ToRole="ERGOS_Cuestionarios_Resultados_N01" />
+  </EntityType>
+  <EntityType Name="VW_ERGOS_Results_V01">
+    <Key>
+      <PropertyRef Name="id_pregunta" />
+      <PropertyRef Name="id_Cuestionario_Resultado" />
+    </Key>
+    <Property Name="id_pregunta" Type="Int32" Nullable="false" />
+    <Property Name="Preguntas" Type="String" MaxLength="165" FixedLength="false" Unicode="false" />
+    <Property Name="id_Cuestionario_Resultado" Type="Int32" Nullable="false" />
+    <Property Name="id_encuesta" Type="Int32" />
+    <Property Name="id_cuestionario_trabajador" Type="Int32" />
+    <Property Name="id_respuesta" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_Cuestionario">
+    <End Role="ERGOS_Cuestionarios_N01" Type="Self.ERGOS_Cuestionarios_N01" Multiplicity="0..1" />
+    <End Role="ERGOS_Preguntas_N01" Type="Self.ERGOS_Preguntas_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Cuestionarios_N01">
+        <PropertyRef Name="id_cuestionario" />
+      </Principal>
+      <Dependent Role="ERGOS_Preguntas_N01">
+        <PropertyRef Name="id_cuestionario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuestionarios_TE">
+    <End Role="ERGOS_Cuestionarios_N01" Type="Self.ERGOS_Cuestionarios_N01" Multiplicity="0..1" />
+    <End Role="ERGOS_Cuestionarios_Trabajador_N01" Type="Self.ERGOS_Cuestionarios_Trabajador_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Cuestionarios_N01">
+        <PropertyRef Name="id_cuestionario" />
+      </Principal>
+      <Dependent Role="ERGOS_Cuestionarios_Trabajador_N01">
+        <PropertyRef Name="id_encuesta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_id_encuesta_Empresas">
+    <End Role="ERGOS_Cuestionarios_N01" Type="Self.ERGOS_Cuestionarios_N01" Multiplicity="1" />
+    <End Role="ERGOS_Empresas_N01" Type="Self.ERGOS_Empresas_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Cuestionarios_N01">
+        <PropertyRef Name="id_cuestionario" />
+      </Principal>
+      <Dependent Role="ERGOS_Empresas_N01">
+        <PropertyRef Name="id_encuesta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuestionarios_RCT">
+    <End Role="ERGOS_Cuestionarios_Trabajador_N01" Type="Self.ERGOS_Cuestionarios_Trabajador_N01" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ERGOS_Cuestionarios_Resultados_N01" Type="Self.ERGOS_Cuestionarios_Resultados_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Cuestionarios_Trabajador_N01">
+        <PropertyRef Name="id_cuestionario_trabajador" />
+      </Principal>
+      <Dependent Role="ERGOS_Cuestionarios_Resultados_N01">
+        <PropertyRef Name="id_cuestionario_trabajador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuestionarios_RP">
+    <End Role="ERGOS_Preguntas_N01" Type="Self.ERGOS_Preguntas_N01" Multiplicity="0..1" />
+    <End Role="ERGOS_Cuestionarios_Resultados_N01" Type="Self.ERGOS_Cuestionarios_Resultados_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Preguntas_N01">
+        <PropertyRef Name="id_pregunta" />
+      </Principal>
+      <Dependent Role="ERGOS_Cuestionarios_Resultados_N01">
+        <PropertyRef Name="id_pregunta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuestionarios_RR">
+    <End Role="ERGOS_Respuestas_N01" Type="Self.ERGOS_Respuestas_N01" Multiplicity="0..1" />
+    <End Role="ERGOS_Cuestionarios_Resultados_N01" Type="Self.ERGOS_Cuestionarios_Resultados_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Respuestas_N01">
+        <PropertyRef Name="id_respuesta" />
+      </Principal>
+      <Dependent Role="ERGOS_Cuestionarios_Resultados_N01">
+        <PropertyRef Name="id_respuesta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuestionario_TE">
+    <End Role="ERGOS_Empresas_N01" Type="Self.ERGOS_Empresas_N01" Multiplicity="0..1" />
+    <End Role="ERGOS_Cuestionarios_Trabajador_N01" Type="Self.ERGOS_Cuestionarios_Trabajador_N01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERGOS_Empresas_N01">
+        <PropertyRef Name="id_empresa" />
+      </Principal>
+      <Dependent Role="ERGOS_Cuestionarios_Trabajador_N01">
+        <PropertyRef Name="id_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CastSoft_KathedraEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRole" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+    <EntitySet Name="ERGOS_Cuestionarios_N01" EntityType="Self.ERGOS_Cuestionarios_N01" />
+    <EntitySet Name="ERGOS_Cuestionarios_Resultados_N01" EntityType="Self.ERGOS_Cuestionarios_Resultados_N01" />
+    <EntitySet Name="ERGOS_Cuestionarios_Trabajador_N01" EntityType="Self.ERGOS_Cuestionarios_Trabajador_N01" />
+    <EntitySet Name="ERGOS_Empresas_N01" EntityType="Self.ERGOS_Empresas_N01" />
+    <EntitySet Name="ERGOS_Preguntas_N01" EntityType="Self.ERGOS_Preguntas_N01" />
+    <EntitySet Name="ERGOS_Respuestas_N01" EntityType="Self.ERGOS_Respuestas_N01" />
+    <EntitySet Name="VW_ERGOS_Results_V01" EntityType="Self.VW_ERGOS_Results_V01" />
+    <AssociationSet Name="FK_Cuestionario" Association="Self.FK_Cuestionario">
+      <End Role="ERGOS_Cuestionarios_N01" EntitySet="ERGOS_Cuestionarios_N01" />
+      <End Role="ERGOS_Preguntas_N01" EntitySet="ERGOS_Preguntas_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuestionarios_TE" Association="Self.FK_Cuestionarios_TE">
+      <End Role="ERGOS_Cuestionarios_N01" EntitySet="ERGOS_Cuestionarios_N01" />
+      <End Role="ERGOS_Cuestionarios_Trabajador_N01" EntitySet="ERGOS_Cuestionarios_Trabajador_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_id_encuesta_Empresas" Association="Self.FK_id_encuesta_Empresas">
+      <End Role="ERGOS_Cuestionarios_N01" EntitySet="ERGOS_Cuestionarios_N01" />
+      <End Role="ERGOS_Empresas_N01" EntitySet="ERGOS_Empresas_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuestionarios_RCT" Association="Self.FK_Cuestionarios_RCT">
+      <End Role="ERGOS_Cuestionarios_Trabajador_N01" EntitySet="ERGOS_Cuestionarios_Trabajador_N01" />
+      <End Role="ERGOS_Cuestionarios_Resultados_N01" EntitySet="ERGOS_Cuestionarios_Resultados_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuestionarios_RP" Association="Self.FK_Cuestionarios_RP">
+      <End Role="ERGOS_Preguntas_N01" EntitySet="ERGOS_Preguntas_N01" />
+      <End Role="ERGOS_Cuestionarios_Resultados_N01" EntitySet="ERGOS_Cuestionarios_Resultados_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuestionarios_RR" Association="Self.FK_Cuestionarios_RR">
+      <End Role="ERGOS_Respuestas_N01" EntitySet="ERGOS_Respuestas_N01" />
+      <End Role="ERGOS_Cuestionarios_Resultados_N01" EntitySet="ERGOS_Cuestionarios_Resultados_N01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuestionario_TE" Association="Self.FK_Cuestionario_TE">
+      <End Role="ERGOS_Empresas_N01" EntitySet="ERGOS_Empresas_N01" />
+      <End Role="ERGOS_Cuestionarios_Trabajador_N01" EntitySet="ERGOS_Cuestionarios_Trabajador_N01" />
+    </AssociationSet>
+    <FunctionImport Name="fnDemo_N035_Categorias_1_E2_Resultados_Pilot" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Categorias_1_E2_Resultados_Pilot_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Categorias_1_Resultados_Pilot" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Categorias_1_Resultados_Pilot_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Categorias_2_E2_Resultados_Pilot" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Categorias_2_E2_Resultados_Pilot_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Categorias_2_Resultados_Pilot" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Categorias_2_Resultados_Pilot_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Categorias_3_E2_Resultados_Pilot" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Categorias_3_E2_Resultados_Pilot_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Categorias_3_Resultados_Pilot" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Categorias_3_Resultados_Pilot_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Categorias_4_E2_Resultados_Pilot" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Categorias_4_E2_Resultados_Pilot_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Categorias_4_Resultados_Pilot" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Categorias_4_Resultados_Pilot_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Categorias_5_Resultados_Pilot" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Categorias_5_Resultados_Pilot_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Categorias_Pilot" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Categorias_Pilot_Result)">
+      <Parameter Name="id_CT" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Categorias_Resultados_Pilot" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Categorias_Resultados_Pilot_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+      <Parameter Name="id_encuesta" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Dominios_1_E2_Resultados" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Dominios_1_E2_Resultados_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Dominios_1_Resultados" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Dominios_1_Resultados_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Dominios_10_Resultados" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Dominios_10_Resultados_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Dominios_2_E2_Resultados" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Dominios_2_E2_Resultados_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Dominios_2_Resultados" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Dominios_2_Resultados_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Dominios_3_E2_Resultados" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Dominios_3_E2_Resultados_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Dominios_3_Resultados" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Dominios_3_Resultados_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Dominios_4_E2_Resultados" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Dominios_4_E2_Resultados_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Dominios_4_Resultados" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Dominios_4_Resultados_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Dominios_5_E2_Resultados" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Dominios_5_E2_Resultados_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Dominios_5_Resultados" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Dominios_5_Resultados_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Dominios_6_E2_Resultados" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Dominios_6_E2_Resultados_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Dominios_6_Resultados" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Dominios_6_Resultados_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Dominios_7_E2_Resultados" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Dominios_7_E2_Resultados_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Dominios_7_Resultados" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Dominios_7_Resultados_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Dominios_8_E2_Resultados" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Dominios_8_E2_Resultados_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Dominios_8_Resultados" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Dominios_8_Resultados_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Dominios_9_Resultados" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Dominios_9_Resultados_Result)">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fnDemo_N035_Grafica_Resultado_Preguntas" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fnDemo_N035_Grafica_Resultado_Preguntas_Result)">
+      <Parameter Name="id_encuesta" Mode="In" Type="Int32" />
+      <Parameter Name="id_empresa" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fn_Final_view_surveys" IsComposable="true" ReturnType="Collection(CastSoft_KathedraModel.fn_Final_view_surveys_Result)">
+      <Parameter Name="id_CT" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Answering_Survey">
+      <Parameter Name="id_CR" Mode="In" Type="Int32" />
+      <Parameter Name="Respuesta" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Change_Status">
+      <Parameter Name="Serial" Mode="In" Type="String" />
+      <Parameter Name="Scanned_Place" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>
