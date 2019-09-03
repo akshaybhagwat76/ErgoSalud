@@ -29,7 +29,7 @@
 
                     $.ajax({
                         type: 'POST',
-                        url: '@Url.Action("Get_Departments","Centros_Trabajo")',
+                        url: '/Centros_Trabajo/Get_Departments',
                         dataType: 'json',
                         data: { id_empresa: id_empresa, id_centro: id_centro },
                         beforeSend: function () {
@@ -155,7 +155,7 @@
         } else {
                     $.ajax({
                         type: 'POST',
-                        url: '@Url.Action("Delete_Department")',
+                        url: '/Centros_Trabajo/Delete_Department',
                         dataType: 'json',
                         data: { New_name_dept: New_name_dept, id_departamento: id_departamento, id_empresa: id_empresa, id_centro: id_centro },
                         beforeSend: function () {
@@ -285,7 +285,7 @@
         } else {
                     $.ajax({
                         type: 'POST',
-                        url: '@Url.Action("Set_New_Department")',
+                        url: '/Centros_Trabajo/Set_New_Department',
                         dataType: 'json',
                         data: { Departamento: Departamento, id_empresa: id_empresa, id_centro: id_centro, Cantidad_Empleados_M: Cantidad_Empleados_M, Cantidad_Empleados_F: Cantidad_Empleados_F},
                         beforeSend: function () {

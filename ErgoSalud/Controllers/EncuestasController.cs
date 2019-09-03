@@ -20,15 +20,22 @@ using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using IronPdf;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.Collections;
+using iTextSharp.text.html.simpleparser;
+using iTextSharp.tool.xml;
+using iTextSharp.tool.xml.css;
+using iTextSharp.tool.xml.pipeline.css;
 
 namespace ErgoSalud.Controllers
 {
     [Authorize]
-   
+
     public class EncuestasController : Controller
     {
         private CastSoft_LETConsultingEntities db = new CastSoft_LETConsultingEntities();
-  
+
         // GET: Encuestas
         public ActionResult Index()
         {
@@ -41,23 +48,69 @@ namespace ErgoSalud.Controllers
 
         public ActionResult Reporte_PDF(int id_CT, int id_C)
         {
-            var uri = new Uri("http://letconsultingpartner.castsoft.live/Reportes/AOwYbqttJ6fobQAreA9mBUt4dmB5CBtuirmBaf4AhwNvjDfuIhma4ZpjMxmTosLw?id_CT=" + id_CT + "&id_C=" + id_C);
+            var uri = new Uri("http://localhost:52643/Reportes/AOwYbqttJ6fobQAreA9mBUt4dmB5CBtuirmBaf4AhwNvjDfuIhma4ZpjMxmTosLw?id_CT=" + id_CT + "&id_C=" + id_C);
             var urlToPdf = new HtmlToPdf
             {
                 LoginCredentials = new HttpLoginCredentials()
                 {
-                    NetworkUsername = "akshaybhagwat76@gmail.com",
+                    NetworkUsername = "KEVIN@gmail.com",
                     NetworkPassword = "Pa$$w0rd2"
                 }
             };
 
-            var pdf = urlToPdf.RenderUrlAsPdf(uri);           
+            //var pdf = urlToPdf.RenderUrlAsPdf(uri);
+            string download = new WebClient().DownloadString(uri);
 
-            MemoryStream ms = new MemoryStream();
+            string css = @"@import url('chrome://resources/css/roboto.css'); html { direction: ltr; }
+            body { font - family: Roboto, 'Segoe UI', Tahoma, sans - serif; font - size: 81.25 %; }
+            button { font - family: Roboto, 'Segoe UI', Tahoma, sans - serif; }
+            html { touch - action: pan - x pan - y; }
+            body { background - color: rgb(82, 86, 89); color: v…ry - text - color); line - height: 154 %; margin: 0px; }
+            viewer - page - indicator { visibility: hidden; z - index: 2; }
+            viewer - pdf - toolbar { position: fixed; width: 100 %; z - index: 4; }
+            #content { height: 100%; position: fixed; width: 100%; z-index: 1; } viewer-ink-host, #plugin { height: 100%; position: absolute; width: 100%; } #sizer { position: absolute; z-index: 0; } @media (max-height: 250px) {↵  viewer-pdf-toolbar { display: none; }}@media (max-height: 200px) { viewer-zoom-toolbar { display: none; }}@media (max-width: 300px) {viewer-zoom-toolbar { display: none; }↵}", "html { --google-red-100-rgb: 244, 199, 195; --goog…ndary-opacity: 0.7; --light-primary-opacity: 1; } html { --google-blue-50-rgb: 232, 240, 254; --goog…90); --cr-toggle-color: var(--google-blue-500); }", "html[dark] { --cr-primary-text-color: var(--google…title-text-color: var(--cr-primary-text-color); }", "html { --cr-actionable_-_cursor: pointer; --cr-but…t); --cr-form-field-label_-_margin-bottom: 8px; }", "[hidden] { display: none !important; }", "html { --layout_-_display: flex; --layout-inline_-…out-invisible_-_visibility: hidden  !important; }", "html { --shadow-transition_-_transition: box-shado… 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.4); }", "html { --iron-icon-height: 20px; --iron-icon-width…x; --viewer-icon-ink-color: rgb(189, 189, 189); }"";
 
-           // return new ActionAsPdf("AOwYbqttJ6fobQAreA9mBUt4dmB5CBtuirmBaf4AhwNvjDfuIhma4ZpjMxmTosLw", new { id_CT = Request.Params["id_CT"] });
-           return File(pdf.BinaryData, "application/pdf;");
-     
+            byte[] bytes;
+            using (var ms = new MemoryStream())
+            {
+                using (var doc = new Document())
+                {
+                    using (var writter = PdfWriter.GetInstance(doc, ms))
+                    {
+                        doc.Open();
+                        using (var htmlWorker = new HTMLWorker(doc))
+                        {
+                            using (var sr = new StringReader(download))
+                            {
+                                //htmlWorker.Parse(sr);
+                                XMLWorkerHelper.GetInstance().ParseXHtml(writter, doc, sr);
+                            }
+                        }
+                        using (var srHtml = new StringReader(download))
+                        {
+                            XMLWorkerHelper.GetInstance().ParseXHtml(writter, doc, srHtml);
+                        }
+                        using (var msCss = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(css)) )
+                        {
+                            using (var msHtml = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(download)))
+                            {
+
+                                XMLWorkerHelper.GetInstance().ParseXHtml(writter, doc, msHtml, msCss);
+                            }
+                        }
+                        doc.Close();
+                    }
+                }
+                bytes = ms.ToArray();
+                return File(bytes, "application/pdf");
+            }
+
+
+                // MemoryStream ms = new MemoryStream();
+
+                //return new ActionAsPdf("AOwYbqttJ6fobQAreA9mBUt4dmB5CBtuirmBaf4AhwNvjDfuIhma4ZpjMxmTosLw", new { id_CT = Request.Params["id_CT"] });
+                //return File(document.BinaryData, "application/pdf;");/
+         //       return View();
         }
         public ActionResult Reporte_General_PDF(int id)
         {
@@ -91,7 +144,7 @@ namespace ErgoSalud.Controllers
 
         }
 
-        
+
 
         public ActionResult Glabal_Results()
         {
@@ -143,7 +196,7 @@ namespace ErgoSalud.Controllers
         {
 
 
-            var eRGOS_Cuestionarios_Trabajador_N01 = db.ERGOS_Cuestionarios_Trabajador_N01.Include(e => e.ERGOS_Cuestionarios_N01).Include(e => e.ERGOS_Empresas_N01).Where(e=>e.id_empresa == ERGOS_Empresas_N01List);
+            var eRGOS_Cuestionarios_Trabajador_N01 = db.ERGOS_Cuestionarios_Trabajador_N01.Include(e => e.ERGOS_Cuestionarios_N01).Include(e => e.ERGOS_Empresas_N01).Where(e => e.id_empresa == ERGOS_Empresas_N01List);
             return View(eRGOS_Cuestionarios_Trabajador_N01.ToList());
         }
 
@@ -228,17 +281,19 @@ namespace ErgoSalud.Controllers
             //                    select total.id_encuesta).FirstOrDefault();
 
             int? Choosing_id_encuesta = (from total in db.ERGOS_Centros_Trabajo_N01
-                                where total.id_empresa == id_empresa && total.id_centro_trabajo == id_centro_trabajo
-                                select total.No_emplados).FirstOrDefault();
+                                         where total.id_empresa == id_empresa && total.id_centro_trabajo == id_centro_trabajo
+                                         select total.No_emplados).FirstOrDefault();
 
             if (Choosing_id_encuesta <= 50)
             {
                 id_encuesta = 2;
             }
-            else if (Choosing_id_encuesta > 50) {
+            else if (Choosing_id_encuesta > 50)
+            {
                 id_encuesta = 3;
             }
-            else {
+            else
+            {
                 TempData["Folio_Existente"] = "Asignar numero valido de empleados al centro de trabajo seleccionado";
                 ViewBag.id_empresa = new SelectList(db.ERGOS_Empresas_N01.Where(e => e.deleted_at == null), "id_empresa", "Razon_Social", eRGOS_Cuestionarios_Trabajador_N01.id_empresa);
                 ViewBag.id_centro_trabajo = new SelectList(db.ERGOS_Centros_Trabajo_N01.Where(c => c.deleted_at == null), "id_centro_trabajo", "Nombre_centro_trabajo", 0);
@@ -246,9 +301,9 @@ namespace ErgoSalud.Controllers
                 return View(eRGOS_Cuestionarios_Trabajador_N01);
             }
             int? resultado_busqueda = (from verificacion in db.ERGOS_Cuestionarios_Trabajador_N01
-                                      where verificacion.id_empresa == id_empresa && 
-                                      verificacion.id_encuesta == id_encuesta &&
-                                      verificacion.id_trabajador == eRGOS_Cuestionarios_Trabajador_N01.id_trabajador
+                                       where verificacion.id_empresa == id_empresa &&
+                                       verificacion.id_encuesta == id_encuesta &&
+                                       verificacion.id_trabajador == eRGOS_Cuestionarios_Trabajador_N01.id_trabajador
                                        select verificacion.id_encuesta).Count();
 
             if (ModelState.IsValid && resultado_busqueda == 0)
@@ -259,7 +314,8 @@ namespace ErgoSalud.Controllers
                 return RedirectToAction("Index");
             }
 
-            if (resultado_busqueda != 0) {
+            if (resultado_busqueda != 0)
+            {
                 TempData["Folio_Existente"] = "El numero de Folio ya está dado de alta para la empresa Seleccionada";
             }
             ViewBag.id_empresa = new SelectList(db.ERGOS_Empresas_N01.Where(c => c.deleted_at == null), "id_empresa", "Razon_Social", eRGOS_Cuestionarios_Trabajador_N01.id_empresa);
